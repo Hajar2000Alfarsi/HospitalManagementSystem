@@ -86,9 +86,14 @@ public class Departments {
         this.availableBeds = availableBeds;
     }
 
-    //Assign Doctor()
+    //Assign Doctor
     public void assignDoctor(Doctors doctors) {
         this.doctors.add(doctors);
+    }
+
+    // Assign Nurse
+    public void  assignNurse(Nurses nurses) {
+        this.nurses.add(nurses);
     }
 
 
