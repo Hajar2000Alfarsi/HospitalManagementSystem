@@ -40,4 +40,13 @@ public class DoctorService {
         return false;
     }
 
+    public Doctors getDoctorById(String doctorId) {
+        for (Doctors doctor: doctorsList) {
+            if (doctor.getDoctorId().equals(doctorId)){
+                return doctor;
+            }
+        }
+        return null;
+    }
+
 }
