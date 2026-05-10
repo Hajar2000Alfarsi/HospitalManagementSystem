@@ -114,7 +114,6 @@ public class Patients extends Person{
         this.allergies = allergies;
     }
 
-
     @Override
     public void displayInfo() {
         super.displayInfo();
@@ -126,4 +125,18 @@ public class Patients extends Person{
         System.out.println("Registration Date: " + registrationDate);
         System.out.println("Insurance ID:" + insuranceId);
     }
+
+    public void addMedicalRecord(MedicalRecords medicalRecords){
+        this.medicalRecords.add(medicalRecords);
+
+    }
+
+    public void addAppointment(Appointments appointments) {
+        this.appointments.add(appointments);
+    }
+
+    public void updateInsurance(String newInsuranceId) {
+        this.insuranceId = newInsuranceId;
+    }
 }
+
