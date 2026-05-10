@@ -1,6 +1,7 @@
 package Entites;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Nurses extends Person{
@@ -33,4 +34,7 @@ public class Nurses extends Person{
         this.assignedPatients = assignedPatients;
     }
 
+    public Nurses() {
+        this.assignedPatients = new ArrayList<>();
+    }
 }
