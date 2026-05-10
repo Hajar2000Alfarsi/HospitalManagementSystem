@@ -113,4 +113,17 @@ public class Patients extends Person{
     public void setAllergies(List<String> allergies) {
         this.allergies = allergies;
     }
+
+
+    @Override
+    public void displayInfo() {
+        super.displayInfo();
+
+        System.out.println("Patient ID:" + patientId);
+        System.out.println("Blood Group: " + bloodGroup);
+        System.out.println("Allergies: " + allergies);
+        System.out.println("Emergency Contact: " + emergencyContact);
+        System.out.println("Registration Date: " + registrationDate);
+        System.out.println("Insurance ID:" + insuranceId);
+    }
 }
