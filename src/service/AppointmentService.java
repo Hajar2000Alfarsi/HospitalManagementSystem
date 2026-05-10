@@ -14,5 +14,13 @@ public class AppointmentService {
         System.out.println("appointment Added Successfully");
     }
 
-
+    public boolean removeAppointments(String appointmentId) {
+        for (Appointments appointment: appointmentsList) {
+            if (appointment.getAppointmentId().equals(appointmentId)) {
+                appointmentsList.remove(appointment);
+                return true;
+            }
+        }
+        return false;
+    }
 }
