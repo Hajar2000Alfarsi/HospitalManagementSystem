@@ -57,4 +57,17 @@ public class PatientService {
             patient.displayInfo();
         }
     }
+
+    public List<Patients> searchPatientsByName(String name) {
+        List<Patients> result = new ArrayList<>();
+
+        for (Patients patient: patientsList) {
+            String fullname = patient.getFirstName() + patient.getLastName();
+
+            if (fullname.toLowerCase().contains(name.toLowerCase())) {
+                result.add(patient);
+            }
+        }
+        return result;
+    }
 }
