@@ -111,4 +111,17 @@ public class Departments {
         System.out.println("Bed Capacity: " + bedCapacity);
         System.out.println("Available Beds: " + availableBeds);
     }
+
+    @Override
+    public String toString() {
+        return "Departments{" +
+                "departmentId='" + departmentId + '\'' +
+                ", departmentName='" + departmentName + '\'' +
+                ", headDoctorId='" + headDoctorId + '\'' +
+                ", doctors=" + doctors +
+                ", nurses=" + nurses +
+                ", bedCapacity=" + bedCapacity +
+                ", availableBeds=" + availableBeds +
+                '}';
+    }
 }
