@@ -147,4 +147,17 @@ public class Doctors extends Person{
         System.out.println("Assigned Patients: " + assignedPatients);
     }
 
+    @Override
+    public String toString() {
+        return "Doctors{" +
+                "doctorId='" + doctorId + '\'' +
+                ", specialization='" + specialization + '\'' +
+                ", qualification='" + qualification + '\'' +
+                ", experienceYears=" + experienceYears +
+                ", departmentId='" + departmentId + '\'' +
+                ", consultationFee=" + consultationFee +
+                ", availableSlots=" + availableSlots +
+                ", assignedPatients=" + assignedPatients +
+                '}';
+    }
 }
