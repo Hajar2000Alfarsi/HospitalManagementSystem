@@ -37,4 +37,44 @@ public class Nurses extends Person{
     public Nurses() {
         this.assignedPatients = new ArrayList<>();
     }
+
+    public String getNurseId() {
+        return nurseId;
+    }
+
+    public void setNurseId(String nurseId) {
+        this.nurseId = nurseId;
+    }
+
+    public List<Patients> getAssignedPatients() {
+        return assignedPatients;
+    }
+
+    public void setAssignedPatients(List<Patients> assignedPatients) {
+        this.assignedPatients = assignedPatients;
+    }
+
+    public String getQualification() {
+        return qualification;
+    }
+
+    public void setQualification(String qualification) {
+        this.qualification = qualification;
+    }
+
+    public String getShift() {
+        return shift;
+    }
+
+    public void setShift(String shift) {
+        this.shift = shift;
+    }
+
+    public String getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(String departmentId) {
+        this.departmentId = departmentId;
+    }
 }
