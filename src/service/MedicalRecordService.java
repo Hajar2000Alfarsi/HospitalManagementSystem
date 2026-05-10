@@ -13,4 +13,14 @@ public class MedicalRecordService {
         System.out.println("Medical Records Added Successfully");
     }
 
+    public boolean removeMedicalRecords(String recordId) {
+        for (MedicalRecords medicalRecord: medicalRecordsList) {
+            if (medicalRecord.getRecordId().equals(recordId)){
+                medicalRecordsList.remove(recordId);
+                System.out.println("Medical Record removed successfully");
+                return true;
+            }
+        }
+        return false;
+    }
 }
