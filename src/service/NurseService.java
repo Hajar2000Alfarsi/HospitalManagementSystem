@@ -1,5 +1,6 @@
 package service;
 
+import Entites.Doctors;
 import Entites.Nurses;
 
 import java.util.ArrayList;
@@ -45,4 +46,11 @@ public class NurseService {
         }
         return null;
     }
+
+    public void displayAllNurses() {
+        for (Nurses nurses: nursesList) {
+            nurses.displayInfo();
+        }
+    }
+
 }
