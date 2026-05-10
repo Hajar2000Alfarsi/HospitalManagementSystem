@@ -104,4 +104,13 @@ public class Appointments {
         System.out.println("Reason: " + reason);
         System.out.println("Notes: " + notes);
     }
+
+    //Reschedule Appointment
+    public void reschedule(LocalDate newDate, String newTime) {
+        this.appointmentDate = newDate;
+        this.appointmentTime = newTime;
+        this.status = "Reschedule";
+    }
+
+
 }
