@@ -23,6 +23,7 @@ public class DoctorService {
                 return true;
             }
         }
+        System.out.println("Doctor not found.");
         return false;
     }
 

@@ -17,9 +17,23 @@ public class NurseService {
         for (int i = 0; i < nursesList.size(); i++) {
             if (nursesList.get(i).getNurseId().equals(nurseId)){
                 nursesList.set(i, updateNurse);
+                System.out.println("Nurse updated successfully.");
                 return true;
             }
         }
+        System.out.println("Nurse not found.");
+        return false;
+    }
+
+    public boolean removeNurse(String nurseId) {
+        for (Nurses nurse: nursesList) {
+            if (nurse.getNurseId().equals(nurseId)) {
+                nursesList.remove(nurse);
+                System.out.println("Nurse removed successfully");
+                return true;
+            }
+        }
+        System.out.println("Nurse not found");
         return false;
     }
 }
