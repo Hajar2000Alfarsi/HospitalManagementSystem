@@ -53,4 +53,26 @@ public class NurseService {
         }
     }
 
+    public List<Nurses> getNurseByDepartment(String departmentId) {
+        List<Nurses> result = new ArrayList<>();
+
+        for (Nurses nurses: nursesList) {
+            if (nurses.getDepartmentId().equals(departmentId)) {
+                result.add(nurses);
+            }
+        }
+        return result;
+    }
+
+    public List<Nurses> getNursesByShift(String shift) {
+        List<Nurses> result = new ArrayList<>();
+
+        for (Nurses nurse: nursesList) {
+            if (nurse.getShift().equalsIgnoreCase(shift)) {
+                result.add(nurse);
+            }
+        }
+        return result;
+    }
+
 }
