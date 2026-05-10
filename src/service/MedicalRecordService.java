@@ -46,4 +46,12 @@ public class MedicalRecordService {
         return result;
     }
 
+    public void displayPatientHistory(String patientId) {
+        List<MedicalRecords> patientRecords = getRecordsByPatientId(patientId);
+
+        for (MedicalRecords patientRecord: patientRecords) {
+            patientRecord.displayInfo();
+        }
+    }
+
 }
