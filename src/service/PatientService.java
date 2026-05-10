@@ -47,4 +47,14 @@ public class PatientService {
         }
         return null;
     }
+
+    public void displayAllPatients() {
+        if (patientsList == null) {
+            return;
+        }
+
+        for (Patients patient: patientsList) {
+            patient.displayInfo();
+        }
+    }
 }
