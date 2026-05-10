@@ -2,6 +2,7 @@ package Entites;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Doctors extends Person{
@@ -47,4 +48,10 @@ public class Doctors extends Person{
         this.qualification = qualification;
         this.specialization = specialization;
     }
+
+    public Doctors() {
+        this.availableSlots = new ArrayList<>();
+        this.assignedPatients = new ArrayList<>();
+    }
+
 }
