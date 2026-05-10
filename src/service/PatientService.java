@@ -7,6 +7,10 @@ import java.util.List;
 
 public class PatientService {
     //Static List to store all patients
-    List<Patients> patientsList = new ArrayList<>();
+    private static List<Patients> patientsList = new ArrayList<>();
 
+    public void addPatient(Patients patients){
+        patientsList.add(patients);
+        System.out.println("Patient Added Successfully");
+    }
 }
