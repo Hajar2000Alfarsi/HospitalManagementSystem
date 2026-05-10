@@ -103,4 +103,18 @@ public class Person {
         System.out.println("Email: " + email);
         System.out.println("Address: " + address);
     }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id='" + id + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", gender='" + gender + '\'' +
+                ", poneNumber='" + poneNumber + '\'' +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
 }
