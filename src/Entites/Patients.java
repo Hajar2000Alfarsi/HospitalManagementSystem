@@ -32,7 +32,10 @@ public class Patients extends Person{
         this.bloodGroup = bloodGroup;
     }
 
-    public Patients(String patientId, List<MedicalRecords> medicalRecords, List<Appointments> appointments, String insuranceId, String emergencyContact, LocalDate registrationDate, List<String> allergies, String bloodGroup) {
+    public Patients(String patientId, List<MedicalRecords> medicalRecords, List<Appointments> appointments,
+                    String insuranceId, String emergencyContact,
+                    LocalDate registrationDate, List<String> allergies,
+                    String bloodGroup) {
         this.patientId = patientId;
         this.medicalRecords = medicalRecords;
         this.appointments = appointments;
