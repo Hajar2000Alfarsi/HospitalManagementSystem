@@ -30,5 +30,59 @@ public class Departments {
         this.nurses = new ArrayList<>();
     }
 
+    public int getBedCapacity() {
+        return bedCapacity;
+    }
 
+    public void setBedCapacity(int bedCapacity) {
+        this.bedCapacity = bedCapacity;
+    }
+
+    public String getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(String departmentId) {
+        this.departmentId = departmentId;
+    }
+
+    public String getDepartmentName() {
+        return departmentName;
+    }
+
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
+    }
+
+    public List<Nurses> getNurses() {
+        return nurses;
+    }
+
+    public void setNurses(List<Nurses> nurses) {
+        this.nurses = nurses;
+    }
+
+    public List<Doctors> getDoctors() {
+        return doctors;
+    }
+
+    public void setDoctors(List<Doctors> doctors) {
+        this.doctors = doctors;
+    }
+
+    public String getHeadDoctorId() {
+        return headDoctorId;
+    }
+
+    public void setHeadDoctorId(String headDoctorId) {
+        this.headDoctorId = headDoctorId;
+    }
+
+    public int getAvailableBeds() {
+        return availableBeds;
+    }
+
+    public void setAvailableBeds(int availableBeds) {
+        this.availableBeds = availableBeds;
+    }
 }
