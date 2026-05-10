@@ -55,6 +55,14 @@ public class DoctorService {
         }
     }
 
+    public List<Doctors> getDoctorsBySpecialization(String specialization) {
+        List<Doctors> result = new ArrayList<>();
 
-
+        for (Doctors doctor: doctorsList) {
+            if (doctor.getSpecialization() .equalsIgnoreCase(specialization)) {
+                result.add(doctor);
+            }
+        }
+        return result;
+    }
 }
