@@ -78,6 +78,14 @@ public class Nurses extends Person{
         this.departmentId = departmentId;
     }
 
+    public void assignPatient(Patients patients) {
+        assignedPatients.add(patients);
+    }
+
+    public void removePatient(Patients patients) {
+        assignedPatients.remove(patients);
+    }
+
     @Override
     public void displayInfo() {
         super.displayInfo();
