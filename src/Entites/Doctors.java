@@ -118,6 +118,21 @@ public class Doctors extends Person{
         this.assignedPatients = assignedPatients;
     }
 
+    //Add Patient
+    public void assignPatient(Patients patients) {
+        this.assignedPatients.add(patients);
+    }
+
+    // Remove Patient
+    public void removePatient(Patients patient) {
+        assignedPatients.remove(patient);
+    }
+
+    //Update Availability
+    public void updateAvailability(LocalDateTime slot) {
+        availableSlots.add(slot);
+    }
+
     @Override
     public void displayInfo() {
         super.displayInfo();
@@ -131,4 +146,5 @@ public class Doctors extends Person{
         System.out.println("Available Slots: " + availableSlots);
         System.out.println("Assigned Patients: " + assignedPatients);
     }
+
 }
