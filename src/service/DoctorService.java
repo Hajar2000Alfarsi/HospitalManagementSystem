@@ -13,4 +13,17 @@ public class DoctorService {
         doctorsList.add(doctor);
         System.out.println("Doctor Added Successfully");
     }
+
+    private boolean editDoctor(String doctorId, Doctors updatedDoctor) {
+        for (int i = 0; i < doctorsList.size(); i++) {
+            if (doctorsList.get(i).getDoctorId().equals(doctorId)) {
+                doctorsList.set(i, updatedDoctor);
+
+                System.out.println("Doctor updated successfully.");
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
