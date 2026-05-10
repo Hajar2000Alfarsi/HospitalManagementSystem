@@ -86,6 +86,10 @@ public class Departments {
         this.availableBeds = availableBeds;
     }
 
+    //Assign Doctor()
+    public void assignDoctor(Doctors doctors) {
+        this.doctors.add(doctors);
+    }
 
 
     public void displayInfo() {
