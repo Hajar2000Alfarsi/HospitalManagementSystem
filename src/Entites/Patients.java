@@ -138,5 +138,19 @@ public class Patients extends Person{
     public void updateInsurance(String newInsuranceId) {
         this.insuranceId = newInsuranceId;
     }
+
+    @Override
+    public String toString() {
+        return "Patients{" +
+                "patientId='" + patientId + '\'' +
+                ", bloodGroup='" + bloodGroup + '\'' +
+                ", allergies=" + allergies +
+                ", emergencyContact='" + emergencyContact + '\'' +
+                ", registrationDate=" + registrationDate +
+                ", insuranceId='" + insuranceId + '\'' +
+                ", medicalRecords=" + medicalRecords +
+                ", appointments=" + appointments +
+                '}';
+    }
 }
 
