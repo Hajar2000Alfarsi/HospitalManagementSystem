@@ -96,4 +96,15 @@ public class Nurses extends Person{
         System.out.println("Qualification: " + qualification);
         System.out.println("Assigned Patients: " + assignedPatients);
     }
+
+    @Override
+    public String toString() {
+        return "Nurses{" +
+                "nurseId='" + nurseId + '\'' +
+                ", departmentId='" + departmentId + '\'' +
+                ", shift='" + shift + '\'' +
+                ", qualification='" + qualification + '\'' +
+                ", assignedPatients=" + assignedPatients +
+                '}';
+    }
 }
