@@ -49,4 +49,12 @@ public class DoctorService {
         return null;
     }
 
+    public void displayAllDoctors() {
+        for (Doctors doctor: doctorsList) {
+            doctor.displayInfo();
+        }
+    }
+
+
+
 }
