@@ -65,4 +65,15 @@ public class DoctorService {
         }
         return result;
     }
+
+    public List<Doctors> getAvailableDoctors() {
+        List<Doctors> availableDoctors = new ArrayList<>();
+
+        for (Doctors doctor: doctorsList) {
+            if (!doctor.getAvailableSlots().isEmpty()){
+                availableDoctors.add(doctor);
+            }
+        }
+        return availableDoctors;
+    }
 }
