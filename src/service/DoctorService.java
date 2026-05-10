@@ -14,7 +14,7 @@ public class DoctorService {
         System.out.println("Doctor Added Successfully");
     }
 
-    private boolean editDoctor(String doctorId, Doctors updatedDoctor) {
+    public boolean editDoctor(String doctorId, Doctors updatedDoctor) {
         for (int i = 0; i < doctorsList.size(); i++) {
             if (doctorsList.get(i).getDoctorId().equals(doctorId)) {
                 doctorsList.set(i, updatedDoctor);
@@ -23,6 +23,20 @@ public class DoctorService {
                 return true;
             }
         }
+        return false;
+    }
+
+    public boolean removeDoctor(String doctorId){
+        for (Doctors doctors: doctorsList) {
+
+            if (doctors.getDoctorId().equals(doctorId)){
+
+                doctorsList.remove(doctorId);
+                System.out.println("Doctor removed successfully");
+                return true;
+            }
+        }
+        System.out.println("Doctor not found");
         return false;
     }
 
