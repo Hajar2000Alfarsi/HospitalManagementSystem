@@ -96,6 +96,11 @@ public class Departments {
         this.nurses.add(nurses);
     }
 
+    //Update Bed Availability
+    public void updateBedAvailability(int beds) {
+        this.availableBeds = beds;
+    }
+
 
     public void displayInfo() {
         System.out.println("Department ID: " + departmentId);
