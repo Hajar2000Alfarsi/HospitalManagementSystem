@@ -112,5 +112,9 @@ public class Appointments {
         this.status = "Reschedule";
     }
 
+    //Cancel Appointment
+    public void cancel() {
+        this.status = "Cancelled";
+    }
 
 }
