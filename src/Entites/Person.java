@@ -94,5 +94,13 @@ public class Person {
         this.address = address;
     }
 
-
+    public void DisplayInfo() {
+        System.out.println("ID: " + id);
+        System.out.println("Name: " + firstName + lastName);
+        System.out.println("Date of Birth: " + dateOfBirth);
+        System.out.println("Gender: " + gender);
+        System.out.println("Phone Number: " + poneNumber);
+        System.out.println("Email: " + email);
+        System.out.println("Address: " + address);
+    }
 }
