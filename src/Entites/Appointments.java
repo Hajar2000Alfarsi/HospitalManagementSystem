@@ -117,4 +117,22 @@ public class Appointments {
         this.status = "Cancelled";
     }
 
+    //Complete Appointment
+    public void complete() {
+        this.status = "Completed";
+    }
+
+    @Override
+    public String toString() {
+        return "Appointments{" +
+                "appointmentId='" + appointmentId + '\'' +
+                ", patientId='" + patientId + '\'' +
+                ", doctorId='" + doctorId + '\'' +
+                ", appointmentDate=" + appointmentDate +
+                ", appointmentTime='" + appointmentTime + '\'' +
+                ", status='" + status + '\'' +
+                ", reason='" + reason + '\'' +
+                ", notes='" + notes + '\'' +
+                '}';
+    }
 }
