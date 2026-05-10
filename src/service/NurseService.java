@@ -36,4 +36,13 @@ public class NurseService {
         System.out.println("Nurse not found");
         return false;
     }
+
+    public Nurses getNurseById(String nurseId) {
+        for (Nurses nurse: nursesList) {
+            if (nurse.getNurseId().equals(nurseId)) {
+                return nurse;
+            }
+        }
+        return null;
+    }
 }
