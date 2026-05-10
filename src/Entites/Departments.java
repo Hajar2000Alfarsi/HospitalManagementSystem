@@ -1,5 +1,6 @@
 package Entites;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Departments {
@@ -23,4 +24,11 @@ public class Departments {
         this.bedCapacity = bedCapacity;
         this.availableBeds = availableBeds;
     }
+
+    public Departments() {
+        this.doctors = new ArrayList<>();
+        this.nurses = new ArrayList<>();
+    }
+
+
 }
