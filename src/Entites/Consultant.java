@@ -73,4 +73,6 @@ public class Consultant extends Doctors{
         System.out.println("Type: " + consultationType);
         System.out.println("Mode: " + (online? "online" : "Offline"));
     }
+
+
 }
