@@ -82,7 +82,7 @@ public class PatientService {
             patientsList.add(addPatient());
             System.out.println("Patient Added Successfully");
 
-            System.out.println("Enter q to exit, press ENTER to continue for more doctors");
+            System.out.println("Enter q to exit, press ENTER to continue for more patient");
             if (scanner.nextLine().equalsIgnoreCase("q")) {
                 continueFlag = false;
             }
@@ -90,20 +90,74 @@ public class PatientService {
         return patientsList;
     }
 
-    public boolean editPatient(String patientId, Patients updatedPatient) {
-        for (int i = 0; i < patientsList.size(); i++){
-            if (patientsList.get(i).getPatientId().equals(patientId)) {
-                patientsList.set(i,updatedPatient);
+    public boolean editPatient(String patientId) {
 
-                System.out.println("Patient updated successfully.");
-                return true;
+        System.out.println("Enter Patient ID: ");
+        String pId = scanner.nextLine();
+
+        for (Patients patient: patientsList){
+            if (patient.getPatientId().equals(pId)){
+                System.out.println("Enter Updated Civil ID: ");
+                String civilId = scanner.nextLine();
+
+                System.out.println("Enter Updated First Name: ");
+                String firstName = scanner.nextLine();
+
+                System.out.println("Enter Updated Last Name: ");
+                String lastName = scanner.nextLine();
+
+                System.out.println("Updated Date Of Birth: ");
+                String dateOfBirth = scanner.nextLine();
+                LocalDate dob = LocalDate.parse(dateOfBirth);
+
+                System.out.println("Updated Gender: ");
+                String gender = scanner.nextLine();
+
+                System.out.println("Updated Phone Number: ");
+                String phoneNumber = scanner.nextLine();
+
+                System.out.println("Updated Email: ");
+                String email = scanner.nextLine();
+
+                System.out.println("Updated Address: ");
+                String address = scanner.nextLine();
+
+                System.out.println("Updated Patient ID: ");
+                String patientId1 = scanner.nextLine();
+
+                System.out.println("Updated Blood Group: ");
+                String bloodGroup = scanner.nextLine();
+
+                System.out.println("Enter Updated allergies separated by commas: ");
+                String inputAllergies = scanner.nextLine();
+                List<String> allergies = new ArrayList<>();
+                for (String allergy: inputAllergies.split(",")) {
+                    allergies.add(allergy.trim());
+                }
+
+                System.out.println("Updated Emergency Contact: ");
+                String emergencyContact = scanner.nextLine();
+
+                System.out.println("Updated Registration Date");
+                String registrationDate = scanner.nextLine();
+                LocalDate rd = LocalDate.parse(dateOfBirth);
+
+                System.out.println("Updated Insurance Id: ");
+                String insuranceId = scanner.nextLine();
+
             }
+            System.out.println("Patient updated successfully.");
+            return true;
         }
+
         System.out.println("Patient not found.");
         return false;
     }
 
     public boolean removePatient(String patientId) {
+        System.out.println("Enter patient ID: ");
+        String pId = scanner.nextLine();
+
         for (Patients patient: patientsList) {
             if (patient.getPatientId().equals(patientId)) {
                 patientsList.remove(patient);
