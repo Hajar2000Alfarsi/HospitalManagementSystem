@@ -78,4 +78,13 @@ public class Consultant extends Doctors{
         System.out.println("Second Opinion provided: ");
         System.out.println(caseDetails);
     }
+
+    @Override
+    public void displayInfo() {
+        super.displayInfo();
+
+        System.out.println("Consultation Types: " + consultationTypes);
+        System.out.println("Online Consultation Available: " + onlineConsultationAvailable);
+        System.out.println("Consultation Duration: " + consultationDuration + " minutes");
+    }
 }
