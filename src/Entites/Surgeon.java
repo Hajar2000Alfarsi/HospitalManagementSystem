@@ -63,5 +63,17 @@ public class Surgeon extends Doctors{
         this.surgeryTypes = surgeryTypes;
     }
 
+    public void performSurgery(String surgeryType){
+        if (operationTheatreAccess) {
+            surgeriesPerformed ++;
+            System.out.println("Surgery performed successfully.");
+            System.out.println("Surgery Type " + surgeryType);
+        } else {
+            System.out.println("Access denied to operation theatre.");
+        }
+    }
 
+    public void updateSurgeryCount(int updatedCount) {
+        this.surgeriesPerformed = updatedCount;
+    }
 }
