@@ -17,10 +17,33 @@ public class AppointmentService {
     public boolean removeAppointments(String appointmentId) {
         for (Appointments appointment: appointmentsList) {
             if (appointment.getAppointmentId().equals(appointmentId)) {
+
                 appointmentsList.remove(appointment);
                 return true;
             }
         }
         return false;
     }
+
+    public List<Appointments> getAppointmentsByPatientId(String patientId) {
+        List<Appointments> result = new ArrayList<>();
+
+        for (Appointments appointment: appointmentsList) {
+            if (appointment.getPatientId().equals(patientId)) {
+                result.add(appointment);
+            }
+        }
+        return result;
+    }
+
+/*    public List<Appointments> getAppointmentsByDoctortId(String ) {
+        List<Appointments> result = new ArrayList<>();
+
+        for (Appointments appointment: appointmentsList) {
+            if (appointment.getPatientId().equals(patientId)) {
+                result.add(appointment);
+            }
+        }
+        return result;
+    }*/
 }
