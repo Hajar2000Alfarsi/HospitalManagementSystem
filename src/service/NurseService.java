@@ -122,7 +122,7 @@ public class NurseService {
         return false;
     }
 
-    public boolean removeNurse(String nurseId) {
+    public boolean removeNurse() {
         System.out.println("Enter Nurse ID: ");
         String nId = scanner.nextLine();
 
@@ -139,7 +139,7 @@ public class NurseService {
         return false;
     }
 
-    public Nurses getNurseById(String nurseId) {
+    public Nurses getNurseById() {
         System.out.println("Enter Nurse ID: ");
         String nId = scanner.nextLine();
 
@@ -194,4 +194,34 @@ public class NurseService {
         return result;
     }
 
+    public boolean handleDoctorMenu(Integer nurseOption){
+
+        switch (nurseOption) {
+            case 1 -> {
+                addNurses();
+            }
+            case 2 -> {
+                editNurse();
+            }
+            case 3 -> {
+                removeNurse();
+            }
+            case 4 -> {
+                getNurseById();
+            }
+            case 5 -> {
+                displayAllNurses();
+            }
+            case 6 -> {
+                getNurseByDepartment();
+            }
+            case 7 -> {
+                getNursesByShift();
+            }
+            case 8 -> {
+                return false;
+            }
+        }
+        return true;
+    }
 }
