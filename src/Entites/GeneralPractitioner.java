@@ -97,5 +97,12 @@ public class GeneralPractitioner extends Doctors{
         System.out.println("Vaccination Certified: " + vaccinationCertified);
     }
 
-
+    @Override
+    public String toString() {
+        return "GeneralPractitioner{" +
+                "walkinAvailable=" + walkinAvailable +
+                ", homeVisitAvailable=" + homeVisitAvailable +
+                ", vaccinationCertified=" + vaccinationCertified +
+                '}';
+    }
 }
