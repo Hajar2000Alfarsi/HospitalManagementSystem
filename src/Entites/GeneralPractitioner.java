@@ -62,4 +62,16 @@ public class GeneralPractitioner extends Doctors{
         System.out.println("Address: " + address);
         System.out.println("Time: " + time);
     }
+
+    public void administerVaccine(Patients patients, String vaccineType) {
+        //Check if doctor have permission
+        if (!vaccinationCertified) {
+            System.out.println("Doctor is not certified for vaccination");
+            return;
+        }
+
+
+
+
+    }
 }
