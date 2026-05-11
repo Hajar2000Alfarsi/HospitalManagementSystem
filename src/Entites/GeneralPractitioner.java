@@ -70,7 +70,10 @@ public class GeneralPractitioner extends Doctors{
             return;
         }
 
-
+        if (patients == null) {
+            System.out.println("Patient not found.");
+            return;
+        }
 
 
     }
