@@ -12,7 +12,7 @@ public class DoctorService {
     static List<Doctors> doctorsList = new ArrayList<>();
     List<String> availableSlots = new ArrayList<>();
     List<String> assignedPatients = new ArrayList<>();
-    Scanner scanner = new Scanner();
+    Scanner scanner = new Scanner(System.in);
 
     public Doctors addDoctor() {
         System.out.println("Add new Doctor");
@@ -79,20 +79,65 @@ public class DoctorService {
         return doctorsList;
     }
 
-    public boolean editDoctor(String doctorId, Doctors updatedDoctor) {
-        for (int i = 0; i < doctorsList.size(); i++) {
-            if (doctorsList.get(i).getDoctorId().equals(doctorId)) {
-                doctorsList.set(i, updatedDoctor);
+    public boolean editDoctor(String doctorId) {
+        System.out.println("Enter Doctor ID: ");
+        String dId = scanner.nextLine();
 
-                System.out.println("Doctor updated successfully.");
-                return true;
+        for (Doctors doctor: doctorsList){
+            if (doctor.getDoctorId().equals(dId)){
+                System.out.println("Enter Updated Civil ID: ");
+                doctor.setDoctorId(scanner.nextLine());
+
+                System.out.println("Enter Updated First Name: ");
+                doctor.setFirstName(scanner.nextLine());
+
+                System.out.println("Enter Updated Last Name: ");
+                doctor.setLastName(scanner.nextLine());
+
+                System.out.println("Updated Date Of Birth: ");
+                String dateOfBirth = scanner.nextLine();
+                LocalDate dob = LocalDate.parse(dateOfBirth);
+                doctor.setDateOfBirth(dob);
+
+                System.out.println("Updated Gender: ");
+                doctor.setGender(scanner.nextLine());
+
+                System.out.println("Updated Phone Number: ");
+                doctor.setPoneNumber(scanner.nextLine());
+
+                System.out.println("Updated Email: ");
+                doctor.setEmail(scanner.nextLine());
+
+                System.out.println("Updated Address: ");
+                doctor.setAddress(scanner.nextLine());
+
+                System.out.println("Doctor specialization: ");
+                doctor.setSpecialization(scanner.nextLine());
+
+                System.out.println("Doctor qualification: ");
+                doctor.setQualification(scanner.nextLine());
+
+                System.out.println("Doctor experience Years: ");
+                doctor.setExperienceYears(scanner.nextInt());
+
+                System.out.println("Doctor department Id: ");
+                doctor.setDoctorId(scanner.nextLine());
+
+                System.out.println("Doctor consultation Fee: ");
+                doctor.setConsultationFee(scanner.nextDouble());
             }
+            System.out.println("Doctor updated successfully.");
+            return true;
         }
+
         System.out.println("Doctor not found.");
         return false;
     }
 
     public boolean removeDoctor(String doctorId){
+        System.out.println("Enter patient ID: ");
+        String pId = scanner.nextLine();
+
         for (Doctors doctors: doctorsList) {
 
             if (doctors.getDoctorId().equals(doctorId)){

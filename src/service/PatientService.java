@@ -98,35 +98,33 @@ public class PatientService {
         for (Patients patient: patientsList){
             if (patient.getPatientId().equals(pId)){
                 System.out.println("Enter Updated Civil ID: ");
-                String civilId = scanner.nextLine();
+                patient.setId(scanner.nextLine());
 
                 System.out.println("Enter Updated First Name: ");
-                String firstName = scanner.nextLine();
+                patient.setFirstName(scanner.nextLine());
 
                 System.out.println("Enter Updated Last Name: ");
-                String lastName = scanner.nextLine();
+                patient.setLastName(scanner.nextLine());
 
                 System.out.println("Updated Date Of Birth: ");
                 String dateOfBirth = scanner.nextLine();
                 LocalDate dob = LocalDate.parse(dateOfBirth);
+                patient.setDateOfBirth(dob);
 
                 System.out.println("Updated Gender: ");
-                String gender = scanner.nextLine();
+                patient.setGender(scanner.nextLine());
 
                 System.out.println("Updated Phone Number: ");
-                String phoneNumber = scanner.nextLine();
+                patient.setPoneNumber(scanner.nextLine());
 
                 System.out.println("Updated Email: ");
-                String email = scanner.nextLine();
+                patient.setEmail(scanner.nextLine());
 
                 System.out.println("Updated Address: ");
-                String address = scanner.nextLine();
-
-                System.out.println("Updated Patient ID: ");
-                String patientId1 = scanner.nextLine();
+                patient.setAddress(scanner.nextLine());
 
                 System.out.println("Updated Blood Group: ");
-                String bloodGroup = scanner.nextLine();
+                patient.setBloodGroup(scanner.nextLine());
 
                 System.out.println("Enter Updated allergies separated by commas: ");
                 String inputAllergies = scanner.nextLine();
@@ -136,14 +134,15 @@ public class PatientService {
                 }
 
                 System.out.println("Updated Emergency Contact: ");
-                String emergencyContact = scanner.nextLine();
+                patient.setEmergencyContact(scanner.nextLine());
 
                 System.out.println("Updated Registration Date");
                 String registrationDate = scanner.nextLine();
                 LocalDate rd = LocalDate.parse(dateOfBirth);
+                patient.setRegistrationDate(rd);
 
                 System.out.println("Updated Insurance Id: ");
-                String insuranceId = scanner.nextLine();
+                patient.setInsuranceId(scanner.nextLine());
 
             }
             System.out.println("Patient updated successfully.");
