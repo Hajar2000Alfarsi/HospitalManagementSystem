@@ -51,4 +51,11 @@ public class GeneralPractitioner extends Doctors{
     public void setHomeVisitAvailable(boolean homeVisitAvailable) {
         this.homeVisitAvailable = homeVisitAvailable;
     }
+
+    public void scheduleHomeVisit(Patients patients, String address, String time) {
+        if (!homeVisitAvailable) {
+            System.out.println("Home visit is not available.");
+            return;
+        }
+    }
 }
