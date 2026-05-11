@@ -57,5 +57,9 @@ public class GeneralPractitioner extends Doctors{
             System.out.println("Home visit is not available.");
             return;
         }
+        System.out.println("Home visit scheduled successfully.");
+        System.out.println("Patient: " + patients.getFirstName() + " " + patients.getLastName());
+        System.out.println("Address: " + address);
+        System.out.println("Time: " + time);
     }
 }
