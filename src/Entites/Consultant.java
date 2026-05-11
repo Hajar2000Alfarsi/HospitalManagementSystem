@@ -1,6 +1,7 @@
 package Entites;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Consultant extends Doctors{
@@ -26,5 +27,9 @@ public class Consultant extends Doctors{
         this.consultationTypes = consultationTypes;
         this.onlineConsultationAvailable = onlineConsultationAvailable;
         this.consultationDuration = consultationDuration;
+    }
+
+    public Consultant() {
+        this.consultationTypes = new ArrayList<>();
     }
 }
