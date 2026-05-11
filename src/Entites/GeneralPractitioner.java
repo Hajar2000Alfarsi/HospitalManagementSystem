@@ -28,5 +28,7 @@ public class GeneralPractitioner extends Doctors{
         this.homeVisitAvailable = homeVisitAvailable;
     }
 
+    public GeneralPractitioner(){
 
+    }
 }

@@ -74,5 +74,8 @@ public class Consultant extends Doctors{
         System.out.println("Mode: " + (online? "online" : "Offline"));
     }
 
-
+    public void provideSecondOpinion(String caseDetails){
+        System.out.println("Second Opinion provided: ");
+        System.out.println(caseDetails);
+    }
 }
