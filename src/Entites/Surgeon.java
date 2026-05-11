@@ -85,4 +85,13 @@ public class Surgeon extends Doctors{
         System.out.println("Surgery Types: " + surgeryTypes);
         System.out.println("Operation Theatre Access: " + operationTheatreAccess);
     }
+
+    @Override
+    public String toString() {
+        return "Surgeon{" +
+                "surgeriesPerformed=" + surgeriesPerformed +
+                ", surgeryTypes=" + surgeryTypes +
+                ", operationTheatreAccess=" + operationTheatreAccess +
+                '}';
+    }
 }
