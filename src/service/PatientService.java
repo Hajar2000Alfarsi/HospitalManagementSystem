@@ -180,6 +180,7 @@ public class PatientService {
 
     public void displayAllPatients() {
         if (patientsList == null) {
+            System.out.println("No Patient added");
             return;
         }
 
@@ -188,16 +189,16 @@ public class PatientService {
         }
     }
 
-    public List<Patients> searchPatientsByName(String name) {
-        List<Patients> result = new ArrayList<>();
+    public void searchPatientsByName(String name) {
 
         for (Patients patient: patientsList) {
             String fullname = patient.getFirstName() + patient.getLastName();
 
             if (fullname.toLowerCase().contains(name.toLowerCase())) {
-                result.add(patient);
+                patient.displayInfo();
+                return;
             }
         }
-        return result;
+        System.out.println("Patient Not found");
     }
 }
