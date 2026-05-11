@@ -1,6 +1,7 @@
 package Entites;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class InPatient extends Patients{
     private LocalDate admissionDate;
@@ -10,5 +11,33 @@ public class InPatient extends Patients{
     private String admittingDoctorId;
     private double dailyCharges;
 
+    public InPatient(String id, String firstName, String lastName, LocalDate dateOfBirth, String gender, String poneNumber, String email, String address, String patientId, List<MedicalRecords> medicalRecords, List<Appointments> appointments, String insuranceId, String emergencyContact, LocalDate registrationDate, List<String> allergies, String bloodGroup, LocalDate admissionDate, LocalDate dischargeDate, String roomNumber, String bedNumber, String admittingDoctorId, double dailyCharges) {
+        super(id, firstName, lastName, dateOfBirth, gender, poneNumber, email, address, patientId, medicalRecords, appointments, insuranceId, emergencyContact, registrationDate, allergies, bloodGroup);
+        this.admissionDate = admissionDate;
+        this.dischargeDate = dischargeDate;
+        this.roomNumber = roomNumber;
+        this.bedNumber = bedNumber;
+        this.admittingDoctorId = admittingDoctorId;
+        this.dailyCharges = dailyCharges;
+    }
+
+    public InPatient(String patientId, List<MedicalRecords> medicalRecords, List<Appointments> appointments, String insuranceId, String emergencyContact, LocalDate registrationDate, List<String> allergies, String bloodGroup, LocalDate admissionDate, LocalDate dischargeDate, String roomNumber, String bedNumber, String admittingDoctorId, double dailyCharges) {
+        super(patientId, medicalRecords, appointments, insuranceId, emergencyContact, registrationDate, allergies, bloodGroup);
+        this.admissionDate = admissionDate;
+        this.dischargeDate = dischargeDate;
+        this.roomNumber = roomNumber;
+        this.bedNumber = bedNumber;
+        this.admittingDoctorId = admittingDoctorId;
+        this.dailyCharges = dailyCharges;
+    }
+
+    public InPatient(LocalDate admissionDate, LocalDate dischargeDate, String roomNumber, String bedNumber, String admittingDoctorId, double dailyCharges) {
+        this.admissionDate = admissionDate;
+        this.dischargeDate = dischargeDate;
+        this.roomNumber = roomNumber;
+        this.bedNumber = bedNumber;
+        this.admittingDoctorId = admittingDoctorId;
+        this.dailyCharges = dailyCharges;
+    }
 
 }
