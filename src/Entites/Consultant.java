@@ -87,4 +87,13 @@ public class Consultant extends Doctors{
         System.out.println("Online Consultation Available: " + onlineConsultationAvailable);
         System.out.println("Consultation Duration: " + consultationDuration + " minutes");
     }
+
+    @Override
+    public String toString() {
+        return "Consultant{" +
+                "consultationTypes=" + consultationTypes +
+                ", onlineConsultationAvailable=" + onlineConsultationAvailable +
+                ", consultationDuration=" + consultationDuration +
+                '}';
+    }
 }
