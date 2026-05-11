@@ -87,4 +87,15 @@ public class GeneralPractitioner extends Doctors{
         System.out.println("Patient Name: " + patients.getFirstName() + " " + patients.getLastName());
         System.out.println("Vaccine Type: " + vaccineType);
     }
+
+    @Override
+    public void displayInfo() {
+        super.displayInfo();
+
+        System.out.println("Walk-in Available: " + walkinAvailable);
+        System.out.println("Home Visit Available: " + homeVisitAvailable);
+        System.out.println("Vaccination Certified: " + vaccinationCertified);
+    }
+
+
 }
