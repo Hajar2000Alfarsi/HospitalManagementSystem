@@ -1,6 +1,7 @@
 package Entites;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Surgeon extends Doctors{
@@ -26,6 +27,10 @@ public class Surgeon extends Doctors{
         this.surgeriesPerformed = surgeriesPerformed;
         this.surgeryTypes = surgeryTypes;
         this.operationTheatreAccess = operationTheatreAccess;
+    }
+
+    public Surgeon() {
+        this.surgeryTypes = new ArrayList<>();
     }
 
     public Surgeon(int surgeriesPerformed, List<String> surgeryTypes, boolean operationTheatreAccess) {
@@ -57,4 +62,6 @@ public class Surgeon extends Doctors{
     public void setSurgeryTypes(List<String> surgeryTypes) {
         this.surgeryTypes = surgeryTypes;
     }
+
+
 }
