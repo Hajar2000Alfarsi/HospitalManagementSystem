@@ -155,12 +155,10 @@ public class DoctorService {
         return false;
     }
 
-    public Doctors getDoctorById() {
-        System.out.println("Enter Doctor ID: ");
-        String dId = scanner.nextLine();
+    public Doctors getDoctorById(String doctorId) {
 
         for (Doctors doctor: doctorsList) {
-            if (doctor.getDoctorId().equals(dId)){
+            if (doctor.getDoctorId().equals(doctorId)){
                 doctor.displayInfo();
                 return doctor;
             }
@@ -220,7 +218,9 @@ public class DoctorService {
                 removeDoctor();
             }
             case 4 -> {
-                getDoctorById();
+                System.out.println("Enter Doctor ID: ");
+                String dId = scanner.nextLine();
+                getDoctorById(dId);
             }
             case 5 -> {
                 displayAllDoctors();

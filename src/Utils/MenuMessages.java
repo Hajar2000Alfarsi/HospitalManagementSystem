@@ -47,4 +47,28 @@ public class MenuMessages {
             7. Get Available Nurse
             8. Exit
     """;
+
+    public static String MEDICAL_RECORD_MENU_MESSAGE = """
+            Medical Record Menu 
+            1. Add Medical Record
+            2. Edit Medical Record
+            3. Remove Medical Record
+            4. Get Medical Record By Patient ID
+            5. Get Medical Record By Doctor ID
+            6. Display Patent History
+            7. Exit
+    """;
+
+    public static String APPOINTMENT_MENU_MESSAGE = """
+            Appointment Menu 
+            1. Add Appointments
+            2. Edit Appointment
+            3. Remove Appointment
+            4. Get Appointment By Patient ID
+            5. Get Appointment By Doctor ID
+            6. Get Appointment By Date
+            7. Reschedule Appointment
+            8. Cancel Appointment
+            9. Exit
+    """;
 }

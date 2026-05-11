@@ -139,12 +139,9 @@ public class NurseService {
         return false;
     }
 
-    public Nurses getNurseById() {
-        System.out.println("Enter Nurse ID: ");
-        String nId = scanner.nextLine();
-
+    public Nurses getNurseById(String nurseId) {
         for (Nurses nurse: nursesList) {
-            if (nurse.getNurseId().equals(nId)){
+            if (nurse.getNurseId().equals(nurseId)){
                 nurse.displayInfo();
                 return nurse;
             }
@@ -194,7 +191,7 @@ public class NurseService {
         return result;
     }
 
-    public boolean handleDoctorMenu(Integer nurseOption){
+    public boolean handleNurseMenu(Integer nurseOption){
 
         switch (nurseOption) {
             case 1 -> {
@@ -207,7 +204,9 @@ public class NurseService {
                 removeNurse();
             }
             case 4 -> {
-                getNurseById();
+                System.out.println("Enter Nurse ID:");
+                String nurseId = scanner.nextLine();
+                getNurseById(nurseId);
             }
             case 5 -> {
                 displayAllNurses();

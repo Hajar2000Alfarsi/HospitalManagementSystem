@@ -99,7 +99,7 @@ public class MedicalRecordService {
         return false;
     }
 
-    public boolean removeMedicalRecords(String recordId) {
+    public boolean removeMedicalRecords() {
         System.out.println("Enter record ID: ");
         String rId = scanner.nextLine();
 
@@ -116,34 +116,77 @@ public class MedicalRecordService {
         return false;
     }
 
-    public List<MedicalRecords> getRecordsByPatientId(String patientId) {
-        List<MedicalRecords> result = new ArrayList<>();
+    public List<MedicalRecords> getRecordsByPatientId() {
+        System.out.println("Enter Patient ID: ");
+        String pId = scanner.nextLine();
 
-        for (MedicalRecords medicalRecord: medicalRecordsList) {
-            if (medicalRecord.getPatientId().equals(patientId)){
-                result.add(medicalRecord);
+        List<MedicalRecords> patientMedicalRecord = new ArrayList<>();
+
+        for (MedicalRecords medicalRecords: medicalRecordsList) {
+            if (medicalRecords.getPatientId().equals(pId)){
+                medicalRecords.displayInfo();
+                patientMedicalRecord.add(medicalRecords);
+                return patientMedicalRecord;
             }
         }
-        return result;
+        return null;
     }
 
-    public List<MedicalRecords> getRecordsByDoctorId(String doctorId){
-        List<MedicalRecords> result =  new ArrayList<>();
+    public List<MedicalRecords> getRecordsByDoctorId(){
+        System.out.println("Enter Doctor ID: ");
+        String dId = scanner.nextLine();
+
+        List<MedicalRecords> doctorMedicalRecord =  new ArrayList<>();
 
         for (MedicalRecords medicalRecord: medicalRecordsList){
-            if (medicalRecord.getDoctorId().equals(doctorId)){
-                result.add(medicalRecord);
+            if (medicalRecord.getDoctorId().equals(dId)){
+                medicalRecord.displayInfo();
+                doctorMedicalRecord.add(medicalRecord);
+                return doctorMedicalRecord;
             }
         }
-        return result;
+        return null;
     }
 
-    public void displayPatientHistory(String patientId) {
-        List<MedicalRecords> patientRecords = getRecordsByPatientId(patientId);
+    public void displayPatientHistory() {
+        System.out.println("Enter Patient ID: ");
+        String pId = scanner.nextLine();
 
-        for (MedicalRecords patientRecord: patientRecords) {
-            patientRecord.displayInfo();
+        for (MedicalRecords medicalRecords: medicalRecordsList) {
+
+            if (medicalRecords.getPatientId().equals(pId)) {
+                medicalRecords.displayInfo();
+            }
         }
+    }
+
+
+    public boolean handleMedicalRecordMenu(Integer MedicalRecordOption){
+
+        switch (MedicalRecordOption) {
+            case 1 -> {
+                addMedicalRecords();
+            }
+            case 2 -> {
+                editMedicalRecord();
+            }
+            case 3 -> {
+                removeMedicalRecords();
+            }
+            case 4 -> {
+                getRecordsByPatientId();
+            }
+            case 5 -> {
+                getRecordsByDoctorId();
+            }
+            case 6 -> {
+                displayPatientHistory();
+            }
+            case 7 -> {
+                return false;
+            }
+        }
+        return true;
     }
 
 }
