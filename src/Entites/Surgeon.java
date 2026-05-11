@@ -75,5 +75,8 @@ public class Surgeon extends Doctors{
 
     public void updateSurgeryCount(int updatedCount) {
         this.surgeriesPerformed = updatedCount;
+        System.out.println("Surgery performed Updated Successfully");
     }
+
+
 }
