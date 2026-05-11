@@ -80,5 +80,11 @@ public class GeneralPractitioner extends Doctors{
             System.out.println("Invalid vaccine type");
             return;
         }
+
+        //display
+        System.out.println("Vaccine administered successfully.");
+        System.out.println("Patient Id: " + patients.getPatientId());
+        System.out.println("Patient Name: " + patients.getFirstName() + " " + patients.getLastName());
+        System.out.println("Vaccine Type: " + vaccineType);
     }
 }
