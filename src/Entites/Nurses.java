@@ -9,13 +9,13 @@ public class Nurses extends Person{
     private String departmentId;
     private String shift;
     private String qualification;
-    private List<Patients> assignedPatients;
+    private List<String> assignedPatients;
 
     public Nurses(String id, String firstName, String lastName,
                   LocalDate dateOfBirth, String gender,
                   String poneNumber, String email, String address,
                   String departmentId, String nurseId, String shift,
-                  String qualification, List<Patients> assignedPatients) {
+                  String qualification, List<String> assignedPatients) {
         super(id, firstName, lastName, dateOfBirth, gender, poneNumber,
                 email, address);
         this.departmentId = departmentId;
@@ -26,7 +26,7 @@ public class Nurses extends Person{
     }
 
     public Nurses(String departmentId, String nurseId, String shift,
-                  String qualification, List<Patients> assignedPatients) {
+                  String qualification, List<String> assignedPatients) {
         this.departmentId = departmentId;
         this.nurseId = nurseId;
         this.shift = shift;
@@ -46,11 +46,11 @@ public class Nurses extends Person{
         this.nurseId = nurseId;
     }
 
-    public List<Patients> getAssignedPatients() {
+    public List<String> getAssignedPatients() {
         return assignedPatients;
     }
 
-    public void setAssignedPatients(List<Patients> assignedPatients) {
+    public void setAssignedPatients(List<String> assignedPatients) {
         this.assignedPatients = assignedPatients;
     }
 
@@ -78,7 +78,7 @@ public class Nurses extends Person{
         this.departmentId = departmentId;
     }
 
-    public void assignPatient(Patients patients) {
+    public void assignPatient(String patients) {
         assignedPatients.add(patients);
     }
 

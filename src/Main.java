@@ -1,15 +1,47 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import Utils.MenuMessages;
+import service.DoctorService;
+import service.PatientService;
+
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        PatientService patientService = new PatientService();
+        DoctorService doctorService = new DoctorService();
+        Scanner scanner = new Scanner(System.in);
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        Boolean continueFlag = true;
+
+        while (continueFlag) {
+            System.out.println(MenuMessages.MAIN_MENU_MESSAGE);
+            Integer option = scanner.nextInt();
+            switch (option) {
+                case 1 -> {
+                    Boolean patientMenuContinue = true;
+                    while (patientMenuContinue){
+                        System.out.println(MenuMessages.PATIENT_MENU_MESSAGE);
+                        Integer patientOption = scanner.nextInt();
+
+                        patientService.handlePatientMenu(patientOption);
+                    }
+                }
+
+                case 2 -> {
+                    Boolean doctorMenuContinue = true;
+                    while (doctorMenuContinue){
+                        System.out.println(MenuMessages.DOCTOR_MENU_MESSAGE);
+                        Integer doctorOption = scanner.nextInt();
+
+                        doctorService.handleDoctorMenu(doctorOption);
+                    }
+                }
+                case 8 -> {
+                    System.out.println("Exit");
+                    continueFlag = false;
+                }
+                default -> System.out.println("Select a choice from the list");
+            }
         }
+
     }
 }

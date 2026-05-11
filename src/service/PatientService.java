@@ -90,7 +90,7 @@ public class PatientService {
         return patientsList;
     }
 
-    public boolean editPatient(String patientId) {
+    public boolean editPatient() {
 
         System.out.println("Enter Patient ID: ");
         String pId = scanner.nextLine();
@@ -153,12 +153,12 @@ public class PatientService {
         return false;
     }
 
-    public boolean removePatient(String patientId) {
+    public boolean removePatient() {
         System.out.println("Enter patient ID: ");
         String pId = scanner.nextLine();
 
         for (Patients patient: patientsList) {
-            if (patient.getPatientId().equals(patientId)) {
+            if (patient.getPatientId().equals(pId)) {
                 patientsList.remove(patient);
                 System.out.println("Patient removed successfully");
                 return true;
@@ -168,9 +168,13 @@ public class PatientService {
         return false;
     }
 
-    public Patients getPatientById(String patientId) {
+    public Patients getPatientById() {
+        System.out.println("Enter patient ID: ");
+        String pId = scanner.nextLine();
+
         for (Patients patient: patientsList) {
-            if (patient.getPatientId().equals(patientId)) {
+            if (patient.getPatientId().equals(pId)) {
+                patient.displayInfo();
                 return patient;
             }
         }
@@ -178,7 +182,7 @@ public class PatientService {
     }
 
     public void displayAllPatients() {
-        if (patientsList == null) {
+        if (patientsList.isEmpty()) {
             System.out.println("No Patient added");
             return;
         }
@@ -188,8 +192,9 @@ public class PatientService {
         }
     }
 
-    public void searchPatientsByName(String name) {
-
+    public void searchPatientsByName() {
+        System.out.println("Enter patient Name: ");
+        String name = scanner.nextLine();
         for (Patients patient: patientsList) {
             String fullname = patient.getFirstName() + patient.getLastName();
 
@@ -199,5 +204,33 @@ public class PatientService {
             }
         }
         System.out.println("Patient Not found");
+    }
+
+    public boolean handlePatientMenu(Integer patientOption){
+
+        switch (patientOption) {
+            case 1 -> {
+                addPatients();
+            }
+            case 2 -> {
+                editPatient();
+            }
+            case 3 -> {
+                removePatient();
+            }
+            case 4 -> {
+                getPatientById();
+            }
+            case 5 -> {
+                displayAllPatients();
+            }
+            case 6 -> {
+                searchPatientsByName();
+            }
+            case 7 -> {
+                return false;
+            }
+        }
+        return true;
     }
 }
