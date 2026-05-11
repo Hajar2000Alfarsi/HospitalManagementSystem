@@ -75,6 +75,10 @@ public class GeneralPractitioner extends Doctors{
             return;
         }
 
-
+        //Check if user write vaccine
+        if (vaccineType.isEmpty() || vaccineType == null) {
+            System.out.println("Invalid vaccine type");
+            return;
+        }
     }
 }
