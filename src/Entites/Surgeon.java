@@ -78,5 +78,11 @@ public class Surgeon extends Doctors{
         System.out.println("Surgery performed Updated Successfully");
     }
 
-
+    @Override
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("Surgeries Performed: " + surgeriesPerformed);
+        System.out.println("Surgery Types: " + surgeryTypes);
+        System.out.println("Operation Theatre Access: " + operationTheatreAccess);
+    }
 }
