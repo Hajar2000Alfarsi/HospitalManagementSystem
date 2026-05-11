@@ -12,14 +12,14 @@ public class Doctors extends Person{
     private int experienceYears;
     private String departmentId;
     private double consultationFee;
-    private List<LocalDateTime> availableSlots;
-    private List<Patients> assignedPatients;
+    private List<String> availableSlots;
+    private List<String> assignedPatients;
 
     public Doctors(String id, String firstName, String lastName,
                    LocalDate dateOfBirth, String gender,
                    String poneNumber, String email, String address,
-                   String doctorId, List<Patients> assignedPatients,
-                   List<LocalDateTime> availableSlots,
+                   String doctorId, List<String> assignedPatients,
+                   List<String> availableSlots,
                    double consultationFee, String departmentId,
                    int experienceYears, String qualification,
                    String specialization) {
@@ -35,8 +35,8 @@ public class Doctors extends Person{
         this.specialization = specialization;
     }
 
-    public Doctors(String doctorId, List<Patients> assignedPatients,
-                   List<LocalDateTime> availableSlots, double consultationFee,
+    public Doctors(String doctorId, List<String> assignedPatients,
+                   List<String> availableSlots, double consultationFee,
                    String departmentId, int experienceYears, String qualification,
                    String specialization) {
         this.doctorId = doctorId;
@@ -102,34 +102,34 @@ public class Doctors extends Person{
         this.consultationFee = consultationFee;
     }
 
-    public List<LocalDateTime> getAvailableSlots() {
+    public List<String> getAvailableSlots() {
         return availableSlots;
     }
 
-    public void setAvailableSlots(List<LocalDateTime> availableSlots) {
+    public void setAvailableSlots(List<String> availableSlots) {
         this.availableSlots = availableSlots;
     }
 
-    public List<Patients> getAssignedPatients() {
+    public List<String> getAssignedPatients() {
         return assignedPatients;
     }
 
-    public void setAssignedPatients(List<Patients> assignedPatients) {
+    public void setAssignedPatients(List<String> assignedPatients) {
         this.assignedPatients = assignedPatients;
     }
 
     //Add Patient
-    public void assignPatient(Patients patients) {
+    public void assignPatient(String patients) {
         this.assignedPatients.add(patients);
     }
 
     // Remove Patient
-    public void removePatient(Patients patient) {
+    public void removePatient(String patient) {
         assignedPatients.remove(patient);
     }
 
     //Update Availability
-    public void updateAvailability(LocalDateTime slot) {
+    public void updateAvailability(String slot) {
         availableSlots.add(slot);
     }
 
