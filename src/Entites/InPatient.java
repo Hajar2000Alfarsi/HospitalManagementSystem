@@ -96,4 +96,14 @@ public class InPatient extends Patients{
         //Count days between admissionDate and dischargeDate
         return ChronoUnit.DAYS.between(admissionDate, dischargeDate);
     }
+
+    public double calculateTotalCharges() {
+        long days = calculateStayDuration();
+
+        if (days <= 0) {
+            return 0;
+        }
+
+        return days * dailyCharges;
+    }
 }
