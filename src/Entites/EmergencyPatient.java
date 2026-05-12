@@ -9,6 +9,20 @@ public class EmergencyPatient extends InPatient{
     private int triageLevel;
     private boolean admittedViaER;
 
+    /*
+Constructor Chaining Flow:
+
+EmergencyPatient Constructor
+    ↓ calls super()
+InPatient Constructor
+    ↓ calls super()
+Patient Constructor
+    ↓ calls super()
+Person Constructor
+
+This ensures proper initialization from base class to derived class.
+*/
+
     public EmergencyPatient(String id, String firstName, String lastName, LocalDate dateOfBirth, String gender, String poneNumber, String email, String address, String patientId, List<MedicalRecords> medicalRecords, List<Appointments> appointments, String insuranceId, String emergencyContact, LocalDate registrationDate, List<String> allergies, String bloodGroup, LocalDate admissionDate, LocalDate dischargeDate, String roomNumber, String bedNumber, String admittingDoctorId, double dailyCharges, String emergencyType, String arrivalMode, int triageLevel, boolean admittedViaER) {
         super(id, firstName, lastName, dateOfBirth, gender, poneNumber, email, address, patientId, medicalRecords, appointments, insuranceId, emergencyContact, registrationDate, allergies, bloodGroup, admissionDate, dischargeDate, roomNumber, bedNumber, admittingDoctorId, dailyCharges);
         this.emergencyType = emergencyType;
