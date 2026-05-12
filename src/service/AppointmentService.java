@@ -90,6 +90,14 @@ public class AppointmentService {
         System.out.println("Appointment created");
     }
 
+
+    //Overload create appointment using object
+    public void createAppointment(Appointments appointment) {
+        appointmentsList.add(appointment);
+
+        System.out.println("Appointment created");
+    }
+
     public boolean editAppointment() {
 
         System.out.println("Enter Appointment ID: ");
