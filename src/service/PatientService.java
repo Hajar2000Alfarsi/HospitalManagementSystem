@@ -263,6 +263,15 @@ public class PatientService {
         }
     }
 
+
+    //displayPatients() - display all
+    public void displayPatients() {
+        displayAllPatients();
+    }
+
+
+    //
+
     public void searchPatientsByName() {
         System.out.println("Enter patient Name: ");
         String name = scanner.nextLine();
