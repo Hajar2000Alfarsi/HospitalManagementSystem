@@ -130,6 +130,17 @@ public class DoctorService {
         }
     }
 
+
+    //overload assignPatient by object
+    public void assignPatient(Doctors doctor, Patients patient){
+        //If user write empty value
+        if (doctor == null || patient == null) return;
+
+        doctor.getAssignedPatients().add(patient.getPatientId());
+        System.out.println("Patient assigned");
+    }
+
+
     public boolean editDoctor() {
         System.out.println("Enter Doctor ID: ");
         String dId = scanner.nextLine();
