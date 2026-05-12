@@ -120,4 +120,16 @@ public class InPatient extends Patients{
         System.out.println("Stay Duration: " + calculateStayDuration() + " days");
         System.out.println("Total Charges: " + calculateTotalCharges());
     }
+
+    @Override
+    public String toString() {
+        return "InPatient{" +
+                "admissionDate=" + admissionDate +
+                ", dischargeDate=" + dischargeDate +
+                ", roomNumber='" + roomNumber + '\'' +
+                ", bedNumber='" + bedNumber + '\'' +
+                ", admittingDoctorId='" + admittingDoctorId + '\'' +
+                ", dailyCharges=" + dailyCharges +
+                '}';
+    }
 }
