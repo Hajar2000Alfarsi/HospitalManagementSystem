@@ -141,6 +141,28 @@ public class DoctorService {
     }
 
 
+    //overload assignPatient by bulk assignment
+    public void assignPatient(String doctorId, List<String> patientIds){
+        Doctors doctor = getDoctorById(doctorId);
+
+        if (doctor == null) {
+            System.out.println("Doctor not found");
+            return;
+        }
+
+        for (String patientId:patientIds) {
+            Patients patient = patientService.getPatientById(patientId);
+
+            if (patient != null) {
+                doctor.getAssignedPatients().add(patientId);
+            } else {
+                System.out.println("Patient not found: " + patientId);
+            }
+        }
+        System.out.println("Bulk assignment completed");
+    }
+
+
     public boolean editDoctor() {
         System.out.println("Enter Doctor ID: ");
         String dId = scanner.nextLine();
