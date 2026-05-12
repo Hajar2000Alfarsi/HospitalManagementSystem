@@ -1,6 +1,7 @@
 package Entites;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 public class InPatient extends Patients{
@@ -86,5 +87,13 @@ public class InPatient extends Patients{
 
     public void setDailyCharges(double dailyCharges) {
         this.dailyCharges = dailyCharges;
+    }
+
+    public long calculateStayDuration(){
+        if(admissionDate == null || dischargeDate == null) {
+            return 0;
+        }
+        //Count days between admissionDate and dischargeDate
+        return ChronoUnit.DAYS.between(admissionDate, dischargeDate);
     }
 }
