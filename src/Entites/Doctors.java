@@ -138,6 +138,13 @@ public class Doctors extends Person{
         this.consultationFee = fee;
     }
 
+    //update fee , reason
+    public void updateFee(double fee, String reason) {
+        this.consultationFee = fee;
+        System.out.println("Fee updated because: " + reason);
+    }
+
+
     @Override
     public void displayInfo() {
         super.displayInfo();
