@@ -269,11 +269,7 @@ public class DoctorService {
     }
 
 
-
-    public List<Doctors> getDoctorsBySpecialization() {
-        System.out.println("Enter specialization: ");
-        String specialization = scanner.nextLine();
-
+    public List<Doctors> getDoctorsBySpecialization(String specialization) {
         List<Doctors> result = new ArrayList<>();
 
         for (Doctors doctor: doctorsList) {
@@ -284,6 +280,24 @@ public class DoctorService {
         }
         return result;
     }
+
+
+
+    //displayDoctors by specialization
+    public void displayDoctors(String specialization){
+        List<Doctors> doctorBySpecialization = getDoctorsBySpecialization(specialization);
+
+        if (doctorBySpecialization.isEmpty()) {
+            System.out.println("No doctors found.");
+            return;
+        }
+
+        for (Doctors doctor: doctorBySpecialization) {
+            doctor.displayInfo();
+            System.out.println("______________________________");
+        }
+    }
+
 
     public List<Doctors> getAvailableDoctors() {
         List<Doctors> availableDoctors = new ArrayList<>();
@@ -319,7 +333,9 @@ public class DoctorService {
                 displayAllDoctors();
             }
             case 6 -> {
-                getDoctorsBySpecialization();
+                System.out.println("Enter specialization: ");
+                String specialization = scanner.nextLine();
+                getDoctorsBySpecialization(specialization);
             }
             case 7 -> {
                 getAvailableDoctors();
