@@ -152,6 +152,15 @@ public class Doctors extends Person{
         this.availableSlots.add(slot);
     }
 
+    //Add list of slot
+    public void addAvailability(List<String> slots){
+        if (this.availableSlots == null) {
+            this.availableSlots = new ArrayList<>();
+        }
+
+        this.availableSlots.addAll(slots);
+    }
+
     @Override
     public void displayInfo() {
         super.displayInfo();
