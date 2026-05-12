@@ -121,6 +121,30 @@ public class PatientService {
     }
 
 
+    //addPatient(Patient patient) - full object
+    public void addPatient(Patients patient) {
+        patientsList.add(patient);
+
+        System.out.println("Full patient object added.");
+    }
+
+
+    //searchPatients(String keyword) - search by any field
+    public List<Patients> searchPatients(String keyword) {
+        List<Patients> matchedPatient = new ArrayList<>();
+
+        for (Patients patient: patientsList) {
+            if (patient.getPatientId().toLowerCase().contains(keyword.toLowerCase())
+            || patient.getFirstName().toLowerCase().contains(keyword.toLowerCase())
+            || patient.getLastName().toLowerCase().contains(keyword.toLowerCase())
+            || patient.getPoneNumber().toLowerCase().contains(keyword.toLowerCase())
+            || patient.getBloodGroup().toLowerCase().contains(keyword.toLowerCase())
+            || patient.getEmail().toLowerCase().contains(keyword.toLowerCase())) {
+                matchedPatient.add(patient)
+            }
+        }
+        return matchedPatient;
+    }
     public boolean editPatient() {
 
         System.out.println("Enter Patient ID: ");
