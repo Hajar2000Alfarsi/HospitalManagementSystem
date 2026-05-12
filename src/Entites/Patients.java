@@ -117,6 +117,11 @@ public class Patients extends Person{
         this.allergies = allergies;
     }
 
+    //Update phone number
+    public void updateContact(String phone) {
+        setPoneNumber(phone);
+    }
+
     @Override
     public void displayInfo() {
         super.displayInfo();
