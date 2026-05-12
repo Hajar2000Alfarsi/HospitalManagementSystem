@@ -55,4 +55,14 @@ public class OutPatient extends Patients{
     public void setPreferredDoctorId(String preferredDoctorId) {
         this.preferredDoctorId = preferredDoctorId;
     }
+
+    public void scheduleFollowUp(LocalDate followUpDate) {
+        if (followUpDate == null) {
+            System.out.println("Invalid follow-up date.");
+            return;
+        }
+
+        System.out.println("Follow-up appointment scheduled successfully.");
+        System.out.println("Follow-up Date: " + followUpDate);
+    }
 }
