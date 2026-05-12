@@ -41,6 +41,10 @@ public class InPatient extends Patients{
         this.dailyCharges = dailyCharges;
     }
 
+    public InPatient() {
+
+    }
+
     public LocalDate getAdmissionDate() {
         return admissionDate;
     }
