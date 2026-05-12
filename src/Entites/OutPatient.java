@@ -81,4 +81,13 @@ public class OutPatient extends Patients{
         System.out.println("Last Visit Date: " + lastVisitDate);
         System.out.println("Preferred Doctor ID: " + preferredDoctorId);
     }
+
+    @Override
+    public String toString() {
+        return "OutPatient{" +
+                "visitCount=" + visitCount +
+                ", lastVisitDate=" + lastVisitDate +
+                ", preferredDoctorId='" + preferredDoctorId + '\'' +
+                '}';
+    }
 }
