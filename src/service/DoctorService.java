@@ -81,6 +81,20 @@ public class DoctorService {
         return doctorsList;
     }
 
+
+    //addDoctor(String name, String specialization, String phone)
+    public void addDoctor(String name, String specialization, String phone) {
+        Doctors doctor = new Doctors();
+
+        doctor.setFirstName(name);
+        doctor.setSpecialization(specialization);
+        doctor.setPoneNumber(phone);
+
+        doctorsList.add(doctor);
+
+        System.out.println("Doctor added (basic info)");
+    }
+
     public boolean editDoctor() {
         System.out.println("Enter Doctor ID: ");
         String dId = scanner.nextLine();
