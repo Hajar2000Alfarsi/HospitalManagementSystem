@@ -1,6 +1,7 @@
 package Entites;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Appointments {
     private String appointmentId;
@@ -105,6 +106,13 @@ public class Appointments {
         System.out.println("Note added by: " + addedBy);
     }
 
+    //Add note by whom and the time
+    public void addNotes(String notes, String addedBy, LocalDateTime timestamp){
+        this.notes = notes;
+
+        System.out.println("Note added by: " + addedBy);
+        System.out.println("Timestamp: " + timestamp);
+    }
 
 
     public void displayInfo() {
