@@ -252,10 +252,21 @@ public class AppointmentService {
                 appointment.setAppointmentTime(newTime);
                 appointment.setStatus("Rescheduled");
 
-                System.out.println("Appointment rescheduled (date only)");
+                System.out.println("Appointment rescheduled (date and time)");
                 return;
             }
         }
+    }
+
+
+    //Overload reschedule Appointment by appointment ID, new Date, new time, reason
+    public void rescheduleAppointment(Appointments appointment, LocalDate newDate, String newTime, String reason){
+        appointment.setAppointmentDate(newDate);
+        appointment.setAppointmentTime(newTime);
+        appointment.setStatus("Rescheduled");
+        appointment.setNotes(reason);
+
+        System.out.println("Appointment rescheduled with reason: " + reason);
     }
 
     public boolean handleAppointmentMenu(Integer appointmentOption){
