@@ -1,5 +1,6 @@
 package service;
 
+import Entites.Departments;
 import Entites.Doctors;
 import Entites.Patients;
 
@@ -14,6 +15,7 @@ public class DoctorService {
     List<String> assignedPatients = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
     PatientService patientService = new PatientService();
+    DepartmentService departmentService = new DepartmentService();
 
     public Doctors addDoctor() {
         System.out.println("Add new Doctor");
@@ -283,7 +285,7 @@ public class DoctorService {
 
 
 
-    //displayDoctors by specialization
+    //Overload displayDoctors by specialization
     public void displayDoctors(String specialization){
         List<Doctors> doctorBySpecialization = getDoctorsBySpecialization(specialization);
 
@@ -310,6 +312,46 @@ public class DoctorService {
         }
         return availableDoctors;
     }
+
+    //Display Doctor by departmentID
+    public void displayDoctors(String departmentId, boolean showAvailableOnly){
+        Departments departments = departmentService.getDepartmentById(departmentId);
+
+        if (departments == null) {
+            System.out.println("Department not found.");
+            return;
+        }
+
+        List<Doctors> doctors = departments.getDoctors();
+
+        if (doctors == null || doctors.isEmpty()) {
+            System.out.println("No doctors in this department.");
+            return;
+        }
+
+        boolean found = false;
+
+        for (Doctors doctor: doctorsList) {
+            if (doctor == null) continue;
+
+            boolean isAvailable = doctor.getAvailableSlots() != null
+                    && !doctor.getAvailableSlots().isEmpty();
+
+            //If not  doctor available continue
+            if (showAvailableOnly && !isAvailable) {
+                continue;
+            }
+
+            doctor.displayInfo();
+            System.out.println("____________________________");
+            found = true;
+        }
+
+        if (!found) {
+            System.out.println("No doctors match the criteria.");
+        }
+    }
+
 
 
     public boolean handleDoctorMenu(Integer doctorOption){

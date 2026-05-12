@@ -96,12 +96,9 @@ public class DepartmentService {
         return false;
     }
 
-    public Departments getDepartmentById() {
-        System.out.println("Enter Department ID: ");
-        String dId = scanner.nextLine();
-
+    public Departments getDepartmentById(String departmentId) {
         for (Departments department: departmentsList) {
-            if (department.getDepartmentId().equals(dId)) {
+            if (department.getDepartmentId().equals(departmentId)) {
                 department.displayInfo();
                 return department;
             }
