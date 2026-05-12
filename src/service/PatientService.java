@@ -90,6 +90,20 @@ public class PatientService {
         return patientsList;
     }
 
+
+    //addPatient(String firstName, String lastName, String phone) - minimal info
+    public void addPatient(String firstName, String lastName, String phone){
+        Patients patient = new Patients();
+
+        patient.setFirstName(firstName);
+        patient.setLastName(lastName);
+        patient.setPoneNumber(phone);
+
+        patientsList.add(patient);
+
+        System.out.println("Patient added successfully.");
+    }
+
     public boolean editPatient() {
 
         System.out.println("Enter Patient ID: ");
