@@ -13,6 +13,7 @@ public class DoctorService {
     List<String> availableSlots = new ArrayList<>();
     List<String> assignedPatients = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
+    PatientService patientService = new PatientService();
 
     public Doctors addDoctor() {
         System.out.println("Add new Doctor");
@@ -82,7 +83,7 @@ public class DoctorService {
     }
 
 
-    //addDoctor(String name, String specialization, String phone)
+    //overload addDoctor(String name, String specialization, String phone)
     public void addDoctor(String name, String specialization, String phone) {
         Doctors doctor = new Doctors();
 
@@ -96,7 +97,7 @@ public class DoctorService {
     }
 
 
-    //addDoctor(String name, String specialization, String phone, double consultationFee)
+    // overload addDoctor(String name, String specialization, String phone, double consultationFee)
     public void addDoctor(String name, String specialization, String phone, double consultationFee) {
         Doctors doctor = new Doctors();
 
@@ -118,6 +119,16 @@ public class DoctorService {
     }
 
 
+    //overload assignPatient by ID's
+    public void assignPatient(String doctorId, String patientId) {
+        Doctors doctor = getDoctorById(doctorId);
+        Patients patient = patientService.getPatientById(patientId);
+
+        if (doctor != null && patient != null) {
+            doctor.getAssignedPatients().add(patientId);
+            System.out.println("Patient assigned");
+        }
+    }
 
     public boolean editDoctor() {
         System.out.println("Enter Doctor ID: ");

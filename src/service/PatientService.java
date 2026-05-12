@@ -239,12 +239,9 @@ public class PatientService {
         return false;
     }
 
-    public Patients getPatientById() {
-        System.out.println("Enter patient ID: ");
-        String pId = scanner.nextLine();
-
+    public Patients getPatientById(String patientId) {
         for (Patients patient: patientsList) {
-            if (patient.getPatientId().equals(pId)) {
+            if (patient.getPatientId().equals(patientId)) {
                 patient.displayInfo();
                 return patient;
             }
@@ -354,7 +351,10 @@ public class PatientService {
                 removePatient();
             }
             case 4 -> {
-                getPatientById();
+                System.out.println("Enter patient ID: ");
+                String pId = scanner.nextLine();
+
+                getPatientById(pId);
             }
             case 5 -> {
                 displayAllPatients();
