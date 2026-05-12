@@ -270,7 +270,38 @@ public class PatientService {
     }
 
 
-    //
+    //displayPatients(String filter) - display filtered by criteria
+    public void displayPatients(String filter) {
+        if (filter == null || filter.isEmpty()) {
+            System.out.println("Filter is empty.");
+            return;
+        }
+
+        String search = filter.toLowerCase();
+        boolean found = false;
+
+        for (Patients patient: patientsList) {
+            //If this value empty ignore and continue
+            if (patient == null) continue;
+
+            boolean matches = (patient.getPatientId().toLowerCase().contains(search)
+                    || patient.getFirstName().toLowerCase().contains(search)
+                    || patient.getLastName().toLowerCase().contains(search)
+                    || patient.getPoneNumber().toLowerCase().contains(search)
+                    || patient.getGender().toLowerCase().contains(search)
+                    || patient.getEmail().toLowerCase().contains(search));
+
+            if (matches) {
+                patient.displayInfo();
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("No patients found for: " + filter);
+        }
+
+    }
 
     public void searchPatientsByName() {
         System.out.println("Enter patient Name: ");
