@@ -140,11 +140,27 @@ public class PatientService {
             || patient.getPoneNumber().toLowerCase().contains(keyword.toLowerCase())
             || patient.getBloodGroup().toLowerCase().contains(keyword.toLowerCase())
             || patient.getEmail().toLowerCase().contains(keyword.toLowerCase())) {
-                matchedPatient.add(patient)
+                matchedPatient.add(patient);
             }
         }
         return matchedPatient;
     }
+
+
+    //searchPatients(String firstName, String lastName) - search by name
+    public List<Patients> searchPatients(String firstName, String lastName) {
+        List<Patients> matchedPatient = new ArrayList<>();
+
+        for (Patients patient: patientsList) {
+            if (patient.getFirstName().equalsIgnoreCase(firstName)
+            && patient.getLastName().equalsIgnoreCase(lastName)) {
+                matchedPatient.add(patient);
+            }
+        }
+        return matchedPatient;
+    }
+
+
     public boolean editPatient() {
 
         System.out.println("Enter Patient ID: ");
