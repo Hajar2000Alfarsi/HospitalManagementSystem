@@ -72,7 +72,22 @@ public class AppointmentService {
 
         appointmentsList.add(appointment);
 
-        System.out.println("Appointment created (basic)");
+        System.out.println("Appointment created");
+    }
+
+
+    //Overload create appointment with minimal info with time
+    public void createAppointment(String patientId, String doctorId, LocalDate date, String time) {
+        Appointments appointment = new Appointments();
+        appointment.setPatientId(patientId);
+        appointment.setDoctorId(doctorId);
+        appointment.setAppointmentDate(date);
+        appointment.setAppointmentTime(time);
+        appointment.setStatus("Scheduled");
+
+        appointmentsList.add(appointment);
+
+        System.out.println("Appointment created");
     }
 
     public boolean editAppointment() {
