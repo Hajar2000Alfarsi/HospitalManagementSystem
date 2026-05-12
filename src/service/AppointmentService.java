@@ -269,6 +269,17 @@ public class AppointmentService {
         System.out.println("Appointment rescheduled with reason: " + reason);
     }
 
+
+    //Overload display appointments by date
+    public void displayAppointments(LocalDate date) {
+        for (Appointments appointment : appointmentsList) {
+
+            if (appointment.getAppointmentDate().equals(date)) {
+                appointment.displayInfo();
+            }
+        }
+    }
+
     public boolean handleAppointmentMenu(Integer appointmentOption){
 
         switch (appointmentOption) {
