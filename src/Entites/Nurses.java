@@ -1,10 +1,12 @@
 package Entites;
 
+import Interface.Displayable;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Nurses extends Person{
+public class Nurses extends Person implements Displayable {
     private String nurseId;
     private String departmentId;
     private String shift;
@@ -95,6 +97,12 @@ public class Nurses extends Person{
         System.out.println("Shift: " + shift);
         System.out.println("Qualification: " + qualification);
         System.out.println("Assigned Patients: " + assignedPatients);
+    }
+
+    @Override
+    public void displaySummary() {
+        System.out.println("Nurse ID: " + nurseId);
+        System.out.println("Nurse: " + getFirstName() + " " + getLastName());
     }
 
     @Override

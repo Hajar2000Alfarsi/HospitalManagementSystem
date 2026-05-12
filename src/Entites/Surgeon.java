@@ -1,10 +1,12 @@
 package Entites;
 
+import Interface.Displayable;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Surgeon extends Doctors{
+public class Surgeon extends Doctors implements Displayable {
     private int surgeriesPerformed;
     private List<String> surgeryTypes;
     private boolean operationTheatreAccess;
@@ -84,6 +86,13 @@ public class Surgeon extends Doctors{
         System.out.println("Surgeries Performed: " + surgeriesPerformed);
         System.out.println("Surgery Types: " + surgeryTypes);
         System.out.println("Operation Theatre Access: " + operationTheatreAccess);
+    }
+
+    @Override
+    public void displaySummary() {
+        System.out.println("Doctor ID: " + getDoctorId());
+        System.out.println("Name: " + getFirstName() + " " + getLastName());
+        System.out.println("Surgery Types: " + surgeryTypes);
     }
 
     @Override

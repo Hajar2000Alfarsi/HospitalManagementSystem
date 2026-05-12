@@ -1,10 +1,12 @@
 package Entites;
 
+import Interface.Displayable;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Patients extends Person{
+public class Patients extends Person implements Displayable {
     private String patientId;
     private String bloodGroup;
     private List<String> allergies;
@@ -145,6 +147,12 @@ public class Patients extends Person{
         System.out.println("Emergency Contact: " + emergencyContact);
         System.out.println("Registration Date: " + registrationDate);
         System.out.println("Insurance ID:" + insuranceId);
+    }
+
+    @Override
+    public void displaySummary() {
+        System.out.println("Patient ID:" + patientId);
+        System.out.println("Patient: " + getFirstName() + " " + getLastName());
     }
 
     public void addMedicalRecord(MedicalRecords medicalRecords){

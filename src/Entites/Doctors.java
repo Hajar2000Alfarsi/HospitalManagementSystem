@@ -1,11 +1,13 @@
 package Entites;
 
+import Interface.Displayable;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Doctors extends Person{
+public class Doctors extends Person implements Displayable {
     private String doctorId;
     private String specialization;
     private String qualification;
@@ -179,6 +181,12 @@ public class Doctors extends Person{
 
         System.out.println("Assigned Patients: " +
                 (assignedPatients != null ? assignedPatients : "[]"));
+    }
+
+    @Override
+    public void displaySummary() {
+        System.out.println("Doctor ID: " + doctorId);
+        System.out.println("Dr: " + getFirstName() + " " + getLastName());
     }
 
     @Override

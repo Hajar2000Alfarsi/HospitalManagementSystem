@@ -1,9 +1,11 @@
 package Entites;
 
+import Interface.Displayable;
+
 import java.time.LocalDate;
 import java.util.List;
 
-public class EmergencyPatient extends InPatient{
+public class EmergencyPatient extends InPatient implements Displayable {
     private String emergencyType;
     private String arrivalMode;
     private int triageLevel;
@@ -112,6 +114,12 @@ This ensures proper initialization from base class to derived class.
         } else if (triageLevel >= 3 && triageLevel <= 5) {
             System.out.println("Stable Emergency Case.");
         }
+    }
+
+    @Override
+    public void displaySummary() {
+        System.out.println("Emergency Type:"+ emergencyType);
+        System.out.println("Arrival Mode: " + arrivalMode);
     }
 
     @Override

@@ -1,9 +1,11 @@
 package Entites;
 
+import Interface.Displayable;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Departments {
+public class Departments implements Displayable {
     private String departmentId;
     private String departmentName;
     private String headDoctorId;
@@ -111,6 +113,14 @@ public class Departments {
         System.out.println("Bed Capacity: " + bedCapacity);
         System.out.println("Available Beds: " + availableBeds);
     }
+
+    @Override
+    public void displaySummary() {
+        System.out.println("Department ID: " + departmentId);
+        System.out.println("Department Name: " + departmentName);
+    }
+
+
 
     @Override
     public String toString() {

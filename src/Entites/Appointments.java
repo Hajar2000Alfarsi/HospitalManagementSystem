@@ -1,9 +1,11 @@
 package Entites;
 
+import Interface.Displayable;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class Appointments {
+public class Appointments implements Displayable {
     private String appointmentId;
     private String patientId;
     private String doctorId;
@@ -124,6 +126,12 @@ public class Appointments {
         System.out.println("Status: " + status);
         System.out.println("Reason: " + reason);
         System.out.println("Notes: " + notes);
+    }
+
+    @Override
+    public void displaySummary() {
+        System.out.println("Appointment ID: " + appointmentId);
+        System.out.println("Patient ID: " + patientId);
     }
 
     //Reschedule Appointment

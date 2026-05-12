@@ -1,9 +1,11 @@
 package Entites;
 
+import Interface.Displayable;
+
 import java.time.LocalDate;
 import java.util.List;
 
-public class GeneralPractitioner extends Doctors{
+public class GeneralPractitioner extends Doctors implements Displayable {
     private boolean walkinAvailable;
     private boolean homeVisitAvailable;
     private boolean vaccinationCertified;
@@ -95,6 +97,13 @@ public class GeneralPractitioner extends Doctors{
         System.out.println("Walk-in Available: " + walkinAvailable);
         System.out.println("Home Visit Available: " + homeVisitAvailable);
         System.out.println("Vaccination Certified: " + vaccinationCertified);
+    }
+
+    @Override
+    public void displaySummary() {
+        System.out.println("Doctor ID: " + getDoctorId());
+        System.out.println("Doctor Name: " + getFirstName() + " " + getLastName());
+        System.out.println("Walk-in Available: " + walkinAvailable);
     }
 
     @Override

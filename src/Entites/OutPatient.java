@@ -1,9 +1,11 @@
 package Entites;
 
+import Interface.Displayable;
+
 import java.time.LocalDate;
 import java.util.List;
 
-public class OutPatient extends Patients{
+public class OutPatient extends Patients implements Displayable {
     private int visitCount;
     private LocalDate lastVisitDate;
     private String preferredDoctorId;
@@ -80,6 +82,13 @@ public class OutPatient extends Patients{
         System.out.println("Visit Count: " + visitCount);
         System.out.println("Last Visit Date: " + lastVisitDate);
         System.out.println("Preferred Doctor ID: " + preferredDoctorId);
+    }
+
+    @Override
+    public void displaySummary() {
+        System.out.println("Patient ID: " + getPatientId());
+        System.out.println("Patient Name: " + getFirstName() + " " + getLastName());
+        System.out.println("Last Visit Date: " + lastVisitDate);
     }
 
     @Override

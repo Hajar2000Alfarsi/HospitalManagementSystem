@@ -1,10 +1,12 @@
 package Entites;
 
+import Interface.Displayable;
+
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
-public class InPatient extends Patients{
+public class InPatient extends Patients implements Displayable {
     private LocalDate admissionDate;
     private LocalDate dischargeDate;
     private String roomNumber;
@@ -123,6 +125,14 @@ public class InPatient extends Patients{
         System.out.println("Daily Charges: " + dailyCharges);
         System.out.println("Stay Duration: " + calculateStayDuration() + " days");
         System.out.println("Total Charges: " + calculateTotalCharges());
+    }
+
+    @Override
+    public void displaySummary() {
+        System.out.println("Patient ID: " + getPatientId());
+        System.out.println("Name: " + getFirstName() + " " + getLastName());
+        System.out.println("Admission Date: " + admissionDate);
+        System.out.println("Admitting Doctor ID: " + admittingDoctorId);
     }
 
     @Override
