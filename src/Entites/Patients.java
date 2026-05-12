@@ -122,6 +122,12 @@ public class Patients extends Person{
         setPoneNumber(phone);
     }
 
+    //Update phone number, email
+    public void updateContact(String phone, String email){
+        setPoneNumber(phone);
+        setPoneNumber(email);
+    }
+
     @Override
     public void displayInfo() {
         super.displayInfo();
