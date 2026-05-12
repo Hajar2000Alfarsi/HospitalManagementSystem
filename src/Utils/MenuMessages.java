@@ -71,4 +71,17 @@ public class MenuMessages {
             8. Cancel Appointment
             9. Exit
     """;
+
+    public static String Department_MENU_MESSAGE = """
+            Department Menu 
+            1. Add Departments
+            2. Edit Department
+            3. Remove Department
+            4. Get Department By Department ID
+            5. Display all Departments
+            6. Assign Doctor to Department
+            7. Assign Nurse to Department
+            8. Available Beds
+            9. Exit
+    """;
 }

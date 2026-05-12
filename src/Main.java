@@ -12,6 +12,8 @@ public class Main {
         NurseService nurseService = new NurseService();
         MedicalRecordService medicalRecordService = new MedicalRecordService();
         AppointmentService appointmentService = new AppointmentService();
+        DepartmentService departmentService = new DepartmentService(doctorService);
+
 
         Scanner scanner = new Scanner(System.in);
 
@@ -68,6 +70,16 @@ public class Main {
                         Integer appointmentOption = scanner.nextInt();
 
                         appointmentService.handleAppointmentMenu(appointmentOption);
+                    }
+                }
+
+                case 6 -> {
+                    Boolean departmentMenuContinue = true;
+                    while (departmentMenuContinue){
+                        System.out.println(MenuMessages.Department_MENU_MESSAGE);
+                        Integer departmentOption = scanner.nextInt();
+
+                        departmentService.handleDepartmentMenu(departmentOption);
                     }
                 }
 

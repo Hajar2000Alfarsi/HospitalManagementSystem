@@ -163,7 +163,7 @@ public class Doctors extends Person{
 
     @Override
     public void displayInfo() {
-        super.displayInfo();
+        //super.displayInfo();
 
         System.out.println("Doctor ID: " + doctorId);
         System.out.println("Specialization: " + specialization);
@@ -171,8 +171,14 @@ public class Doctors extends Person{
         System.out.println("Experience Years: " + experienceYears);
         System.out.println("Department ID: " + departmentId);
         System.out.println("Consultation Fee: " + consultationFee);
-        System.out.println("Available Slots: " + availableSlots);
-        System.out.println("Assigned Patients: " + assignedPatients);
+        /*System.out.println("Available Slots: " + availableSlots);
+        System.out.println("Assigned Patients: " + assignedPatients);*/
+
+        System.out.println("Available Slots: " +
+                (availableSlots != null ? availableSlots : "[]"));
+
+        System.out.println("Assigned Patients: " +
+                (assignedPatients != null ? assignedPatients : "[]"));
     }
 
     @Override

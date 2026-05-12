@@ -11,9 +11,16 @@ public class DepartmentService {
     List<Departments> departmentsList = new ArrayList<>();
     List<Doctors> doctors = new ArrayList<>();
     List<Nurses> nurses = new ArrayList<>();
-    DoctorService doctorService = new DoctorService();
+    //private DoctorService doctorService = new DoctorService();
     NurseService nurseService = new NurseService();
     Departments departments = new Departments();
+
+    private DoctorService doctorService;
+
+    // Constructor Injection
+    public DepartmentService(DoctorService doctorService) {
+        this.doctorService = doctorService;
+    }
 
     Scanner scanner = new Scanner(System.in);
 
@@ -34,6 +41,7 @@ public class DepartmentService {
 
         System.out.println("Enter available Beds: ");
         int availableBeds = scanner.nextInt();
+        scanner.nextLine();
 
         Departments departments = new Departments(departmentId,doctors,departmentName,headDoctorId,nurses,bedCapacity,availableBeds);
         return departments;
@@ -72,9 +80,12 @@ public class DepartmentService {
 
                 System.out.println("Updated Available Beds: ");
                 department.setAvailableBeds(scanner.nextInt());
+                scanner.nextLine();
+
+                System.out.println("Department updated successfully.");
+                return true;
             }
-            System.out.println("Department updated successfully.");
-            return true;
+
         }
 
         System.out.println("Department not found.");
@@ -99,7 +110,7 @@ public class DepartmentService {
     public Departments getDepartmentById(String departmentId) {
         for (Departments department: departmentsList) {
             if (department.getDepartmentId().equals(departmentId)) {
-                department.displayInfo();
+                //department.displayInfo();
                 return department;
             }
         }
@@ -107,7 +118,7 @@ public class DepartmentService {
         return null;
     }
 
-    public void displayAllDepartmentS() {
+    public void displayAllDepartments() {
         if (departmentsList.isEmpty()){
             System.out.println("No Patient added");
             return;
@@ -145,8 +156,67 @@ public class DepartmentService {
         System.out.println("Doctor failed to assign");
     }
 
-    public void updateBedAvailability(int availableBeds) {
-        departments.setAvailableBeds(availableBeds);
-        System.out.println("Beds updated successfully.");
+    public void updateBedAvailability(String departmentId, int availableBeds) {
+        for (Departments dept:departmentsList){
+            if (dept.getDepartmentId().equals(departmentId)){
+                dept.setAvailableBeds(availableBeds);
+                System.out.println("Beds updated successfully.");
+                return;
+            }
+        }
+        System.out.println("Department not found");
+    }
+
+    public boolean handleDepartmentMenu(Integer departmentOption){
+
+        switch (departmentOption) {
+            case 1 -> {
+                addDepartments();
+            }
+            case 2 -> {
+                editDepartment();
+            }
+            case 3 -> {
+                removeDepartment();
+            }
+            case 4 -> {
+                System.out.println("Write Department ID: ");
+                String id = scanner.nextLine();
+                getDepartmentById(id);
+            }
+            case 5 -> {
+                displayAllDepartments();
+            }
+            case 6 -> {
+                System.out.println("Write Doctor ID: ");
+                String doctorId = scanner.nextLine();
+                System.out.println("Write Department ID: ");
+                String departmentId = scanner.nextLine();
+
+                assignDoctor(doctorId, departmentId);
+            }
+            case 7 -> {
+                System.out.println("Write Nurse ID: ");
+                String nurseID = scanner.nextLine();
+                System.out.println("Write Department ID: ");
+                String departmentId = scanner.nextLine();
+
+                assignNurse(nurseID, departmentId);
+            }
+            case 8 -> {
+                System.out.println("Write Department ID: ");
+                String departmentId = scanner.nextLine();
+                System.out.println("Write Number of available beds: ");
+                int availableBeds = scanner.nextInt();
+                scanner.nextLine();
+
+                updateBedAvailability(departmentId,availableBeds);
+            }
+            case 9 -> {
+                System.out.println("Exit");
+                return false;
+            }
+        }
+        return true;
     }
 }

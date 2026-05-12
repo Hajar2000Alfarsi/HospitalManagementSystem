@@ -15,7 +15,13 @@ public class DoctorService {
     List<String> assignedPatients = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
     PatientService patientService = new PatientService();
-    DepartmentService departmentService = new DepartmentService();
+    //private DepartmentService departmentService = new DepartmentService();
+
+    private DepartmentService departmentService;
+
+    public DoctorService() {
+        this.departmentService = departmentService;
+    }
 
     public Doctors addDoctor() {
         System.out.println("Add new Doctor");
@@ -213,9 +219,10 @@ public class DoctorService {
                 System.out.println("Doctor consultation Fee: ");
                 doctor.setConsultationFee(scanner.nextDouble());
                 scanner.nextLine();
+
+                System.out.println("Doctor updated successfully.");
+                return true;
             }
-            System.out.println("Doctor updated successfully.");
-            return true;
         }
 
         System.out.println("Doctor not found.");
@@ -226,14 +233,20 @@ public class DoctorService {
         System.out.println("Enter Doctor ID: ");
         String dId = scanner.nextLine();
 
-        for (Doctors doctors: doctorsList) {
+        Doctors toRemove = null;
 
-            if (doctors.getDoctorId().equals(dId)){
+        for (Doctors doctor: doctorsList) {
 
-                doctorsList.remove(doctors);
-                System.out.println("Doctor removed successfully");
-                return true;
+            if (doctor.getDoctorId().equals(dId)){
+                toRemove = doctor;
+                break;
             }
+        }
+
+        if (toRemove != null) {
+            doctorsList.remove(toRemove);
+            System.out.println("Doctor removed successfully");
+            return true;
         }
         System.out.println("Doctor not found");
         return false;
@@ -276,7 +289,7 @@ public class DoctorService {
 
         for (Doctors doctor: doctorsList) {
             if (doctor.getSpecialization() .equalsIgnoreCase(specialization)) {
-                doctor.displayInfo();
+                //doctor.displayInfo();
                 result.add(doctor);
             }
         }
@@ -305,10 +318,13 @@ public class DoctorService {
         List<Doctors> availableDoctors = new ArrayList<>();
 
         for (Doctors doctor: doctorsList) {
-            if (!doctor.getAvailableSlots().isEmpty()){
-                doctor.displayInfo();
+            if (doctor.getAvailableSlots() != null && !doctor.getAvailableSlots().isEmpty()) {
                 availableDoctors.add(doctor);
             }
+        }
+
+        for (Doctors d: availableDoctors){
+            d.displayInfo();
         }
         return availableDoctors;
     }
@@ -331,7 +347,7 @@ public class DoctorService {
 
         boolean found = false;
 
-        for (Doctors doctor: doctorsList) {
+        for (Doctors doctor: doctors) {
             if (doctor == null) continue;
 
             boolean isAvailable = doctor.getAvailableSlots() != null

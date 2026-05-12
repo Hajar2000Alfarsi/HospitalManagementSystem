@@ -125,14 +125,14 @@ public class Patients extends Person{
     //Update phone number, email
     public void updateContact(String phone, String email){
         setPoneNumber(phone);
-        setPoneNumber(email);
+        setEmail(email);
     }
 
     //Update phone number, email, address
     public void updateContact(String phone, String email, String address){
         setPoneNumber(phone);
-        setPoneNumber(email);
-        setPoneNumber(address);
+        setEmail(email);
+        setAddress(address);
     }
 
     @Override
