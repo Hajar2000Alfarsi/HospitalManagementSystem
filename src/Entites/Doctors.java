@@ -144,6 +144,13 @@ public class Doctors extends Person{
         System.out.println("Fee updated because: " + reason);
     }
 
+    //Add Availability of slot
+    public void addAvailability(String slot) {
+        if (this.availableSlots == null) {
+            this.availableSlots = new ArrayList<>();
+        }
+        this.availableSlots.add(slot);
+    }
 
     @Override
     public void displayInfo() {
