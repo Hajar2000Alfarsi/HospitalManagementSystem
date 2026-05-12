@@ -65,4 +65,11 @@ public class OutPatient extends Patients{
         System.out.println("Follow-up appointment scheduled successfully.");
         System.out.println("Follow-up Date: " + followUpDate);
     }
+
+    public void updateVisitCount() {
+        visitCount++;
+
+        System.out.println("Visit count updated successfully.");
+        System.out.println("Total Visits: " + visitCount);
+    }
 }
