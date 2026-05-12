@@ -303,6 +303,30 @@ public class PatientService {
 
     }
 
+
+    //displayPatients(int limit) - display limited number
+    public void displayPatients(int limit) {
+        if (limit <= 0) {
+            System.out.println("Invalid limit value.");
+            return;
+        }
+
+        int count = 0;
+
+        for (Patients patient: patientsList) {
+            if (patient == null) continue;
+
+            patient.displayInfo();
+            System.out.println("_______________________________");
+
+            count++;
+
+            if (count >= limit){
+                break;
+            }
+        }
+    }
+
     public void searchPatientsByName() {
         System.out.println("Enter patient Name: ");
         String name = scanner.nextLine();
