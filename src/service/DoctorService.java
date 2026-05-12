@@ -95,6 +95,23 @@ public class DoctorService {
         System.out.println("Doctor added (basic info)");
     }
 
+
+    //addDoctor(String name, String specialization, String phone, double consultationFee)
+    public void addDoctor(String name, String specialization, String phone, double consultationFee) {
+        Doctors doctor = new Doctors();
+
+        doctor.setFirstName(name);
+        doctor.setSpecialization(specialization);
+        doctor.setPoneNumber(phone);
+        doctor.setConsultationFee(consultationFee);
+
+        doctorsList.add(doctor);
+
+        System.out.println("Doctor added with fee");
+    }
+
+
+
     public boolean editDoctor() {
         System.out.println("Enter Doctor ID: ");
         String dId = scanner.nextLine();
