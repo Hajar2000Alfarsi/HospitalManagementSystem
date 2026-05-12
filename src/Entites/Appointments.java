@@ -99,6 +99,14 @@ public class Appointments {
         this.notes = notes;
     }
 
+    //Add note by
+    public void addNotes(String notes, String addedBy) {
+        this.notes = notes;
+        System.out.println("Note added by: " + addedBy);
+    }
+
+
+
     public void displayInfo() {
         System.out.println("Appointment ID: " + appointmentId);
         System.out.println("Patient ID: " + patientId);
