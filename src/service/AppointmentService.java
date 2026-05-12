@@ -229,6 +229,20 @@ public class AppointmentService {
         }
     }
 
+
+    //Overload reschedule Appointment by appointment ID and new Date
+    public void rescheduleAppointment(String appointmentId, LocalDate newDate){
+        for (Appointments appointment: appointmentsList) {
+            if (appointment.getAppointmentId().equals(appointmentId)) {
+                appointment.setAppointmentDate(newDate);
+                appointment.setStatus("Rescheduled");
+
+                System.out.println("Appointment rescheduled (date only)");
+                return;
+            }
+        }
+    }
+
     public boolean handleAppointmentMenu(Integer appointmentOption){
 
         switch (appointmentOption) {
