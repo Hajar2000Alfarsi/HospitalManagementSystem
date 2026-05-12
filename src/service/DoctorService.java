@@ -110,6 +110,13 @@ public class DoctorService {
         System.out.println("Doctor added with fee");
     }
 
+    //addDoctor(Doctor doctor) full object
+    public void addDoctor(Doctors doctor){
+        doctorsList.add(doctor);
+
+        System.out.println("Doctor object added");
+    }
+
 
 
     public boolean editDoctor() {
