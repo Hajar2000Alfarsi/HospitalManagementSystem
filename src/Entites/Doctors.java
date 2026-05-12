@@ -133,6 +133,11 @@ public class Doctors extends Person{
         availableSlots.add(slot);
     }
 
+    //update fee
+    public void updateFee(double fee) {
+        this.consultationFee = fee;
+    }
+
     @Override
     public void displayInfo() {
         super.displayInfo();
