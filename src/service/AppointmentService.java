@@ -280,6 +280,25 @@ public class AppointmentService {
         }
     }
 
+
+    //Overload display appointments based on doctor and start date and end date
+    public void displayAppointments(String doctorId, LocalDate startDate, LocalDate endDate) {
+        for (Appointments appointment : appointmentsList) {
+            boolean haveDoctor = appointment.getDoctorId().equals(doctorId);
+
+            //Check data at the range
+            boolean inRange = (appointment.getAppointmentDate().isEqual(startDate)
+                            || appointment.getAppointmentDate().isAfter(startDate))
+                            &&
+                              (appointment.getAppointmentDate().isEqual(endDate)
+                              || appointment.getAppointmentDate().isBefore(endDate));
+
+            if (haveDoctor && inRange){
+                appointment.displayInfo();
+            }
+        }
+    }
+
     public boolean handleAppointmentMenu(Integer appointmentOption){
 
         switch (appointmentOption) {
