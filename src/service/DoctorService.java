@@ -237,6 +237,7 @@ public class DoctorService {
         return false;
     }
 
+
     public Doctors getDoctorById(String doctorId) {
 
         for (Doctors doctor: doctorsList) {
@@ -247,6 +248,7 @@ public class DoctorService {
         }
         return null;
     }
+
 
     public void displayAllDoctors() {
         if (doctorsList.isEmpty()) {
@@ -259,6 +261,14 @@ public class DoctorService {
             System.out.println("\n");
         }
     }
+
+
+    //Override displayDoctors()
+    public void displayDoctors(){
+        displayAllDoctors();
+    }
+
+
 
     public List<Doctors> getDoctorsBySpecialization() {
         System.out.println("Enter specialization: ");
@@ -286,6 +296,7 @@ public class DoctorService {
         }
         return availableDoctors;
     }
+
 
     public boolean handleDoctorMenu(Integer doctorOption){
 
