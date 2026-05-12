@@ -99,4 +99,14 @@ public class EmergencyPatient extends InPatient{
             System.out.println("Stable Emergency Case.");
         }
     }
+
+    @Override
+    public String toString() {
+        return "EmergencyPatient{" +
+                "emergencyType='" + emergencyType + '\'' +
+                ", arrivalMode='" + arrivalMode + '\'' +
+                ", triageLevel=" + triageLevel +
+                ", admittedViaER=" + admittedViaER +
+                '}';
+    }
 }
