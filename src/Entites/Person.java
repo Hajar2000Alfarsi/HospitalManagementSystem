@@ -1,9 +1,11 @@
 package Entites;
 
+import Interface.Editable;
+
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Person {
+public class Person implements Editable {
     private String id;
     private String firstName;
     private String lastName;

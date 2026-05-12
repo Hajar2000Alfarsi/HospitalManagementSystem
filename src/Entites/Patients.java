@@ -181,5 +181,15 @@ public class Patients extends Person implements Displayable {
                 ", appointments=" + appointments +
                 '}';
     }
+
+    @Override
+    public void edit(Object updatedData) {
+
+    }
+
+    @Override
+    public void validate() {
+
+    }
 }
 

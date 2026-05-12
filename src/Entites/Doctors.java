@@ -202,4 +202,13 @@ public class Doctors extends Person implements Displayable {
                 ", assignedPatients=" + assignedPatients +
                 '}';
     }
+
+    @Override
+    public void edit(Object updatedData) {
+    }
+
+    @Override
+    public void validate() {
+
+    }
 }
