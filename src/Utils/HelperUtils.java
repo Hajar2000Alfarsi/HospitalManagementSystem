@@ -1,5 +1,7 @@
 package Utils;
 
+import java.util.UUID;
+
 public class HelperUtils {
     // Check if Object is null
     public static boolean isNull(Object obj){
@@ -54,4 +56,5 @@ public class HelperUtils {
         }
         return str.matches(regex);
     }
+
 }
