@@ -134,4 +134,9 @@ public class HelperUtils {
         return !date.before(minDate) && !date.after(maxDate);
     }
 
+    //future date
+    public static boolean isFutureDate(Date date) {
+        if (date == null) return false;
+        return date.after(new Date());
+    }
 }
