@@ -171,6 +171,16 @@ public class HelperUtils {
         return num >= min && num <= max;
     }
 
+    //range double
+    public static boolean isValidNumber(double num, double min, double max) {
+        return num >= min && num <= max;
+    }
+
+    // positive int
+    public static boolean isPositive(int num) {
+        return num > 0;
+    }
+
 
 
 }
