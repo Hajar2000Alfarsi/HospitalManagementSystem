@@ -1,5 +1,6 @@
 package Utils;
 
+import java.util.Random;
 import java.util.UUID;
 
 public class HelperUtils {
@@ -71,5 +72,19 @@ public class HelperUtils {
         }
 
         return prefix + "-" + (int)(Math.random()*100000);
+    }
+
+    // custom length
+    public static String generateId(String prefix, int length) {
+        //Create String to take random number from it
+        String number = "0123456789";
+        StringBuilder id =  new StringBuilder(prefix + "-");
+
+        Random random = new Random();
+
+        for (int i = 0; i < length; i++) {
+            id.append(number.charAt(random.nextInt(number.length())))
+        }
+        return id.toString();
     }
 }
