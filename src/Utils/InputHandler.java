@@ -35,5 +35,19 @@ public class InputHandler {
     }
 
 
+    public static int getIntInput(String prompt, int min, int max) {
+        while (true) {
+            //call getIntInput function to check the input is number
+            int number = getIntInput(prompt);
+
+            if (number >= min && number <= max){
+                return number;
+            }
+
+            System.out.println("Number must be between " + min + " and " + max);
+        }
+    }
+
+
 
 }
