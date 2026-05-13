@@ -139,4 +139,11 @@ public class HelperUtils {
         if (date == null) return false;
         return date.after(new Date());
     }
+
+    //past date
+    public static boolean isPastDate(Date date){
+        if (date == null) return false;
+        return date.before(new Date());
+    }
+
 }
