@@ -20,4 +20,13 @@ public class HelperUtils {
     public static boolean isNotNull(String str) {
         return str != null && !str.trim().isEmpty();
     }
+
+    //String Validation Methods
+
+    // Check string is not null and not empty
+    public static boolean isValidString(String str){
+        return str != null && !str.trim().isEmpty();
+    }
+
+
 }
