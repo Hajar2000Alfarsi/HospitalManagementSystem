@@ -49,5 +49,22 @@ public class InputHandler {
     }
 
 
+    public static double getDoubleInput(String prompt){
+        while (true) {
+
+            try {
+
+                System.out.print(prompt);
+
+                double number = Double.parseDouble(scanner.nextLine());
+
+                return number;
+
+            } catch (Exception e) {
+
+                System.out.println("Invalid decimal number. Try again.");
+            }
+        }
+    }
 
 }
