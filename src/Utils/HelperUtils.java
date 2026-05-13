@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
@@ -202,6 +203,17 @@ public class HelperUtils {
     //age as number
     public static boolean  isValidAge(int age){
         return age >= 0 && age <= 120;
+    }
+
+    // age from date of birth
+    public static boolean isValidAge(LocalDate dateOfBirth) {
+        if (dateOfBirth == null) {
+            return false;
+        }
+
+        int age = Period.between(dateOfBirth, LocalDate.now()).getYears();
+
+        return  age >= 0 && age <= 120;
     }
 
 
