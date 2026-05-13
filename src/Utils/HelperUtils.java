@@ -125,7 +125,13 @@ public class HelperUtils {
         }
     }
 
+    //range check
+    public static boolean isValidateDate(Date date, Date minDate, Date maxDate) {
+        if (date == null || minDate == null || maxDate == null) {
+            return false;
+        }
 
-
+        return !date.before(minDate) && !date.after(maxDate);
+    }
 
 }
