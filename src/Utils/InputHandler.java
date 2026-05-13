@@ -21,5 +21,19 @@ public class InputHandler {
     }
 
 
+    public static int getIntInput(String prompt) {
+        while (true){
+            //to avoid any error which may came by write String input
+            try {
+                System.out.println(prompt);
+                //take number as String and then convert it to integer
+                int number = Integer.parseInt(scanner.nextLine());
+            } catch (Exception e) {
+                System.out.println("Invalid Input. Try Again.");
+            }
+        }
+    }
+
+
 
 }
