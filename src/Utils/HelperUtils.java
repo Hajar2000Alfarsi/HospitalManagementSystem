@@ -1,5 +1,9 @@
 package Utils;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.DateTimeException;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Random;
 import java.util.UUID;
@@ -84,7 +88,7 @@ public class HelperUtils {
         Random random = new Random();
 
         for (int i = 0; i < length; i++) {
-            id.append(number.charAt(random.nextInt(number.length())))
+            id.append(number.charAt(random.nextInt(number.length())));
         }
         return id.toString();
     }
@@ -100,6 +104,28 @@ public class HelperUtils {
     public static boolean isValidate(Date date) {
         return date != null;
     }
+
+    //parses and validates string date
+    public static boolean isValidDate(String dateStr) {
+        if (dateStr == null || dateStr.trim().isEmpty()){
+            return false;
+        }
+
+        //ensure date in the same format like yyyy-mm-dd
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        //setLenient to avoid correct the date
+        sdf.setLenient(false);
+
+        //Convert text to date
+        try {
+            LocalDate.parse(dateStr);
+            return true;
+        } catch (DateTimeException e) {
+            return false;
+        }
+    }
+
+
 
 
 }
