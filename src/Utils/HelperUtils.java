@@ -28,5 +28,11 @@ public class HelperUtils {
         return str != null && !str.trim().isEmpty();
     }
 
-
+    // Check minimum length
+    public static boolean isValidString(String str, int minLength){
+        if (!isValidString(str)){
+            return false;
+        }
+        return str.trim().length() >= minLength;
+    }
 }
