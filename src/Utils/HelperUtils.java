@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 import java.util.UUID;
@@ -144,6 +145,22 @@ public class HelperUtils {
     public static boolean isPastDate(Date date){
         if (date == null) return false;
         return date.before(new Date());
+    }
+
+    //today check
+    public static boolean isToday(Date date) {
+        if (date == null) return false;
+
+        //Create 2 Calendar one for today date and second date to test
+        Calendar cal1 = Calendar.getInstance();
+        Calendar cal2 = Calendar.getInstance();
+
+        cal1.setTime(date);
+        cal2.setTime(new Date());
+
+        return cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR)
+            && cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH)
+            && cal1.get(Calendar.DAY_OF_MONTH) == cal2.get(Calendar.DAY_OF_MONTH);
     }
 
 }
