@@ -186,5 +186,10 @@ public class HelperUtils {
         return num > 0;
     }
 
+    // negative int
+    public static boolean isNegative(int num) {
+        return num < 0;
+    }
+
 
 }
