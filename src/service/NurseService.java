@@ -4,6 +4,7 @@ import Entites.Doctors;
 import Entites.Nurses;
 import Interface.Manageable;
 import Interface.Searchable;
+import Utils.HelperUtils;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -44,7 +45,9 @@ public class NurseService implements Manageable, Searchable {
         String address = scanner.nextLine();
 
         System.out.println("Nurse ID: ");
-        String nurseId = scanner.nextLine();
+        //String nurseId = scanner.nextLine();
+        String nurseId = HelperUtils.generateId("NUR");
+        System.out.println("Assigned ID to Nurse: " + nurseId );
 
         System.out.println("Department ID: ");
         String departmentId = scanner.nextLine();
@@ -130,7 +133,8 @@ public class NurseService implements Manageable, Searchable {
 
         for (Nurses nurse: nursesList) {
 
-            if (nurse.getNurseId().equals(nId)){
+            if (HelperUtils.isNotNull(nurse)
+            && nurse.getNurseId().equals(nId)){
 
                 nursesList.remove(nurse);
                 System.out.println("Nurse removed successfully");
@@ -143,7 +147,8 @@ public class NurseService implements Manageable, Searchable {
 
     public Nurses getNurseById(String nurseId) {
         for (Nurses nurse: nursesList) {
-            if (nurse.getNurseId().equals(nurseId)){
+            if (HelperUtils.isNotNull(nurse)
+            && nurse.getNurseId().equals(nurseId)){
                 nurse.displayInfo();
                 return nurse;
             }
@@ -170,7 +175,8 @@ public class NurseService implements Manageable, Searchable {
         List<Nurses> result = new ArrayList<>();
 
         for (Nurses nurse: nursesList) {
-            if (nurse.getDepartmentId().equalsIgnoreCase(departmentId)) {
+            if (HelperUtils.isNotNull(nurse)
+            && nurse.getDepartmentId().equalsIgnoreCase(departmentId)) {
                 nurse.displayInfo();
                 result.add(nurse);
             }
@@ -185,7 +191,8 @@ public class NurseService implements Manageable, Searchable {
         List<Nurses> result = new ArrayList<>();
 
         for (Nurses nurse: nursesList) {
-            if (nurse.getShift().equalsIgnoreCase(shiftToDisplay)) {
+            if (HelperUtils.isNotNull(nurse)
+            && nurse.getShift().equalsIgnoreCase(shiftToDisplay)) {
                 nurse.displayInfo();
                 result.add(nurse);
             }

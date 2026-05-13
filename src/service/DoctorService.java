@@ -5,6 +5,7 @@ import Entites.Doctors;
 import Entites.Patients;
 import Interface.Manageable;
 import Interface.Searchable;
+import Utils.HelperUtils;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -54,7 +55,9 @@ public class DoctorService implements Manageable, Searchable {
         String address = scanner.nextLine();
 
         System.out.println("Doctor ID: ");
-        String doctorId = scanner.nextLine();
+        //String doctorId = scanner.nextLine();
+        String doctorId = HelperUtils.generateId("Dr.");
+        System.out.println("Assigned ID to Doctor: " + doctorId );
 
         System.out.println("Doctor specialization: ");
         String specialization = scanner.nextLine();

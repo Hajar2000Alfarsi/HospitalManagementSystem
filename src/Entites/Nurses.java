@@ -1,6 +1,8 @@
 package Entites;
 
 import Interface.Displayable;
+import Utils.HelperUtils;
+import com.sun.net.httpserver.Headers;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -45,7 +47,9 @@ public class Nurses extends Person implements Displayable {
     }
 
     public void setNurseId(String nurseId) {
+        if (HelperUtils.isNotNull(nurseId)){
         this.nurseId = nurseId;
+        }
     }
 
     public List<String> getAssignedPatients() {
@@ -61,7 +65,9 @@ public class Nurses extends Person implements Displayable {
     }
 
     public void setQualification(String qualification) {
-        this.qualification = qualification;
+        if (HelperUtils.isNotNull(qualification)) {
+            this.qualification = qualification;
+        }
     }
 
     public String getShift() {
@@ -69,7 +75,9 @@ public class Nurses extends Person implements Displayable {
     }
 
     public void setShift(String shift) {
-        this.shift = shift;
+        if (HelperUtils.isNotNull(shift)) {
+            this.shift = shift;
+        }
     }
 
     public String getDepartmentId() {
@@ -81,6 +89,7 @@ public class Nurses extends Person implements Displayable {
     }
 
     public void assignPatient(String patients) {
+
         assignedPatients.add(patients);
     }
 

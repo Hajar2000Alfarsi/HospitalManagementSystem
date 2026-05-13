@@ -4,6 +4,7 @@ import Entites.MedicalRecords;
 import Entites.Nurses;
 import Interface.Manageable;
 import Interface.Searchable;
+import Utils.HelperUtils;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -17,8 +18,10 @@ public class MedicalRecordService implements Manageable, Searchable {
     public MedicalRecords addMedicalRecord(){
         System.out.println("Add new Medical Record ");
 
-        System.out.println("Enter record ID: ");
-        String recordId = scanner.nextLine();
+        System.out.println("record ID: ");
+        //String recordId = scanner.nextLine();
+        String recordId = HelperUtils.generateId("MR");
+        System.out.println("Assigned ID to Medical record: " + recordId );
 
         System.out.println("Enter Patient ID: ");
         String patientId = scanner.nextLine();

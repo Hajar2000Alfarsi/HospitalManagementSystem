@@ -3,6 +3,7 @@ package service;
 import Entites.*;
 import Interface.Manageable;
 import Interface.Searchable;
+import Utils.HelperUtils;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -29,8 +30,10 @@ public class DepartmentService implements Manageable, Searchable {
     public Departments addDepartment() {
         System.out.println("Add new Department ");
 
-        System.out.println("Enter Department ID: ");
-        String departmentId = scanner.nextLine();
+        System.out.println("Department ID: ");
+        //String departmentId = scanner.nextLine();
+        String departmentId = HelperUtils.generateId("DEP");
+        System.out.println("Assigned ID to Department: " + departmentId );
 
         System.out.println("Enter Department Name: ");
         String departmentName = scanner.nextLine();

@@ -6,6 +6,7 @@ import Entites.Patients;
 import Interface.Appointable;
 import Interface.Manageable;
 import Interface.Searchable;
+import Utils.HelperUtils;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -20,8 +21,10 @@ public class AppointmentService implements Manageable, Searchable, Appointable {
     public Appointments addAppointment() {
         System.out.println("Add new Appointment ");
 
-        System.out.println("Enter Appointment ID: ");
-        String appointmentId = scanner.nextLine();
+        System.out.println("Appointment ID: ");
+        //String appointmentId = scanner.nextLine();
+        String appointmentId = HelperUtils.generateId("APP");
+        System.out.println("Assigned ID to Appointment: " + appointmentId );
 
         System.out.println("Enter patient ID: ");
         String patientId = scanner.nextLine();
