@@ -95,7 +95,7 @@ public class Main {
                     }
                 }
 
-                case 8 -> {
+                case 7 -> {
                     Boolean reportsStatisticsContinue = true;
                     while (reportsStatisticsContinue){
                         System.out.println(MenuMessages.REPORT_AND_STATICS_MENU_MESSAGE);

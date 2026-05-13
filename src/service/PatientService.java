@@ -164,13 +164,9 @@ public class PatientService implements Manageable, Searchable {
     }
 
 
-    public boolean editPatient() {
-
-        System.out.println("Enter Patient ID: ");
-        String pId = scanner.nextLine();
-
+    public boolean editPatient(String patientId) {
         for (Patients patient: patientsList){
-            if (patient.getPatientId().equals(pId)){
+            if (patient.getPatientId().equals(patientId)){
                 System.out.println("Enter Updated Civil ID: ");
                 patient.setId(scanner.nextLine());
 
@@ -227,13 +223,10 @@ public class PatientService implements Manageable, Searchable {
         return false;
     }
 
-    public boolean removePatient() {
-        System.out.println("Enter patient ID: ");
-        String pId = scanner.nextLine();
-
+    public boolean removePatient(String patientId) {
         for (Patients patient: patientsList) {
             if (HelperUtils.isNotNull(patient.getPatientId())
-             && patient.getPatientId().equals(pId)) {
+             && patient.getPatientId().equals(patientId)) {
                 patientsList.remove(patient);
                 System.out.println("Patient removed successfully");
                 return true;
@@ -329,9 +322,7 @@ public class PatientService implements Manageable, Searchable {
         }
     }
 
-    public void searchPatientsByName() {
-        System.out.println("Enter patient Name: ");
-        String name = scanner.nextLine();
+    public void searchPatientsByName(String name) {
         for (Patients patient: patientsList) {
             String fullname = patient.getFirstName() + patient.getLastName();
 
@@ -350,10 +341,15 @@ public class PatientService implements Manageable, Searchable {
                 addPatients();
             }
             case 2 -> {
-                editPatient();
+                System.out.println("Enter Patient ID: ");
+                String pId = scanner.nextLine();
+                editPatient(pId);
             }
             case 3 -> {
-                removePatient();
+                System.out.println("Enter patient ID: ");
+                String pId = scanner.nextLine();
+
+                removePatient(pId);
             }
             case 4 -> {
                 System.out.println("Enter patient ID: ");
@@ -365,7 +361,9 @@ public class PatientService implements Manageable, Searchable {
                 displayAllPatients();
             }
             case 6 -> {
-                searchPatientsByName();
+                System.out.println("Enter patient Name: ");
+                String name = scanner.nextLine();
+                searchPatientsByName(name);
             }
             case 7 -> {
                 return false;
