@@ -19,7 +19,6 @@ public class PatientService implements Manageable, Searchable {
      List<MedicalRecords> medicalRecordsList = new ArrayList<>();
      List<Appointments> appointmentsList = new ArrayList<>();
 
-    Scanner scanner = new Scanner(System.in);
 
     public Patients addPatient(){
 
@@ -101,8 +100,8 @@ public class PatientService implements Manageable, Searchable {
             patientsList.add(addPatient());
             System.out.println("Patient Added Successfully");
 
-            System.out.println("Enter q to exit, press ENTER to continue for more patient");
-            if (scanner.nextLine().equalsIgnoreCase("q")) {
+            String input =  InputHandler.getStringInput("Enter q to exit, press ENTER to continue: ");
+            if (input.equalsIgnoreCase("q")) {
                 continueFlag = false;
             }
         }
@@ -183,52 +182,65 @@ public class PatientService implements Manageable, Searchable {
     public boolean editPatient(String patientId) {
         for (Patients patient: patientsList){
             if (patient.getPatientId().equals(patientId)){
-                System.out.println("Enter Updated Civil ID: ");
-                patient.setId(scanner.nextLine());
+                /*System.out.println("Enter Updated Civil ID: ");
+                patient.setId(scanner.nextLine());*/
+                patient.setId(InputHandler.getStringInput("Enter Updated Civil ID: "));
 
-                System.out.println("Enter Updated First Name: ");
-                patient.setFirstName(scanner.nextLine());
+                /*System.out.println("Enter Updated First Name: ");
+                patient.setFirstName(scanner.nextLine());*/
+                patient.setFirstName(InputHandler.getStringInput("Enter Updated First Name: "));
 
-                System.out.println("Enter Updated Last Name: ");
-                patient.setLastName(scanner.nextLine());
+                /*System.out.println("Enter Updated Last Name: ");
+                patient.setLastName(scanner.nextLine());*/
+                patient.setLastName(InputHandler.getStringInput("Enter Updated Last Name: "));
 
-                System.out.println("Updated Date Of Birth: ");
+                /*System.out.println("Updated Date Of Birth: ");
                 String dateOfBirth = scanner.nextLine();
-                LocalDate dob = LocalDate.parse(dateOfBirth);
+                LocalDate dob = LocalDate.parse(dateOfBirth);*/
+                LocalDate dob = InputHandler.getDateInput("Updated Date Of Birth: ");
                 patient.setDateOfBirth(dob);
 
-                System.out.println("Updated Gender: ");
-                patient.setGender(scanner.nextLine());
+                /*System.out.println("Updated Gender: ");
+                patient.setGender(scanner.nextLine());*/
+                patient.setGender(InputHandler.getStringInput("Updated Gender: "));
 
-                System.out.println("Updated Phone Number: ");
-                patient.setPoneNumber(scanner.nextLine());
+               /* System.out.println("Updated Phone Number: ");
+                patient.setPoneNumber(scanner.nextLine());*/
+                patient.setPoneNumber(InputHandler.getStringInput("Updated Phone Number: "));
 
-                System.out.println("Updated Email: ");
-                patient.setEmail(scanner.nextLine());
+                /*System.out.println("Updated Email: ");
+                patient.setEmail(scanner.nextLine());*/
+                patient.setEmail(InputHandler.getStringInput("Updated Email: "));
 
-                System.out.println("Updated Address: ");
-                patient.setAddress(scanner.nextLine());
+                /*System.out.println("Updated Address: ");
+                patient.setAddress(scanner.nextLine());*/
+                patient.setAddress(InputHandler.getStringInput("Updated Address: "));
 
-                System.out.println("Updated Blood Group: ");
-                patient.setBloodGroup(scanner.nextLine());
+                /*System.out.println("Updated Blood Group: ");
+                patient.setBloodGroup(scanner.nextLine());*/
+                patient.setBloodGroup(InputHandler.getStringInput("Updated Blood Group: "));
 
-                System.out.println("Enter Updated allergies separated by commas: ");
-                String inputAllergies = scanner.nextLine();
+                /*System.out.println("Enter Updated allergies separated by commas: ");
+                String inputAllergies = scanner.nextLine();*/
+                String inputAllergies = InputHandler.getStringInput("Updated allergies (comma separated): ");
                 List<String> allergies = new ArrayList<>();
                 for (String allergy: inputAllergies.split(",")) {
                     allergies.add(allergy.trim());
                 }
 
-                System.out.println("Updated Emergency Contact: ");
-                patient.setEmergencyContact(scanner.nextLine());
+                /*System.out.println("Updated Emergency Contact: ");
+                patient.setEmergencyContact(scanner.nextLine());*/
+                patient.setEmergencyContact(InputHandler.getStringInput("Updated Emergency Contact: "));
 
-                System.out.println("Updated Registration Date");
+                /*System.out.println("Updated Registration Date");
                 String registrationDate = scanner.nextLine();
-                LocalDate rd = LocalDate.parse(dateOfBirth);
+                LocalDate rd = LocalDate.parse(dateOfBirth);*/
+                LocalDate rd = InputHandler.getDateInput("Updated Registration Date: ");
                 patient.setRegistrationDate(rd);
 
-                System.out.println("Updated Insurance Id: ");
-                patient.setInsuranceId(scanner.nextLine());
+                /*System.out.println("Updated Insurance Id: ");
+                patient.setInsuranceId(scanner.nextLine());*/
+                patient.setInsuranceId(InputHandler.getStringInput("Updated Insurance Id: "));
 
             }
             System.out.println("Patient updated successfully.");
@@ -357,28 +369,24 @@ public class PatientService implements Manageable, Searchable {
                 addPatients();
             }
             case 2 -> {
-                System.out.println("Enter Patient ID: ");
-                String pId = scanner.nextLine();
-                editPatient(pId);
+                String patientId = InputHandler.getStringInput("Enter Patient ID: ");
+                editPatient(patientId);
             }
             case 3 -> {
-                System.out.println("Enter patient ID: ");
-                String pId = scanner.nextLine();
+               String patientId = InputHandler.getStringInput("Enter patient ID: ");
 
-                removePatient(pId);
+                removePatient(patientId);
             }
             case 4 -> {
-                System.out.println("Enter patient ID: ");
-                String pId = scanner.nextLine();
+                String patientId = InputHandler.getStringInput("Enter patient ID: ");
 
-                getPatientById(pId);
+                getPatientById(patientId);
             }
             case 5 -> {
                 displayAllPatients();
             }
             case 6 -> {
-                System.out.println("Enter patient Name: ");
-                String name = scanner.nextLine();
+                String name = InputHandler.getStringInput("Enter patient Name: ");
                 searchPatientsByName(name);
             }
             case 7 -> {
