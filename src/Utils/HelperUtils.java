@@ -163,4 +163,14 @@ public class HelperUtils {
             && cal1.get(Calendar.DAY_OF_MONTH) == cal2.get(Calendar.DAY_OF_MONTH);
     }
 
+
+    //Numeric Validation Methods
+
+    //range check
+    public static boolean isValidNumber(int num, int min, int max){
+        return num >= min && num <= max;
+    }
+
+
+
 }
