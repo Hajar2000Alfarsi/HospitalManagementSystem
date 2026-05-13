@@ -57,4 +57,10 @@ public class HelperUtils {
         return str.matches(regex);
     }
 
+    //ID Generation Methods
+
+    //generates random UUID
+    public static String generateId() {
+        return UUID.randomUUID().toString();
+    }
 }
