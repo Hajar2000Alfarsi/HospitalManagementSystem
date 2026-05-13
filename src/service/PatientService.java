@@ -4,13 +4,15 @@ import Entites.Appointments;
 import Entites.Billing;
 import Entites.MedicalRecords;
 import Entites.Patients;
+import Interface.Manageable;
+import Interface.Searchable;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class PatientService {
+public class PatientService implements Manageable, Searchable {
     //Static List to store all patients
      static List<Patients> patientsList = new ArrayList<>();
      List<MedicalRecords> medicalRecordsList = new ArrayList<>();
@@ -367,5 +369,30 @@ public class PatientService {
             }
         }
         return true;
+    }
+
+    @Override
+    public void add(Object entity) {
+
+    }
+
+    @Override
+    public void remove(String id) {
+
+    }
+
+    @Override
+    public List<Object> getAll() {
+        return List.of();
+    }
+
+    @Override
+    public void search(String keyword) {
+
+    }
+
+    @Override
+    public Object searchById(String id) {
+        return null;
     }
 }

@@ -2,13 +2,15 @@ package service;
 
 import Entites.Doctors;
 import Entites.Nurses;
+import Interface.Manageable;
+import Interface.Searchable;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class NurseService {
+public class NurseService implements Manageable, Searchable {
     static List<Nurses> nursesList = new ArrayList<>();
     List<String> assignedPatients =new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
@@ -222,5 +224,30 @@ public class NurseService {
             }
         }
         return true;
+    }
+
+    @Override
+    public void add(Object entity) {
+
+    }
+
+    @Override
+    public void remove(String id) {
+
+    }
+
+    @Override
+    public List<Object> getAll() {
+        return List.of();
+    }
+
+    @Override
+    public void search(String keyword) {
+
+    }
+
+    @Override
+    public Object searchById(String id) {
+        return null;
     }
 }

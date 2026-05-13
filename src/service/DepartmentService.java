@@ -1,13 +1,15 @@
 package service;
 
 import Entites.*;
+import Interface.Manageable;
+import Interface.Searchable;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class DepartmentService {
+public class DepartmentService implements Manageable, Searchable {
     List<Departments> departmentsList = new ArrayList<>();
     List<Doctors> doctors = new ArrayList<>();
     List<Nurses> nurses = new ArrayList<>();
@@ -218,5 +220,30 @@ public class DepartmentService {
             }
         }
         return true;
+    }
+
+    @Override
+    public void add(Object entity) {
+
+    }
+
+    @Override
+    public void remove(String id) {
+
+    }
+
+    @Override
+    public List<Object> getAll() {
+        return List.of();
+    }
+
+    @Override
+    public void search(String keyword) {
+
+    }
+
+    @Override
+    public Object searchById(String id) {
+        return null;
     }
 }

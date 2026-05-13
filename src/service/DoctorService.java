@@ -3,13 +3,15 @@ package service;
 import Entites.Departments;
 import Entites.Doctors;
 import Entites.Patients;
+import Interface.Manageable;
+import Interface.Searchable;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class DoctorService {
+public class DoctorService implements Manageable, Searchable {
     static List<Doctors> doctorsList = new ArrayList<>();
     List<String> availableSlots = new ArrayList<>();
     List<String> assignedPatients = new ArrayList<>();
@@ -403,5 +405,30 @@ public class DoctorService {
             }
         }
         return true;
+    }
+
+    @Override
+    public void add(Object entity) {
+
+    }
+
+    @Override
+    public void remove(String id) {
+
+    }
+
+    @Override
+    public List<Object> getAll() {
+        return List.of();
+    }
+
+    @Override
+    public void search(String keyword) {
+
+    }
+
+    @Override
+    public Object searchById(String id) {
+        return null;
     }
 }

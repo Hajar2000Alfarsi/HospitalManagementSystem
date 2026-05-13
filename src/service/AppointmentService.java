@@ -3,6 +3,9 @@ package service;
 import Entites.Appointments;
 import Entites.MedicalRecords;
 import Entites.Patients;
+import Interface.Appointable;
+import Interface.Manageable;
+import Interface.Searchable;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -10,7 +13,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
-public class AppointmentService {
+public class AppointmentService implements Manageable, Searchable, Appointable {
     List<Appointments> appointmentsList = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
 
@@ -230,6 +233,16 @@ public class AppointmentService {
     }
 
 
+    @Override
+    public void scheduleAppointment(Appointments appointment) {
+
+    }
+
+    @Override
+    public void cancelAppointment(String appointmentId) {
+
+    }
+
     //Overload reschedule Appointment by appointment ID and new Date
     public void rescheduleAppointment(String appointmentId, LocalDate newDate){
         for (Appointments appointment: appointmentsList) {
@@ -332,5 +345,30 @@ public class AppointmentService {
             }
         }
         return true;
+    }
+
+    @Override
+    public void add(Object entity) {
+
+    }
+
+    @Override
+    public void remove(String id) {
+
+    }
+
+    @Override
+    public List<Object> getAll() {
+        return List.of();
+    }
+
+    @Override
+    public void search(String keyword) {
+
+    }
+
+    @Override
+    public Object searchById(String id) {
+        return null;
     }
 }
