@@ -87,4 +87,9 @@ public class HelperUtils {
         }
         return id.toString();
     }
+
+    //with both prefix and suffix
+    public static String generateId(String prefix, String suffix) {
+        return prefix + "-" + UUID.randomUUID().toString().substring(0,8) + "-" + suffix;
+    }
 }
