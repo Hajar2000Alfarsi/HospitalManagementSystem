@@ -63,4 +63,13 @@ public class HelperUtils {
     public static String generateId() {
         return UUID.randomUUID().toString();
     }
+
+    //generates ID with prefix (e.g., "PAT-12345")
+    public static String generateId(String prefix) {
+        if (prefix == null || prefix.trim().isEmpty()) {
+            prefix = "ID";
+        }
+
+        return prefix + "-" + (int)(Math.random()*100000);
+    }
 }
