@@ -35,4 +35,17 @@ public class HelperUtils {
         }
         return str.trim().length() >= minLength;
     }
+
+    //Check length range
+    public static boolean  isValidString(String str, int minLength, int maxLength){
+        if (!isValidString(str)) {
+            return false;
+        }
+
+        int length = str.trim().length();
+
+        return length >= minLength && length <= maxLength;
+    }
+
+
 }
