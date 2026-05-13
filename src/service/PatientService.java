@@ -6,6 +6,7 @@ import Entites.Patients;
 import Interface.Manageable;
 import Interface.Searchable;
 import Utils.HelperUtils;
+import Utils.InputHandler;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -24,54 +25,69 @@ public class PatientService implements Manageable, Searchable {
 
         System.out.println("Add new Patient ");
 
-        System.out.println("Enter Civil ID: ");
-        String civilId = scanner.nextLine();
-
-        System.out.println("Enter First Name: ");
-        String firstName = scanner.nextLine();
-
-        System.out.println("Enter Last Name: ");
-        String lastName = scanner.nextLine();
-
-        System.out.println("Date Of Birth: ");
-        String dateOfBirth = scanner.nextLine();
-        LocalDate dob = LocalDate.parse(dateOfBirth);
-
-        System.out.println("Gender: ");
-        String gender = scanner.nextLine();
-
-        System.out.println("Phone Number: ");
-        String phoneNumber = scanner.nextLine();
-
-        System.out.println("Email: ");
-        String email = scanner.nextLine();
-
-        System.out.println("Address: ");
-        String address = scanner.nextLine();
-
         /*System.out.println("Patient ID: ");
         String patientId = scanner.nextLine();*/
         String patientId = HelperUtils.generateId("PAT");
 
-        System.out.println("Blood Group: ");
-        String bloodGroup = scanner.nextLine();
+        /*System.out.println("Enter Civil ID: ");
+        String civilId = scanner.nextLine();*/
+        String civilId = InputHandler.getStringInput("Enter Civil ID: ");
 
-        System.out.println("Enter allergies separated by commas: ");
-        String inputAllergies = scanner.nextLine();
+        /*System.out.println("Enter First Name: ");
+        String firstName = scanner.nextLine();*/
+        String firstName = InputHandler.getStringInput("Enter First Name: ");
+
+        /*System.out.println("Enter Last Name: ");
+        String lastName = scanner.nextLine();*/
+        String lastName = InputHandler.getStringInput("Enter Last Name: ");
+
+
+        /*System.out.println("Date Of Birth: ");
+        String dateOfBirth = scanner.nextLine();
+        LocalDate dob = LocalDate.parse(dateOfBirth);*/
+        LocalDate dob = InputHandler.getDateInput("Date Of Birth: ");
+
+       /* System.out.println("Gender: ");
+        String gender = scanner.nextLine();*/
+        String gender = InputHandler.getStringInput("Gender: ");
+
+        /*System.out.println("Phone Number: ");
+        String phoneNumber = scanner.nextLine();*/
+        String phoneNumber = InputHandler.getStringInput("Phone Number: ");
+
+        /*System.out.println("Email: ");
+        String email = scanner.nextLine();*/
+        String email = InputHandler.getStringInput("Email: ");
+
+        /*System.out.println("Address: ");
+        String address = scanner.nextLine();*/
+        String address = InputHandler.getStringInput("Address: ");
+
+       /* System.out.println("Blood Group: ");
+        String bloodGroup = scanner.nextLine();*/
+        String bloodGroup = InputHandler.getStringInput("Blood Group: ");
+
+        /*System.out.println("Enter allergies separated by commas: ");
+        String inputAllergies = scanner.nextLine();*/
+        String inputAllergies = InputHandler.getStringInput("Allergies: ");
+
         List<String> allergies = new ArrayList<>();
         for (String allergy: inputAllergies.split(",")) {
             allergies.add(allergy.trim());
         }
 
-        System.out.println("Emergency Contact: ");
-        String emergencyContact = scanner.nextLine();
+       /* System.out.println("Emergency Contact: ");
+        String emergencyContact = scanner.nextLine();*/
+        String emergencyContact = InputHandler.getStringInput("Emergency Contact: ");
 
-        System.out.println("Registration Date");
+        /*System.out.println("Registration Date");
         String registrationDate = scanner.nextLine();
-        LocalDate rd = LocalDate.parse(dateOfBirth);
+        LocalDate rd = LocalDate.parse(registrationDate);*/
+        LocalDate rd = InputHandler.getDateInput("Registration Date: ");
 
-        System.out.println("Insurance Id: ");
-        String insuranceId = scanner.nextLine();
+        /*System.out.println("Insurance Id: ");
+        String insuranceId = scanner.nextLine();*/
+        String insuranceId = InputHandler.getStringInput("Insurance Id: ");
 
         Patients patients1 = new Patients(civilId, firstName, lastName, dob, gender, phoneNumber, email, address, patientId, medicalRecordsList, appointmentsList, insuranceId, emergencyContact, rd, allergies, bloodGroup);
 

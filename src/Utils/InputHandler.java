@@ -90,4 +90,22 @@ public class InputHandler {
     }
 
 
+    public static boolean getConfirmation(String prompt){
+        while (true) {
+            System.out.println(prompt + " (yes/no): ");
+
+            //Make sure there is no extra spaces or uppercase latter
+            String input = scanner.nextLine().trim().toLowerCase();
+
+            if (input.equals("yes") || input.equals("y")) {
+                return true;
+            }
+            if (input.equals("no") || input.equals("n")) {
+                return false;
+            }
+
+            System.out.println("Invalid input. Please enter yes or no.");
+
+        }
+    }
 }
