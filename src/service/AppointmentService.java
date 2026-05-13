@@ -110,7 +110,8 @@ public class AppointmentService implements Manageable, Searchable, Appointable {
         String aId = scanner.nextLine();
 
         for (Appointments appointment: appointmentsList){
-            if (appointment.getAppointmentId().equals(aId)){
+            if (HelperUtils.isNotNull(appointment.getAppointmentId())
+            && appointment.getAppointmentId().equals(aId)){
                 System.out.println("Enter Updated patient ID: ");
                 appointment.setPatientId(scanner.nextLine());
 
@@ -148,7 +149,8 @@ public class AppointmentService implements Manageable, Searchable, Appointable {
         String aId = scanner.nextLine();
 
         for (Appointments appointment: appointmentsList) {
-            if (appointment.getAppointmentId().equals(aId)) {
+            if (HelperUtils.isNotNull(appointment.getAppointmentId())
+                    && appointment.getAppointmentId().equals(aId)) {
                 appointmentsList.remove(appointment);
                 System.out.println("Appointment removed successfully");
                 return true;
@@ -165,7 +167,8 @@ public class AppointmentService implements Manageable, Searchable, Appointable {
         List<Appointments> patientAppointment = new ArrayList<>();
 
         for (Appointments appointment: appointmentsList) {
-            if (appointment.getPatientId().equals(pId)){
+            if (HelperUtils.isNotNull(appointment.getPatientId())
+                    && appointment.getPatientId().equals(pId)){
                 appointment.displayInfo();
                 patientAppointment.add(appointment);
                 return patientAppointment;
@@ -182,7 +185,8 @@ public class AppointmentService implements Manageable, Searchable, Appointable {
         List<Appointments> doctorAppointment =  new ArrayList<>();
 
         for (Appointments appointment: appointmentsList){
-            if (appointment.getDoctorId().equals(dId)){
+            if (HelperUtils.isNotNull(appointment.getDoctorId())
+                    && appointment.getDoctorId().equals(dId)){
                 appointment.displayInfo();
                 doctorAppointment.add(appointment);
                 return doctorAppointment;
@@ -198,7 +202,8 @@ public class AppointmentService implements Manageable, Searchable, Appointable {
         List<Appointments> dateAppointment = new ArrayList<>();
 
         for (Appointments appointment: appointmentsList) {
-            if (appointment.getDoctorId().equals(dId)){
+            if (HelperUtils.isNotNull(appointment.getAppointmentId())
+                    && appointment.getDoctorId().equals(dId)){
                 appointment.displayInfo();
                 dateAppointment.add(appointment);
                 return dateAppointment;
@@ -212,7 +217,8 @@ public class AppointmentService implements Manageable, Searchable, Appointable {
         String aId = scanner.nextLine();
 
         for (Appointments appointment: appointmentsList){
-            if (appointment.getAppointmentId().equals(aId)){
+            if (HelperUtils.isNotNull(appointment.getAppointmentId())
+                    && appointment.getAppointmentId().equals(aId)){
                 System.out.println("Enter new Date: ");
                 String appointmentDate = scanner.nextLine();
                 LocalDate ad = LocalDate.parse(appointmentDate);
@@ -229,7 +235,8 @@ public class AppointmentService implements Manageable, Searchable, Appointable {
         String aId = scanner.nextLine();
 
         for (Appointments appointment: appointmentsList){
-            if (appointment.getAppointmentId().equals(aId)) {
+            if (HelperUtils.isNotNull(appointment.getAppointmentId())
+                    && appointment.getAppointmentId().equals(aId)) {
                 appointment.setStatus("Canceled");
             }
         }
@@ -249,7 +256,8 @@ public class AppointmentService implements Manageable, Searchable, Appointable {
     //Overload reschedule Appointment by appointment ID and new Date
     public void rescheduleAppointment(String appointmentId, LocalDate newDate){
         for (Appointments appointment: appointmentsList) {
-            if (appointment.getAppointmentId().equals(appointmentId)) {
+            if (HelperUtils.isNotNull(appointment.getAppointmentId())
+                    && appointment.getAppointmentId().equals(appointmentId)) {
                 appointment.setAppointmentDate(newDate);
                 appointment.setStatus("Rescheduled");
 
@@ -263,7 +271,8 @@ public class AppointmentService implements Manageable, Searchable, Appointable {
     //Overload reschedule Appointment by appointment ID, new Date, new time
     public void rescheduleAppointment(String appointmentId, LocalDate newDate, String newTime) {
         for (Appointments appointment: appointmentsList) {
-            if (appointment.getAppointmentId().equals(appointmentId)) {
+            if (HelperUtils.isNotNull(appointment.getAppointmentId())
+                    && appointment.getAppointmentId().equals(appointmentId)) {
                 appointment.setAppointmentDate(newDate);
                 appointment.setAppointmentTime(newTime);
                 appointment.setStatus("Rescheduled");
@@ -290,7 +299,8 @@ public class AppointmentService implements Manageable, Searchable, Appointable {
     public void displayAppointments(LocalDate date) {
         for (Appointments appointment : appointmentsList) {
 
-            if (appointment.getAppointmentDate().equals(date)) {
+            if (HelperUtils.isNotNull(appointment.getAppointmentDate())
+                    && appointment.getAppointmentDate().equals(date)) {
                 appointment.displayInfo();
             }
         }

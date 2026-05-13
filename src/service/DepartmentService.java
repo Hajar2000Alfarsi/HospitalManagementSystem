@@ -73,7 +73,8 @@ public class DepartmentService implements Manageable, Searchable {
         String dId = scanner.nextLine();
 
         for (Departments department: departmentsList){
-            if (department.getDepartmentId().equals(dId)){
+            if (HelperUtils.isNotNull(department.getDepartmentId())
+            && department.getDepartmentId().equals(dId)){
                 System.out.println("Enter Updated Department Name: ");
                 department.setDepartmentName(scanner.nextLine());
 
@@ -114,7 +115,8 @@ public class DepartmentService implements Manageable, Searchable {
 
     public Departments getDepartmentById(String departmentId) {
         for (Departments department: departmentsList) {
-            if (department.getDepartmentId().equals(departmentId)) {
+            if (HelperUtils.isNotNull(department.getDepartmentId())
+            && department.getDepartmentId().equals(departmentId)) {
                 //department.displayInfo();
                 return department;
             }
@@ -138,7 +140,8 @@ public class DepartmentService implements Manageable, Searchable {
         Doctors doctors1 = doctorService.getDoctorById(doctorId);
 
         for (Departments department: departmentsList){
-            if (department.getDepartmentId().equals(departmentId)) {
+            if (HelperUtils.isNotNull(department.getDepartmentId())
+            && department.getDepartmentId().equals(departmentId)) {
                 department.getDoctors().add(doctors1);
                 System.out.println("Doctor Assigned Successfully");
                 return;
@@ -152,7 +155,8 @@ public class DepartmentService implements Manageable, Searchable {
         Nurses nurses1 = nurseService.getNurseById(nurseID);
 
         for (Departments department: departmentsList){
-            if (department.getDepartmentId().equals(departmentId)) {
+            if (HelperUtils.isNotNull(department.getDepartmentId())
+            && department.getDepartmentId().equals(departmentId)) {
                 department.getNurses().add(nurses1);
                 System.out.println("Nurse Assigned Successfully");
                 return;
@@ -163,7 +167,8 @@ public class DepartmentService implements Manageable, Searchable {
 
     public void updateBedAvailability(String departmentId, int availableBeds) {
         for (Departments dept:departmentsList){
-            if (dept.getDepartmentId().equals(departmentId)){
+            if (HelperUtils.isNotNull(dept.getDepartmentId())
+            && dept.getDepartmentId().equals(departmentId)){
                 dept.setAvailableBeds(availableBeds);
                 System.out.println("Beds updated successfully.");
                 return;

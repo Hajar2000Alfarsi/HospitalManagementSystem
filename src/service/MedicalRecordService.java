@@ -71,7 +71,8 @@ public class MedicalRecordService implements Manageable, Searchable {
         String rId = scanner.nextLine();
 
         for (MedicalRecords medicalRecord: medicalRecordsList){
-            if (medicalRecord.getRecordId().equals(rId)){
+            if (HelperUtils.isNotNull(medicalRecord.getRecordId())
+            && medicalRecord.getRecordId().equals(rId)){
                 System.out.println("Enter Updated patient ID: ");
                 medicalRecord.setPatientId(scanner.nextLine());
 
@@ -110,7 +111,8 @@ public class MedicalRecordService implements Manageable, Searchable {
 
         for (MedicalRecords medicalRecord: medicalRecordsList) {
 
-            if (medicalRecord.getRecordId().equals(rId)){
+            if (HelperUtils.isNotNull(medicalRecord.getRecordId())
+            && medicalRecord.getRecordId().equals(rId)){
 
                 medicalRecordsList.remove(medicalRecord);
                 System.out.println("Medical record removed successfully");
@@ -128,7 +130,8 @@ public class MedicalRecordService implements Manageable, Searchable {
         List<MedicalRecords> patientMedicalRecord = new ArrayList<>();
 
         for (MedicalRecords medicalRecords: medicalRecordsList) {
-            if (medicalRecords.getPatientId().equals(pId)){
+            if (HelperUtils.isNotNull(medicalRecords.getPatientId())
+            &&medicalRecords.getPatientId().equals(pId)){
                 medicalRecords.displayInfo();
                 patientMedicalRecord.add(medicalRecords);
                 return patientMedicalRecord;
@@ -144,7 +147,8 @@ public class MedicalRecordService implements Manageable, Searchable {
         List<MedicalRecords> doctorMedicalRecord =  new ArrayList<>();
 
         for (MedicalRecords medicalRecord: medicalRecordsList){
-            if (medicalRecord.getDoctorId().equals(dId)){
+            if (HelperUtils.isNotNull(medicalRecord.getDoctorId())
+            && medicalRecord.getDoctorId().equals(dId)){
                 medicalRecord.displayInfo();
                 doctorMedicalRecord.add(medicalRecord);
                 return doctorMedicalRecord;
@@ -159,7 +163,8 @@ public class MedicalRecordService implements Manageable, Searchable {
 
         for (MedicalRecords medicalRecords: medicalRecordsList) {
 
-            if (medicalRecords.getPatientId().equals(pId)) {
+            if (HelperUtils.isNotNull(medicalRecords.getRecordId())
+                  &&  medicalRecords.getPatientId().equals(pId)) {
                 medicalRecords.displayInfo();
             }
         }
