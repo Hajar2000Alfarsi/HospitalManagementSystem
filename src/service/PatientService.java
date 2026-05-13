@@ -1,7 +1,6 @@
 package service;
 
 import Entites.Appointments;
-import Entites.Billing;
 import Entites.MedicalRecords;
 import Entites.Patients;
 import Interface.Manageable;

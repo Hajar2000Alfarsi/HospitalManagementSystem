@@ -132,4 +132,14 @@ public class Person implements Editable {
     public int hashCode() {
         return Objects.hash(id, firstName, lastName, dateOfBirth, gender, poneNumber, email, address);
     }
+
+    @Override
+    public void edit(Object updatedData) {
+
+    }
+
+    @Override
+    public void validate() {
+
+    }
 }

@@ -27,7 +27,9 @@ public class Main {
                     Boolean patientMenuContinue = true;
                     while (patientMenuContinue){
                         System.out.println(MenuMessages.PATIENT_MENU_MESSAGE);
+
                         Integer patientOption = scanner.nextInt();
+                        if (patientOption == 10) break;
 
                         patientService.handlePatientMenu(patientOption);
                     }
@@ -37,7 +39,9 @@ public class Main {
                     Boolean doctorMenuContinue = true;
                     while (doctorMenuContinue){
                         System.out.println(MenuMessages.DOCTOR_MENU_MESSAGE);
+
                         Integer doctorOption = scanner.nextInt();
+                        if (doctorOption == 11) break;
 
                         doctorService.handleDoctorMenu(doctorOption);
                     }
@@ -47,29 +51,35 @@ public class Main {
                     Boolean nurseMenuContinue = true;
                     while (nurseMenuContinue){
                         System.out.println(MenuMessages.NURSE_MENU_MESSAGE);
+
                         Integer nurseOption = scanner.nextInt();
+                        if (nurseOption == 8) break;
 
                         nurseService.handleNurseMenu(nurseOption);
                     }
                 }
 
                 case 4 -> {
-                    Boolean MedicalRecordMenuContinue = true;
-                    while (MedicalRecordMenuContinue){
-                        System.out.println(MenuMessages.MEDICAL_RECORD_MENU_MESSAGE);
-                        Integer medicalRecordOption = scanner.nextInt();
+                    Boolean AppointmentMenuContinue = true;
+                    while (AppointmentMenuContinue){
+                        System.out.println(MenuMessages.APPOINTMENT_MENU_MESSAGE);
 
-                        medicalRecordService.handleMedicalRecordMenu(medicalRecordOption);
+                        Integer appointmentOption = scanner.nextInt();
+                        if (appointmentOption == 10) break;
+
+                        appointmentService.handleAppointmentMenu(appointmentOption);
                     }
                 }
 
                 case 5 -> {
-                    Boolean AppointmentMenuContinue = true;
-                    while (AppointmentMenuContinue){
-                        System.out.println(MenuMessages.APPOINTMENT_MENU_MESSAGE);
-                        Integer appointmentOption = scanner.nextInt();
+                    Boolean MedicalRecordMenuContinue = true;
+                    while (MedicalRecordMenuContinue){
+                        System.out.println(MenuMessages.MEDICAL_RECORD_MENU_MESSAGE);
 
-                        appointmentService.handleAppointmentMenu(appointmentOption);
+                        Integer medicalRecordOption = scanner.nextInt();
+                        if (medicalRecordOption == 8) break;
+
+                        medicalRecordService.handleMedicalRecordMenu(medicalRecordOption);
                     }
                 }
 
@@ -77,12 +87,25 @@ public class Main {
                     Boolean departmentMenuContinue = true;
                     while (departmentMenuContinue){
                         System.out.println(MenuMessages.Department_MENU_MESSAGE);
+
                         Integer departmentOption = scanner.nextInt();
+                        if (departmentOption == 8) break;
 
                         departmentService.handleDepartmentMenu(departmentOption);
                     }
                 }
 
+                case 8 -> {
+                    Boolean reportsStatisticsContinue = true;
+                    while (reportsStatisticsContinue){
+                        System.out.println(MenuMessages.REPORT_AND_STATICS_MENU_MESSAGE);
+
+                        Integer reportsStatisticsOption = scanner.nextInt();
+                        if (reportsStatisticsOption == 6) break;
+
+                        departmentService.handleDepartmentMenu(reportsStatisticsOption);
+                    }
+                }
                 case 8 -> {
                     System.out.println("Exit");
                     continueFlag = false;
