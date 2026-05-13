@@ -10,4 +10,11 @@ public class HelperUtils {
     public static boolean isNull(String str){
         return str == null || str.trim().isEmpty();
     }
+
+    //Check if Object is NOT null
+    public static boolean isNotNull(Object obj) {
+        return obj != null;
+    }
+
+
 }
