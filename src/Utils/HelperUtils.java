@@ -191,5 +191,10 @@ public class HelperUtils {
         return num < 0;
     }
 
+    // negative double
+    public static boolean isNegative(double num) {
+        return num < 0;
+    }
+
 
 }
