@@ -6,6 +6,7 @@ import Entites.MedicalRecords;
 import Entites.Patients;
 import Interface.Manageable;
 import Interface.Searchable;
+import Utils.HelperUtils;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -49,8 +50,9 @@ public class PatientService implements Manageable, Searchable {
         System.out.println("Address: ");
         String address = scanner.nextLine();
 
-        System.out.println("Patient ID: ");
-        String patientId = scanner.nextLine();
+        /*System.out.println("Patient ID: ");
+        String patientId = scanner.nextLine();*/
+        String patientId = HelperUtils.generateId("PAT");
 
         System.out.println("Blood Group: ");
         String bloodGroup = scanner.nextLine();
@@ -231,7 +233,8 @@ public class PatientService implements Manageable, Searchable {
         String pId = scanner.nextLine();
 
         for (Patients patient: patientsList) {
-            if (patient.getPatientId().equals(pId)) {
+            if (HelperUtils.isNotNull(patient.getPatientId())
+             && patient.getPatientId().equals(pId)) {
                 patientsList.remove(patient);
                 System.out.println("Patient removed successfully");
                 return true;
@@ -243,7 +246,8 @@ public class PatientService implements Manageable, Searchable {
 
     public Patients getPatientById(String patientId) {
         for (Patients patient: patientsList) {
-            if (patient.getPatientId().equals(patientId)) {
+            if (HelperUtils.isNotNull(patient.getPatientId())
+             && patient.getPatientId().equals(patientId)) {
                 patient.displayInfo();
                 return patient;
             }
@@ -281,7 +285,7 @@ public class PatientService implements Manageable, Searchable {
 
         for (Patients patient: patientsList) {
             //If this value empty ignore and continue
-            if (patient == null) continue;
+            if (HelperUtils.isNull(patient)) continue;
 
             boolean matches = (patient.getPatientId().toLowerCase().contains(search)
                     || patient.getFirstName().toLowerCase().contains(search)
@@ -313,7 +317,7 @@ public class PatientService implements Manageable, Searchable {
         int count = 0;
 
         for (Patients patient: patientsList) {
-            if (patient == null) continue;
+            if (HelperUtils.isNull(patient)) continue;
 
             patient.displayInfo();
             System.out.println("_______________________________");

@@ -1,6 +1,7 @@
 package Entites;
 
 import Interface.Displayable;
+import Utils.HelperUtils;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -60,7 +61,9 @@ public class Patients extends Person implements Displayable {
     }
 
     public void setPatientId(String patientId) {
-        this.patientId = patientId;
+        if (HelperUtils.isNotNull(patientId)) {
+            this.patientId = patientId;
+        }
     }
 
     public List<Appointments> getAppointments() {
@@ -76,7 +79,9 @@ public class Patients extends Person implements Displayable {
     }
 
     public void setRegistrationDate(LocalDate registrationDate) {
-        this.registrationDate = registrationDate;
+        if (HelperUtils.isNotNull(registrationDate)) {
+            this.registrationDate = registrationDate;
+        }
     }
 
     public List<MedicalRecords> getMedicalRecords() {
@@ -100,7 +105,9 @@ public class Patients extends Person implements Displayable {
     }
 
     public void setEmergencyContact(String emergencyContact) {
-        this.emergencyContact = emergencyContact;
+        if (HelperUtils.isNotNull(emergencyContact)) {
+            this.emergencyContact = emergencyContact;
+        }
     }
 
     public String getBloodGroup() {
@@ -108,7 +115,9 @@ public class Patients extends Person implements Displayable {
     }
 
     public void setBloodGroup(String bloodGroup) {
-        this.bloodGroup = bloodGroup;
+        if (HelperUtils.isNotNull(bloodGroup)) {
+            this.bloodGroup = bloodGroup;
+        }
     }
 
     public List<String> getAllergies() {
@@ -116,7 +125,9 @@ public class Patients extends Person implements Displayable {
     }
 
     public void setAllergies(List<String> allergies) {
-        this.allergies = allergies;
+        if (HelperUtils.isNotNull(allergies)) {
+            this.allergies = allergies;
+        }
     }
 
     //Update phone number
@@ -184,7 +195,31 @@ public class Patients extends Person implements Displayable {
 
     @Override
     public void edit(Object updatedData) {
+        Patients p = (Patients) updatedData;
 
+        if (!HelperUtils.isNotNull(getLastName())) {
+            System.out.println("Last name is required");
+        }
+
+        if (!HelperUtils.isValidAge(getDateOfBirth())) {
+            System.out.println("Invalid date of birth");
+        }
+
+        if (!HelperUtils.isNotNull(getPoneNumber())) {
+            System.out.println("Phone number is required");
+        }
+
+        if (!HelperUtils.isNotNull(getEmail())) {
+            System.out.println("Email is required");
+        }
+
+        if (!HelperUtils.isNotNull(patientId)) {
+            System.out.println("Patient ID is required");
+        }
+
+        if (!HelperUtils.isNotNull(bloodGroup)) {
+            System.out.println("Blood group is required");
+        }
     }
 
     @Override
