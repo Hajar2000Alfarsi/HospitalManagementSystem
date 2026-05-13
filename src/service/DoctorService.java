@@ -231,15 +231,12 @@ public class DoctorService implements Manageable, Searchable {
         return false;
     }
 
-    public boolean removeDoctor(){
-        System.out.println("Enter Doctor ID: ");
-        String dId = scanner.nextLine();
-
+    public boolean removeDoctor(String doctorId){
         Doctors toRemove = null;
 
         for (Doctors doctor: doctorsList) {
 
-            if (doctor.getDoctorId().equals(dId)){
+            if (doctor.getDoctorId().equals(doctorId)){
                 toRemove = doctor;
                 break;
             }
@@ -382,7 +379,10 @@ public class DoctorService implements Manageable, Searchable {
                 editDoctor();
             }
             case 3 -> {
-                removeDoctor();
+                System.out.println("Enter Doctor ID: ");
+                String dId = scanner.nextLine();
+
+                removeDoctor(dId);
             }
             case 4 -> {
                 System.out.println("Enter Doctor ID: ");
