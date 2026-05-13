@@ -5,6 +5,7 @@ import Entites.Nurses;
 import Interface.Manageable;
 import Interface.Searchable;
 import Utils.HelperUtils;
+import Utils.InputHandler;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -13,7 +14,6 @@ import java.util.Scanner;
 
 public class MedicalRecordService implements Manageable, Searchable {
     static List<MedicalRecords> medicalRecordsList = new ArrayList<>();
-    Scanner scanner = new Scanner(System.in);
 
     public MedicalRecords addMedicalRecord(){
         System.out.println("Add new Medical Record ");
@@ -23,27 +23,35 @@ public class MedicalRecordService implements Manageable, Searchable {
         String recordId = HelperUtils.generateId("MR");
         System.out.println("Assigned ID to Medical record: " + recordId );
 
-        System.out.println("Enter Patient ID: ");
-        String patientId = scanner.nextLine();
+        /*System.out.println("Enter Patient ID: ");
+        String patientId = scanner.nextLine();*/
+        String patientId = InputHandler.getStringInput("Enter Patient ID: ");
 
-        System.out.println("Enter Doctor ID: ");
-        String doctorId = scanner.nextLine();
+        /*System.out.println("Enter Doctor ID: ");
+        String doctorId = scanner.nextLine();*/
+        String doctorId = InputHandler.getStringInput("Enter Doctor ID: ");
 
-        System.out.println("Enter visit Date: ");
+
+        /*System.out.println("Enter visit Date: ");
         String visitDate = scanner.nextLine();
-        LocalDate vd = LocalDate.parse(visitDate);
+        LocalDate vd = LocalDate.parse(visitDate);*/
+        LocalDate vd = InputHandler.getDateInput("Enter visit Date: ");
 
-        System.out.println("Enter diagnosis: ");
-        String diagnosis = scanner.nextLine();
+        /*System.out.println("Enter diagnosis: ");
+        String diagnosis = scanner.nextLine();*/
+        String diagnosis = InputHandler.getStringInput("Enter diagnosis: ");
 
-        System.out.println("Enter prescription: ");
-        String prescription = scanner.nextLine();
+        /*System.out.println("Enter prescription: ");
+        String prescription = scanner.nextLine();*/
+        String prescription = InputHandler.getStringInput("Enter prescription: ");
 
-        System.out.println("Enter test results: ");
-        String testResults = scanner.nextLine();
+        /*System.out.println("Enter test results: ");
+        String testResults = scanner.nextLine();*/
+        String testResults = InputHandler.getStringInput("Enter test results: ");
 
-        System.out.println("Enter notes: ");
-        String notes = scanner.nextLine();
+        /*System.out.println("Enter notes: ");
+        String notes = scanner.nextLine();*/
+        String notes = InputHandler.getStringInput("Enter notes: ");
 
         MedicalRecords medicalRecords = new MedicalRecords(recordId,patientId,vd,doctorId,diagnosis,prescription,testResults,notes);
 
@@ -57,8 +65,9 @@ public class MedicalRecordService implements Manageable, Searchable {
             medicalRecordsList.add(addMedicalRecord());
             System.out.println("Record Added Successfully");
 
-            System.out.println("Enter q to exit, press ENTER to continue for more patient");
-            if (scanner.nextLine().equalsIgnoreCase("q")) {
+            String input = InputHandler.getStringInput("Enter q to exit, press ENTER to continue: ");
+
+            if (input.equalsIgnoreCase("q")) {
                 continueFlag = false;
             }
         }
@@ -66,35 +75,39 @@ public class MedicalRecordService implements Manageable, Searchable {
     }
 
 
-    public boolean editMedicalRecord() {
-        System.out.println("Enter record ID: ");
-        String rId = scanner.nextLine();
-
+    public boolean editMedicalRecord(String recordId) {
         for (MedicalRecords medicalRecord: medicalRecordsList){
             if (HelperUtils.isNotNull(medicalRecord.getRecordId())
-            && medicalRecord.getRecordId().equals(rId)){
-                System.out.println("Enter Updated patient ID: ");
-                medicalRecord.setPatientId(scanner.nextLine());
+            && medicalRecord.getRecordId().equals(recordId)){
+                /*System.out.println("Enter Updated patient ID: ");
+                medicalRecord.setPatientId(scanner.nextLine());*/
+                medicalRecord.setPatientId(InputHandler.getStringInput("Enter Updated patient ID: "));
 
-                System.out.println("Enter Updated doctor ID: ");
-                medicalRecord.setDoctorId(scanner.nextLine());
+                /*System.out.println("Enter Updated doctor ID: ");
+                medicalRecord.setDoctorId(scanner.nextLine());*/
+                medicalRecord.setDoctorId(InputHandler.getStringInput("Enter Updated doctor ID: "));
 
-                System.out.println("Updated visit date: ");
+                /*System.out.println("Updated visit date: ");
                 String visitDate = scanner.nextLine();
-                LocalDate vd = LocalDate.parse(visitDate);
+                LocalDate vd = LocalDate.parse(visitDate);*/
+                LocalDate vd = InputHandler.getDateInput("Updated visit date: ");
                 medicalRecord.setVisitDate(vd);
 
-                System.out.println("Updated diagnosis: ");
-                medicalRecord.setDiagnosis(scanner.nextLine());
+                /*System.out.println("Updated diagnosis: ");
+                medicalRecord.setDiagnosis(scanner.nextLine());*/
+                medicalRecord.setDiagnosis(InputHandler.getStringInput("Updated diagnosis: "));
 
-                System.out.println("Updated prescription: ");
-                medicalRecord.setPrescription(scanner.nextLine());
 
-                System.out.println("Updated test result: ");
-                medicalRecord.setTestResults(scanner.nextLine());
+                /*System.out.println("Updated prescription: ");
+                medicalRecord.setPrescription(scanner.nextLine());*/
+                medicalRecord.setPrescription(InputHandler.getStringInput("Updated prescription: "));
 
-                System.out.println("Updated notes: ");
-                medicalRecord.setNotes(scanner.nextLine());
+
+                /*System.out.println("Updated test result: ");
+                medicalRecord.setTestResults(scanner.nextLine());*/
+                medicalRecord.setTestResults(InputHandler.getStringInput("Updated test result: "));
+
+                medicalRecord.setNotes(InputHandler.getStringInput("Updated notes: "));
 
             }
             System.out.println("Medical Record updated successfully.");
@@ -105,14 +118,11 @@ public class MedicalRecordService implements Manageable, Searchable {
         return false;
     }
 
-    public boolean removeMedicalRecords() {
-        System.out.println("Enter record ID: ");
-        String rId = scanner.nextLine();
-
+    public boolean removeMedicalRecords(String recordId) {
         for (MedicalRecords medicalRecord: medicalRecordsList) {
 
             if (HelperUtils.isNotNull(medicalRecord.getRecordId())
-            && medicalRecord.getRecordId().equals(rId)){
+            && medicalRecord.getRecordId().equals(recordId)){
 
                 medicalRecordsList.remove(medicalRecord);
                 System.out.println("Medical record removed successfully");
@@ -123,15 +133,12 @@ public class MedicalRecordService implements Manageable, Searchable {
         return false;
     }
 
-    public List<MedicalRecords> getRecordsByPatientId() {
-        System.out.println("Enter Patient ID: ");
-        String pId = scanner.nextLine();
-
+    public List<MedicalRecords> getRecordsByPatientId(String patientId) {
         List<MedicalRecords> patientMedicalRecord = new ArrayList<>();
 
         for (MedicalRecords medicalRecords: medicalRecordsList) {
             if (HelperUtils.isNotNull(medicalRecords.getPatientId())
-            &&medicalRecords.getPatientId().equals(pId)){
+            &&medicalRecords.getPatientId().equals(patientId)){
                 medicalRecords.displayInfo();
                 patientMedicalRecord.add(medicalRecords);
                 return patientMedicalRecord;
@@ -140,15 +147,12 @@ public class MedicalRecordService implements Manageable, Searchable {
         return null;
     }
 
-    public List<MedicalRecords> getRecordsByDoctorId(){
-        System.out.println("Enter Doctor ID: ");
-        String dId = scanner.nextLine();
-
+    public List<MedicalRecords> getRecordsByDoctorId(String doctorId){
         List<MedicalRecords> doctorMedicalRecord =  new ArrayList<>();
 
         for (MedicalRecords medicalRecord: medicalRecordsList){
             if (HelperUtils.isNotNull(medicalRecord.getDoctorId())
-            && medicalRecord.getDoctorId().equals(dId)){
+            && medicalRecord.getDoctorId().equals(doctorId)){
                 medicalRecord.displayInfo();
                 doctorMedicalRecord.add(medicalRecord);
                 return doctorMedicalRecord;
@@ -157,14 +161,11 @@ public class MedicalRecordService implements Manageable, Searchable {
         return null;
     }
 
-    public void displayPatientHistory() {
-        System.out.println("Enter Patient ID: ");
-        String pId = scanner.nextLine();
-
+    public void displayPatientHistory(String patientId) {
         for (MedicalRecords medicalRecords: medicalRecordsList) {
 
             if (HelperUtils.isNotNull(medicalRecords.getRecordId())
-                  &&  medicalRecords.getPatientId().equals(pId)) {
+                  &&  medicalRecords.getPatientId().equals(patientId)) {
                 medicalRecords.displayInfo();
             }
         }
@@ -178,19 +179,26 @@ public class MedicalRecordService implements Manageable, Searchable {
                 addMedicalRecords();
             }
             case 2 -> {
-                editMedicalRecord();
+                String rId = InputHandler.getStringInput("Enter record ID: ");
+
+                editMedicalRecord(rId);
             }
             case 3 -> {
-                removeMedicalRecords();
+                String rId = InputHandler.getStringInput("Enter record ID: ");
+
+                removeMedicalRecords(rId);
             }
             case 4 -> {
-                getRecordsByPatientId();
+                String pId = InputHandler.getStringInput("Enter Patient ID: ");
+                getRecordsByPatientId(pId);
             }
             case 5 -> {
-                getRecordsByDoctorId();
+                String dId = InputHandler.getStringInput("Enter Doctor ID: ");
+                getRecordsByDoctorId(dId);
             }
             case 6 -> {
-                displayPatientHistory();
+                String pId = InputHandler.getStringInput("Enter Patient ID: ");
+                displayPatientHistory(pId);
             }
             case 7 -> {
                 return false;
