@@ -16,5 +16,8 @@ public class HelperUtils {
         return obj != null;
     }
 
-
+    // Check if String is NOT null and NOT empty
+    public static boolean isNotNull(String str) {
+        return str != null && !str.trim().isEmpty();
+    }
 }
