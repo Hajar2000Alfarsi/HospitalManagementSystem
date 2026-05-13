@@ -47,5 +47,11 @@ public class HelperUtils {
         return length >= minLength && length <= maxLength;
     }
 
-
+    // Validate using regex pattern
+    public static boolean isValidString(String str, String regex) {
+        if (!isValidString(str)) {
+            return false;
+        }
+        return str.matches(regex);
+    }
 }
