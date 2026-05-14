@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class DepartmentService implements Manageable, Searchable {
-    List<Departments> departmentsList = new ArrayList<>();
+    public static List<Departments> departmentsList = new ArrayList<>();
     List<Doctors> doctors = new ArrayList<>();
     List<Nurses> nurses = new ArrayList<>();
     //private DoctorService doctorService = new DoctorService();
@@ -121,7 +121,8 @@ public class DepartmentService implements Manageable, Searchable {
         for (Departments department: departmentsList) {
             if (HelperUtils.isNotNull(department.getDepartmentId())
             && department.getDepartmentId().equals(departmentId)) {
-                //department.displayInfo();
+                department.displayInfo();
+                System.out.println("\n-------------------------------------------\n");
                 return department;
             }
         }
@@ -136,6 +137,7 @@ public class DepartmentService implements Manageable, Searchable {
         }
         for (Departments department: departmentsList) {
             department.displayInfo();
+            System.out.println("\n-------------------------------------------\n");
         }
     }
 
@@ -152,7 +154,7 @@ public class DepartmentService implements Manageable, Searchable {
             System.out.println("Bed Capacity: " + department.getBedCapacity());
             System.out.println("Available Beds: " + department.getAvailableBeds());
 
-            System.out.println("______________________________");
+            System.out.println("______________________________\n");
         }
     }
 
@@ -243,9 +245,9 @@ public class DepartmentService implements Manageable, Searchable {
                 System.out.println("Department already exists!");
                 return;
             }
-            departmentsList.add(department);
-            System.out.println("Department added successfully.");
         }
+        departmentsList.add(department);
+        System.out.println("Department added successfully.");
     }
 
     @Override

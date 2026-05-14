@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class MedicalRecordService implements Manageable, Searchable {
-    static List<MedicalRecords> medicalRecordsList = new ArrayList<>();
+    public static List<MedicalRecords> medicalRecordsList = new ArrayList<>();
 
     public MedicalRecords addMedicalRecord(){
         System.out.println("Add new Medical Record ");
@@ -153,6 +153,7 @@ public class MedicalRecordService implements Manageable, Searchable {
             if (HelperUtils.isNotNull(medicalRecords.getPatientId())
             &&medicalRecords.getPatientId().equals(patientId)){
                 medicalRecords.displayInfo();
+                System.out.println("\n-------------------------------------------\n");
                 patientMedicalRecord.add(medicalRecords);
             }
         }
@@ -166,6 +167,7 @@ public class MedicalRecordService implements Manageable, Searchable {
             if (HelperUtils.isNotNull(medicalRecord.getDoctorId())
             && medicalRecord.getDoctorId().equals(doctorId)){
                 medicalRecord.displayInfo();
+                System.out.println("\n-------------------------------------------\n");
                 doctorMedicalRecord.add(medicalRecord);
 
             }
@@ -179,6 +181,7 @@ public class MedicalRecordService implements Manageable, Searchable {
             if (HelperUtils.isNotNull(medicalRecords.getRecordId())
                   &&  medicalRecords.getPatientId().equals(patientId)) {
                 medicalRecords.displayInfo();
+                System.out.println("\n-------------------------------------------\n");
             }
         }
     }
@@ -228,9 +231,9 @@ public class MedicalRecordService implements Manageable, Searchable {
                 System.out.println("Record already exists!");
                 return;
             }
-            medicalRecordsList.add(medicalRecord);
-            System.out.println("Record added successfully.");
         }
+        medicalRecordsList.add(medicalRecord);
+        System.out.println("Record added successfully.");
     }
 
     @Override

@@ -1,6 +1,9 @@
 package service;
 
 import Entites.Departments;
+import Entites.EmergencyPatient;
+import Entites.Patients;
+import Utils.InputHandler;
 
 import java.time.LocalDate;
 
@@ -9,6 +12,7 @@ public class ReportService {
     private DoctorService doctorService;
     private DepartmentService departmentService;
     private MedicalRecordService medicalRecordService;
+    private PatientService patientService;
 
     public void dailyAppointmentsReport(LocalDate date){
         appointmentService.displayAppointments(date);
@@ -45,10 +49,49 @@ public class ReportService {
     }
 
     public void emergencyCasesReport(){
+        System.out.println("-----Emergency Cases Report-------");
 
+        boolean found = false;
+
+        for (Patients patient : patientService.patientsList) {
+            if (patient instanceof EmergencyPatient){
+                EmergencyPatient emergencyPatient = (EmergencyPatient) patient;
+
+                emergencyPatient.displayInfo();
+
+                found = true;
+            }
+        }
+        if (!found){
+            System.out.println("No emergency cases found");
+        }
     }
 
+    public boolean handleReportMenu(Integer reportOption) {
 
-
+        switch (reportOption) {
+            case 1 -> {
+                LocalDate date = InputHandler.getDateInput("Eneter date: ");
+                dailyAppointmentsReport(date);
+            }
+            case 2 -> {
+                String doctorId = InputHandler.getStringInput("Enter Doctor ID: ");
+                doctorPerformanceReport(doctorId);
+            }
+            case 3 -> {
+                String departmentId = InputHandler.getStringInput("Enter Department name:");
+                departmentOccupancyReport(departmentId);
+            }
+            case 4 -> {
+                String patientId = InputHandler.getStringInput("Enter Patient ID: ");
+                patientStatistics(patientId);
+            }
+            case 5 -> {
+                emergencyCasesReport();
+            }
+            default -> System.out.println("Invalid option");
+        }
+        return true;
+    }
 
 }

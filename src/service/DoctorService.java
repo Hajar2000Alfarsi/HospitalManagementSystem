@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class DoctorService implements Manageable, Searchable {
-        static List<Doctors> doctorsList = new ArrayList<>();
+        public static List<Doctors> doctorsList = new ArrayList<>();
         List<String> availableSlots = new ArrayList<>();
         List<String> assignedPatients = new ArrayList<>();
 
@@ -376,6 +376,7 @@ public class DoctorService implements Manageable, Searchable {
                 if (HelperUtils.isNotNull(doctor.getDoctorId())
                 && doctor.getDoctorId().equals(doctorId)){
                     doctor.displayInfo();
+                    System.out.println("\n-------------------------------------------\n");
                     return doctor;
                 }
             }
@@ -391,7 +392,7 @@ public class DoctorService implements Manageable, Searchable {
 
             for (Doctors doctor: doctorsList) {
                 doctor.displayInfo();
-                System.out.println("\n");
+                System.out.println("\n-------------------------------------------\n");
             }
         }
 
@@ -408,7 +409,8 @@ public class DoctorService implements Manageable, Searchable {
             for (Doctors doctor: doctorsList) {
                 if (HelperUtils.isNotNull(doctor.getSpecialization())
                 && doctor.getSpecialization().equalsIgnoreCase(specialization)) {
-                    //doctor.displayInfo();
+                    doctor.displayInfo();
+                    System.out.println("\n-------------------------------------------\n");
                     result.add(doctor);
                 }
             }
@@ -428,7 +430,7 @@ public class DoctorService implements Manageable, Searchable {
 
             for (Doctors doctor: doctorBySpecialization) {
                 doctor.displayInfo();
-                System.out.println("______________________________");
+                System.out.println("\n-------------------------------------------\n");
             }
         }
 
@@ -444,6 +446,7 @@ public class DoctorService implements Manageable, Searchable {
 
             for (Doctors d: availableDoctors){
                 d.displayInfo();
+                System.out.println("\n-------------------------------------------\n");
             }
             return availableDoctors;
         }
@@ -478,7 +481,7 @@ public class DoctorService implements Manageable, Searchable {
                 }
 
                 doctor.displayInfo();
-                System.out.println("____________________________");
+                System.out.println("\n-------------------------------------------\n");
                 found = true;
             }
 
@@ -542,9 +545,9 @@ public class DoctorService implements Manageable, Searchable {
                     System.out.println("Doctor already exists!");
                     return;
                 }
-                doctorsList.add(doctor);
-                System.out.println("Doctor added successfully.");
             }
+            doctorsList.add(doctor);
+            System.out.println("Doctor added successfully.");
         }
 
         @Override

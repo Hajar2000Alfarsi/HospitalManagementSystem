@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class NurseService implements Manageable, Searchable {
-    static List<Nurses> nursesList = new ArrayList<>();
+    public static List<Nurses> nursesList = new ArrayList<>();
     List<String> assignedPatients =new ArrayList<>();
 
     public Nurses addNurse() {
@@ -182,7 +182,7 @@ public class NurseService implements Manageable, Searchable {
 
         for (Nurses nurses: nursesList) {
             nurses.displayInfo();
-            System.out.println("\n");
+            System.out.println("\n-------------------------------------------\n");
         }
     }
 
@@ -193,6 +193,7 @@ public class NurseService implements Manageable, Searchable {
             if (HelperUtils.isNotNull(nurse)
             && nurse.getDepartmentId().equalsIgnoreCase(departmentId)) {
                 nurse.displayInfo();
+                System.out.println("\n-------------------------------------------\n");
                 result.add(nurse);
             }
         }
@@ -220,6 +221,7 @@ public class NurseService implements Manageable, Searchable {
             if (HelperUtils.isNotNull(nurse)
             && nurse.getShift().equalsIgnoreCase(shiftToDisplay)) {
                 nurse.displayInfo();
+                System.out.println("\n-------------------------------------------\n");
                 result.add(nurse);
             }
         }
@@ -274,9 +276,9 @@ public class NurseService implements Manageable, Searchable {
                 System.out.println("Nurse already exists!");
                 return;
             }
-            nursesList.add(nurse);
-            System.out.println("Nurse added successfully.");
         }
+        nursesList.add(nurse);
+        System.out.println("Nurse added successfully.");
     }
 
     @Override

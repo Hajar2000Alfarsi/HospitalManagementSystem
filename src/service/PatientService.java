@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class PatientService implements Manageable, Searchable {
     //Static List to store all patients
-     static List<Patients> patientsList = new ArrayList<>();
+     public static List<Patients> patientsList = new ArrayList<>();
      List<MedicalRecords> medicalRecordsList = new ArrayList<>();
      List<Appointments> appointmentsList = new ArrayList<>();
 
@@ -449,6 +449,7 @@ public class PatientService implements Manageable, Searchable {
 
         for (Patients patient: patientsList) {
             patient.displayInfo();
+            System.out.println("\n-------------------------------------------\n");
         }
     }
 
@@ -456,6 +457,7 @@ public class PatientService implements Manageable, Searchable {
     //displayPatients() - display all
     public void displayPatients() {
         displayAllPatients();
+        System.out.println("\n-------------------------------------------\n");
     }
 
 
@@ -482,6 +484,7 @@ public class PatientService implements Manageable, Searchable {
 
             if (matches) {
                 patient.displayInfo();
+                System.out.println("\n-------------------------------------------\n");
                 found = true;
             }
         }
@@ -529,6 +532,7 @@ public class PatientService implements Manageable, Searchable {
         } else {
             for (MedicalRecords m: p.getMedicalRecords()){
                 m.displayInfo();
+                System.out.println("\n-------------------------------------------\n");
             }
         }
 
@@ -570,8 +574,8 @@ public class PatientService implements Manageable, Searchable {
             }
 
             case 6 -> {
-                String keyword = InputHandler.getStringInput("Enter keyword");
-                searchPatients(keyword);
+                String name = InputHandler.getStringInput("Enter name of patient");
+                searchPatientsByName(name);
             }
 
             case 7 -> {
@@ -603,9 +607,9 @@ public class PatientService implements Manageable, Searchable {
                 System.out.println("Patient already exists!");
                 return;
             }
-            patientsList.add(patient);
-            System.out.println("Patient added successfully.");
         }
+        patientsList.add(patient);
+        System.out.println("Patient added successfully.");
     }
 
     @Override

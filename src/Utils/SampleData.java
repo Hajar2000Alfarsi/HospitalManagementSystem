@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SampleData {
-
+   /* public static void main(String[] args) {
+        populateData();
+    }*/
 
     public static void populateData() {
         PatientService patientService = new PatientService();
@@ -255,18 +257,16 @@ public class SampleData {
                 "O+"
         );
 
-
-        patientService.add(p1);
-        patientService.add(p2);
-        patientService.add(p3);
-        patientService.add(p4);
-        patientService.add(p5);
-        patientService.add(p6);
-        patientService.add(p7);
-        patientService.add(p8);
-        patientService.add(p9);
-        patientService.add(p10);
-
+        PatientService.patientsList.add(p1);
+        PatientService.patientsList.add(p2);
+        PatientService.patientsList.add(p3);
+        PatientService.patientsList.add(p4);
+        PatientService.patientsList.add(p5);
+        PatientService.patientsList.add(p6);
+        PatientService.patientsList.add(p7);
+        PatientService.patientsList.add(p8);
+        PatientService.patientsList.add(p9);
+        PatientService.patientsList.add(p10);
 
         GeneralPractitioner d1 = new GeneralPractitioner(
                 "1",
@@ -446,14 +446,16 @@ public class SampleData {
                 true
         );
 
-        doctorService.add(d1);
-        doctorService.add(d2);
-        doctorService.add(d3);
-        doctorService.add(d4);
-        doctorService.add(d5);
-        doctorService.add(d6);
-        doctorService.add(d7);
-        doctorService.add(d8);
+
+        DoctorService.doctorsList.add(d1);
+        DoctorService.doctorsList.add(d2);
+        DoctorService.doctorsList.add(d3);
+        DoctorService.doctorsList.add(d4);
+        DoctorService.doctorsList.add(d5);
+        DoctorService.doctorsList.add(d6);
+        DoctorService.doctorsList.add(d7);
+        DoctorService.doctorsList.add(d8);
+
 
 
         Nurses n1 = new Nurses(
@@ -537,11 +539,12 @@ public class SampleData {
                 new ArrayList<>()
         );
 
-        nurseService.add(n1);
-        nurseService.add(n2);
-        nurseService.add(n3);
-        nurseService.add(n4);
-        nurseService.add(n5);
+        NurseService.nursesList.add(n1);
+        NurseService.nursesList.add(n2);
+        NurseService.nursesList.add(n3);
+        NurseService.nursesList.add(n4);
+        NurseService.nursesList.add(n5);
+
 
 
         Departments dep1 = new Departments(
@@ -576,9 +579,9 @@ public class SampleData {
                 15
         );
 
-        departmentService.add(dep1);
-        departmentService.add(dep2);
-        departmentService .add(dep3);
+        DepartmentService.departmentsList.add(dep1);
+        DepartmentService.departmentsList.add(dep2);
+        DepartmentService.departmentsList.add(dep3);
 
 
         Appointments a1 = new Appointments(
@@ -716,21 +719,21 @@ public class SampleData {
                 ""
         );
 
-        appointmentService.add(a1);
-        appointmentService.add(a2);
-        appointmentService.add(a3);
-        appointmentService.add(a4);
-        appointmentService.add(a5);
-        appointmentService.add(a6);
-        appointmentService.add(a7);
-        appointmentService.add(a8);
-        appointmentService.add(a9);
-        appointmentService.add(a10);
-        appointmentService.add(a11);
-        appointmentService.add(a12);
-        appointmentService.add(a13);
-        appointmentService.add(a14);
-        appointmentService.add(a15);
+        AppointmentService.appointmentsList.add(a1);
+        AppointmentService.appointmentsList.add(a2);
+        AppointmentService.appointmentsList.add(a3);
+        AppointmentService.appointmentsList.add(a4);
+        AppointmentService.appointmentsList.add(a5);
+        AppointmentService.appointmentsList.add(a6);
+        AppointmentService.appointmentsList.add(a7);
+        AppointmentService.appointmentsList.add(a8);
+        AppointmentService.appointmentsList.add(a9);
+        AppointmentService.appointmentsList.add(a10);
+        AppointmentService.appointmentsList.add(a11);
+        AppointmentService.appointmentsList.add(a12);
+        AppointmentService.appointmentsList.add(a13);
+        AppointmentService.appointmentsList.add(a14);
+        AppointmentService.appointmentsList.add(a15);
 
 
         MedicalRecords r1 = new MedicalRecords("MR001", "PAT001",
@@ -781,18 +784,19 @@ public class SampleData {
                 LocalDate.of(2026, 1, 21), "DOC004",
                 "Infection", "Antibiotics", "Blood Test Done", "");
 
-        medicalRecordService.add(r1);
-        medicalRecordService.add(r2);
-        medicalRecordService.add(r3);
-        medicalRecordService.add(r4);
-        medicalRecordService.add(r5);
-        medicalRecordService.add(r6);
-        medicalRecordService.add(r7);
-        medicalRecordService.add(r8);
-        medicalRecordService.add(r9);
-        medicalRecordService.add(r10);
-        medicalRecordService.add(r11);
-        medicalRecordService.add(r12);
+
+        MedicalRecordService.medicalRecordsList.add(r1);
+        MedicalRecordService.medicalRecordsList.add(r2);
+        MedicalRecordService.medicalRecordsList.add(r3);
+        MedicalRecordService.medicalRecordsList.add(r4);
+        MedicalRecordService.medicalRecordsList.add(r5);
+        MedicalRecordService.medicalRecordsList.add(r6);
+        MedicalRecordService.medicalRecordsList.add(r7);
+        MedicalRecordService.medicalRecordsList.add(r8);
+        MedicalRecordService.medicalRecordsList.add(r9);
+        MedicalRecordService.medicalRecordsList.add(r10);
+        MedicalRecordService.medicalRecordsList.add(r11);
+        MedicalRecordService.medicalRecordsList.add(r12);
 
     }
 }

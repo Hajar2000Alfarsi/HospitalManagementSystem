@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class AppointmentService implements Manageable, Searchable, Appointable {
-    List<Appointments> appointmentsList = new ArrayList<>();
+    public static List<Appointments> appointmentsList = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
 
     public Appointments addAppointment() {
@@ -181,6 +181,7 @@ public class AppointmentService implements Manageable, Searchable, Appointable {
             if (HelperUtils.isNotNull(appointment.getPatientId())
                     && appointment.getPatientId().equals(patientID)){
                 appointment.displayInfo();
+                System.out.println("\n-------------------------------------------\n");
                 patientAppointment.add(appointment);
                 return patientAppointment;
             }
@@ -197,6 +198,7 @@ public class AppointmentService implements Manageable, Searchable, Appointable {
             if (HelperUtils.isNotNull(appointment.getDoctorId())
                     && appointment.getDoctorId().equals(doctorId)){
                 appointment.displayInfo();
+                System.out.println("\n-------------------------------------------\n");
                 doctorAppointment.add(appointment);
                 return doctorAppointment;
             }
@@ -212,6 +214,7 @@ public class AppointmentService implements Manageable, Searchable, Appointable {
             if (HelperUtils.isNotNull(appointment.getAppointmentId())
                     && appointment.getAppointmentDate().equals(date)){
                 appointment.displayInfo();
+                System.out.println("\n-------------------------------------------\n");
                 dateAppointment.add(appointment);
                 return dateAppointment;
             }
@@ -261,6 +264,7 @@ public class AppointmentService implements Manageable, Searchable, Appointable {
         for (Appointments appointment: appointmentsList){
             if (appointment.getAppointmentDate().isAfter(LocalDate.now())) {
                 appointment.displayInfo();
+                System.out.println("\n-------------------------------------------\n");
             }
         }
     }
@@ -428,9 +432,9 @@ public class AppointmentService implements Manageable, Searchable, Appointable {
                 System.out.println("appointment already exists!");
                 return;
             }
-            appointmentsList.add(appointments);
-            System.out.println("appointment added successfully.");
         }
+        appointmentsList.add(appointments);
+        System.out.println("appointment added successfully.");
     }
 
     @Override

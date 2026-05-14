@@ -14,6 +14,7 @@ public class Main {
         MedicalRecordService medicalRecordService = new MedicalRecordService();
         AppointmentService appointmentService = new AppointmentService();
         DepartmentService departmentService = new DepartmentService();
+        ReportService reportService = new ReportService();
 
         SampleData.populateData();
 
@@ -105,7 +106,7 @@ public class Main {
                         Integer reportsStatisticsOption = scanner.nextInt();
                         if (reportsStatisticsOption == 6) break;
 
-                        departmentService.handleDepartmentMenu(reportsStatisticsOption);
+                        reportService.handleReportMenu(reportsStatisticsOption);
                     }
                 }
                 case 8 -> {
