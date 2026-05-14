@@ -1,6 +1,7 @@
 import Entites.MedicalRecords;
 import Entites.Nurses;
 import Utils.MenuMessages;
+import Utils.SampleData;
 import service.*;
 
 import java.util.Scanner;
@@ -12,8 +13,9 @@ public class Main {
         NurseService nurseService = new NurseService();
         MedicalRecordService medicalRecordService = new MedicalRecordService();
         AppointmentService appointmentService = new AppointmentService();
-        DepartmentService departmentService = new DepartmentService(doctorService);
+        DepartmentService departmentService = new DepartmentService();
 
+        SampleData.populateData();
 
         Scanner scanner = new Scanner(System.in);
 

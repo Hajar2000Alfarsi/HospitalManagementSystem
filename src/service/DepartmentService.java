@@ -22,9 +22,9 @@ public class DepartmentService implements Manageable, Searchable {
     private DoctorService doctorService;
 
     // Constructor Injection
-    public DepartmentService(DoctorService doctorService) {
+    /*public DepartmentService(DoctorService doctorService) {
         this.doctorService = doctorService;
-    }
+    }*/
 
     public Departments addDepartment() {
         System.out.println("Add new Department ");
@@ -139,6 +139,23 @@ public class DepartmentService implements Manageable, Searchable {
         }
     }
 
+    public void displayDepartmentStatistics() {
+        if (HelperUtils.isNull(departmentsList)) {
+            System.out.println("Department not found");
+            return;
+        }
+        System.out.println("******* Department Statistics *******");
+        for (Departments department: departmentsList) {
+            System.out.println("Department: " + departments.getDepartmentName());
+            System.out.println("Doctors: " + department.getDoctors().size());
+            System.out.println("Nurses: " + department.getNurses().size());
+            System.out.println("Bed Capacity: " + department.getBedCapacity());
+            System.out.println("Available Beds: " + department.getAvailableBeds());
+
+            System.out.println("______________________________");
+        }
+    }
+
     public void assignDoctor(String doctorId, String departmentId) {
 
         Doctors doctors1 = doctorService.getDoctorById(doctorId);
@@ -188,53 +205,47 @@ public class DepartmentService implements Manageable, Searchable {
                 addDepartments();
             }
             case 2 -> {
-                String dId = InputHandler.getStringInput("Enter Department ID: ");
-
-                editDepartment(dId);
-            }
-            case 3 -> {
-                String dId = InputHandler.getStringInput("Enter Department ID: ");
-
-                removeDepartment(dId);
-            }
-            case 4 -> {
-                String id = InputHandler.getStringInput("Write Department ID: ");
-
-                getDepartmentById(id);
-            }
-            case 5 -> {
                 displayAllDepartments();
             }
-            case 6 -> {
-                String doctorId = InputHandler.getStringInput("Write Doctor ID: ");
-                String departmentId = InputHandler.getStringInput("Write Department ID: ");
-
-
+            case 3 -> {
+                String id = InputHandler.getStringInput("Department ID: ");
+                getDepartmentById(id);
+            }
+            case 4 -> {
+                String doctorId = InputHandler.getStringInput("Doctor ID: ");
+                String departmentId = InputHandler.getStringInput("Department ID: ");
                 assignDoctor(doctorId, departmentId);
             }
+            case 5 -> {
+                String nurseId = InputHandler.getStringInput("Nurse ID: ");
+                String departmentId = InputHandler.getStringInput("Department ID: ");
+                assignNurse(nurseId, departmentId);
+            }
+            case 6 -> {
+                String id = InputHandler.getStringInput("Department ID: ");
+                editDepartment(id);
+            }
             case 7 -> {
-                String nurseID = InputHandler.getStringInput("Write Nurse ID: ");
-                String departmentId = InputHandler.getStringInput("Write Department ID: ");
-
-                assignNurse(nurseID, departmentId);
+                displayDepartmentStatistics();
             }
-            case 8 -> {
-                String departmentId = InputHandler.getStringInput("Write Department ID: ");
-                int availableBeds = InputHandler.getIntInput("Write Number of available beds: ");
-
-                updateBedAvailability(departmentId,availableBeds);
-            }
-            case 9 -> {
-                System.out.println("Exit");
-                return false;
-            }
+            default -> System.out.println("Invalid option");
         }
         return true;
     }
 
     @Override
     public void add(Object entity) {
+        Departments department = (Departments) entity;
 
+        for (Departments d: departmentsList) {
+            if (d.getDepartmentId() != null
+                    && d.getDepartmentId().equals(department.getDepartmentId())) {
+                System.out.println("Department already exists!");
+                return;
+            }
+            departmentsList.add(department);
+            System.out.println("Department added successfully.");
+        }
     }
 
     @Override

@@ -1,8 +1,6 @@
 package service;
 
-import Entites.Departments;
-import Entites.Doctors;
-import Entites.Patients;
+import Entites.*;
 import Interface.Manageable;
 import Interface.Searchable;
 import Utils.HelperUtils;
@@ -94,6 +92,121 @@ public class DoctorService implements Manageable, Searchable {
             Doctors doctors = new Doctors(civilId, firstName, lastName, dob, gender, phoneNumber, email, address, doctorId, assignedPatients, availableSlots, consultationFee, departmentId, experienceYears, qualification, specialization);
             return doctors;
         }
+
+
+    public void addSurgeon() {
+
+        String civilId = InputHandler.getStringInput("Civil ID: ");
+        String firstName = InputHandler.getStringInput("First Name: ");
+        String lastName = InputHandler.getStringInput("Last Name: ");
+        LocalDate dob = InputHandler.getDateInput("DOB: ");
+        String gender = InputHandler.getStringInput("Gender: ");
+        String phone = InputHandler.getStringInput("Phone: ");
+        String email = InputHandler.getStringInput("Email: ");
+        String address = InputHandler.getStringInput("Address: ");
+
+        String doctorId = HelperUtils.generateId("SUR");
+        String departmentId = InputHandler.getStringInput("Department ID: ");
+
+        double fee = InputHandler.getDoubleInput("Fee: ");
+        int exp = InputHandler.getIntInput("Experience: ");
+
+        String qualification = InputHandler.getStringInput("Qualification: ");
+        String specialization = "Surgeon";
+
+        Surgeon doctor =  new Surgeon(
+                civilId, firstName, lastName, dob, gender,
+                phone, email, address,
+                doctorId,
+                new ArrayList<>(),
+                new ArrayList<>(),
+                fee,
+                departmentId,
+                exp,
+                qualification,
+                specialization,
+                0,
+                new ArrayList<>(),
+                true
+        );
+        doctorsList.add(doctor);
+    }
+
+
+    public void addConsultant() {
+
+        String civilId = InputHandler.getStringInput("Civil ID: ");
+        String firstName = InputHandler.getStringInput("First Name: ");
+        String lastName = InputHandler.getStringInput("Last Name: ");
+        LocalDate dob = InputHandler.getDateInput("DOB: ");
+        String gender = InputHandler.getStringInput("Gender: ");
+        String phone = InputHandler.getStringInput("Phone: ");
+        String email = InputHandler.getStringInput("Email: ");
+        String address = InputHandler.getStringInput("Address: ");
+
+        String doctorId = HelperUtils.generateId("CON");
+        String departmentId = InputHandler.getStringInput("Department ID: ");
+
+        double fee = InputHandler.getDoubleInput("Fee: ");
+        int exp = InputHandler.getIntInput("Experience: ");
+
+        String qualification = InputHandler.getStringInput("Qualification: ");
+
+        Consultant doctor = new Consultant(
+                civilId, firstName, lastName, dob, gender,
+                phone, email, address,
+                doctorId,
+                new ArrayList<>(),
+                new ArrayList<>(),
+                fee,
+                departmentId,
+                exp,
+                qualification,
+                "Consultant",
+                new ArrayList<>(),
+                true,
+                30
+        );
+        doctorsList.add(doctor);
+    }
+
+
+    public void addGeneralPractitioner() {
+
+        String civilId = InputHandler.getStringInput("Civil ID: ");
+        String firstName = InputHandler.getStringInput("First Name: ");
+        String lastName = InputHandler.getStringInput("Last Name: ");
+        LocalDate dob = InputHandler.getDateInput("DOB: ");
+        String gender = InputHandler.getStringInput("Gender: ");
+        String phone = InputHandler.getStringInput("Phone: ");
+        String email = InputHandler.getStringInput("Email: ");
+        String address = InputHandler.getStringInput("Address: ");
+
+        String doctorId = HelperUtils.generateId("GP");
+        String departmentId = InputHandler.getStringInput("Department ID: ");
+
+        double fee = InputHandler.getDoubleInput("Fee: ");
+        int exp = InputHandler.getIntInput("Experience: ");
+
+        String qualification = InputHandler.getStringInput("Qualification: ");
+
+        GeneralPractitioner doctor = new GeneralPractitioner(
+                civilId, firstName, lastName, dob, gender,
+                phone, email, address,
+                doctorId,
+                new ArrayList<>(),
+                new ArrayList<>(),
+                fee,
+                departmentId,
+                exp,
+                qualification,
+                "GP",
+                true,
+                true,
+                true
+        );
+        doctorsList.add(doctor);
+    }
 
         public List<Doctors> addDoctors() {
             Boolean continueFlag = true;
@@ -383,18 +496,13 @@ public class DoctorService implements Manageable, Searchable {
                     addDoctors();
                 }
                 case 2 -> {
-                    String dId = InputHandler.getStringInput("Enter Doctor ID: ");
-
-                    editDoctor(dId);
+                    addSurgeon();
                 }
                 case 3 -> {
-                    String dId = InputHandler.getStringInput("Enter Doctor ID: ");
-
-                    removeDoctor(dId);
+                    addConsultant();
                 }
                 case 4 -> {
-                    String dId = InputHandler.getStringInput("Enter Doctor ID: ");
-                    getDoctorById(dId);
+                    addGeneralPractitioner();
                 }
                 case 5 -> {
                     displayAllDoctors();
@@ -407,15 +515,36 @@ public class DoctorService implements Manageable, Searchable {
                     getAvailableDoctors();
                 }
                 case 8 -> {
-                    return false;
+                    String doctorId = InputHandler.getStringInput("Doctor ID: ");
+                    String patientId = InputHandler.getStringInput("Patient ID: ");
+                   assignPatient(doctorId, patientId);
                 }
+                case 9 -> {
+                    String doctorId = InputHandler.getStringInput("Doctor ID: ");
+                    editDoctor(doctorId);
+                }
+                case 10 -> {
+                    String doctorId = InputHandler.getStringInput("Doctor ID: ");
+                    removeDoctor(doctorId);
+                }
+                default -> System.out.println("Invalid option");
             }
             return true;
         }
 
         @Override
         public void add(Object entity) {
+            Doctors doctor = (Doctors) entity;
 
+            for (Doctors d: doctorsList) {
+                if (d.getDoctorId() != null
+                        && d.getDoctorId().equals(doctor.getDoctorId())) {
+                    System.out.println("Doctor already exists!");
+                    return;
+                }
+                doctorsList.add(doctor);
+                System.out.println("Doctor added successfully.");
+            }
         }
 
         @Override

@@ -1,5 +1,6 @@
 package service;
 
+import Entites.Appointments;
 import Entites.MedicalRecords;
 import Entites.Nurses;
 import Interface.Manageable;
@@ -133,6 +134,18 @@ public class MedicalRecordService implements Manageable, Searchable {
         return false;
     }
 
+    public void displayAllRecords(){
+        if (HelperUtils.isNull(medicalRecordsList)) {
+            System.out.println("No medical record available");
+            return;
+        }
+
+        for (MedicalRecords medicalRecord: medicalRecordsList) {
+            medicalRecord.displayInfo();
+        }
+    }
+
+
     public List<MedicalRecords> getRecordsByPatientId(String patientId) {
         List<MedicalRecords> patientMedicalRecord = new ArrayList<>();
 
@@ -141,10 +154,9 @@ public class MedicalRecordService implements Manageable, Searchable {
             &&medicalRecords.getPatientId().equals(patientId)){
                 medicalRecords.displayInfo();
                 patientMedicalRecord.add(medicalRecords);
-                return patientMedicalRecord;
             }
         }
-        return null;
+        return patientMedicalRecord;
     }
 
     public List<MedicalRecords> getRecordsByDoctorId(String doctorId){
@@ -155,10 +167,10 @@ public class MedicalRecordService implements Manageable, Searchable {
             && medicalRecord.getDoctorId().equals(doctorId)){
                 medicalRecord.displayInfo();
                 doctorMedicalRecord.add(medicalRecord);
-                return doctorMedicalRecord;
+
             }
         }
-        return null;
+        return doctorMedicalRecord;
     }
 
     public void displayPatientHistory(String patientId) {
@@ -179,37 +191,46 @@ public class MedicalRecordService implements Manageable, Searchable {
                 addMedicalRecords();
             }
             case 2 -> {
-                String rId = InputHandler.getStringInput("Enter record ID: ");
-
-                editMedicalRecord(rId);
+                displayAllRecords();
             }
             case 3 -> {
-                String rId = InputHandler.getStringInput("Enter record ID: ");
-
-                removeMedicalRecords(rId);
+                String patientId = InputHandler.getStringInput("Patient ID: ");
+                getRecordsByPatientId(patientId);
             }
             case 4 -> {
-                String pId = InputHandler.getStringInput("Enter Patient ID: ");
-                getRecordsByPatientId(pId);
+                String doctorId = InputHandler.getStringInput("Doctor ID: ");
+                getRecordsByDoctorId(doctorId);
             }
             case 5 -> {
-                String dId = InputHandler.getStringInput("Enter Doctor ID: ");
-                getRecordsByDoctorId(dId);
+                String recordId = InputHandler.getStringInput("Record ID: ");
+                editMedicalRecord(recordId);
             }
             case 6 -> {
-                String pId = InputHandler.getStringInput("Enter Patient ID: ");
-                displayPatientHistory(pId);
+                String recordId = InputHandler.getStringInput("Record ID: ");
+                removeMedicalRecords(recordId);
             }
             case 7 -> {
-                return false;
+                String patientId = InputHandler.getStringInput("Patient ID: ");
+                displayPatientHistory(patientId);
             }
+            default -> System.out.println("Invalid option");
         }
         return true;
     }
 
     @Override
     public void add(Object entity) {
+        MedicalRecords medicalRecord = (MedicalRecords) entity;
 
+        for (MedicalRecords r: medicalRecordsList) {
+            if (r.getRecordId() != null
+                    && r.getRecordId().equals(medicalRecord.getRecordId())) {
+                System.out.println("Record already exists!");
+                return;
+            }
+            medicalRecordsList.add(medicalRecord);
+            System.out.println("Record added successfully.");
+        }
     }
 
     @Override

@@ -199,6 +199,20 @@ public class NurseService implements Manageable, Searchable {
         return result;
     }
 
+
+    public void assignNurseToPatient(String nurseId, String PatientId){
+        Nurses nurse = getNurseById(nurseId);
+        if (HelperUtils.isNull(nurse)) {
+            System.out.println("Nurse Not found");
+            return;
+        }
+
+        nurse.assignPatient(PatientId);
+        System.out.println("Patient assigned to nurse successfully");
+
+    }
+
+
     public List<Nurses> getNursesByShift(String shiftToDisplay) {
         List<Nurses> result = new ArrayList<>();
 
@@ -219,38 +233,50 @@ public class NurseService implements Manageable, Searchable {
                 addNurses();
             }
             case 2 -> {
-                String nId = InputHandler.getStringInput("Enter Nurse ID: ");
-                editNurse(nId);
-            }
-            case 3 -> {
-                String nId = InputHandler.getStringInput("Enter Nurse ID: ");
-                removeNurse(nId);
-            }
-            case 4 -> {
-                String nurseId = InputHandler.getStringInput("Enter Nurse ID: ");
-                getNurseById(nurseId);
-            }
-            case 5 -> {
                 displayAllNurses();
             }
-            case 6 -> {
+            case 3 -> {
                 String departmentId = InputHandler.getStringInput("Enter Department ID: ");
                 getNurseByDepartment(departmentId);
             }
+            case 4 -> {
+                String shift = InputHandler.getStringInput("Enter Shift: ");
+                getNursesByShift(shift);
+            }
+            case 5 -> {
+                String nurseId = InputHandler.getStringInput("Enter Nurse ID: ");
+                String patientId = InputHandler.getStringInput("Enter Patient ID: ");
+                assignNurseToPatient(nurseId, patientId);
+            }
+            case 6 -> {
+                String nurseId = InputHandler.getStringInput("Enter Nurse ID: ");
+                editNurse(nurseId);
+            }
             case 7 -> {
-                String shiftToDisplay = InputHandler.getStringInput("Enter shift: ");
-                getNursesByShift(shiftToDisplay);
+                String nurseId = InputHandler.getStringInput("Enter Nurse ID: ");
+                removeNurse(nurseId);
             }
             case 8 -> {
                 return false;
             }
+            default -> System.out.println("Invalid option");
         }
         return true;
     }
 
     @Override
     public void add(Object entity) {
+        Nurses nurse = (Nurses) entity;
 
+        for (Nurses n: nursesList) {
+            if (n.getNurseId() != null
+                    && n.getNurseId().equals(nurse.getNurseId())) {
+                System.out.println("Nurse already exists!");
+                return;
+            }
+            nursesList.add(nurse);
+            System.out.println("Nurse added successfully.");
+        }
     }
 
     @Override

@@ -10,11 +10,11 @@ public class OutPatient extends Patients implements Displayable {
     private LocalDate lastVisitDate;
     private String preferredDoctorId;
 
-    public OutPatient(String id, String firstName, String lastName, LocalDate dateOfBirth, String gender, String poneNumber, String email, String address, String patientId, List<MedicalRecords> medicalRecords, List<Appointments> appointments, String insuranceId, String emergencyContact, LocalDate registrationDate, List<String> allergies, String bloodGroup, int visitCount, LocalDate lastVisitDate, String preferredDoctorId) {
+    public OutPatient(String id, String firstName, String lastName, LocalDate dateOfBirth, String gender, String poneNumber, String email, String address, String patientId, List<MedicalRecords> medicalRecords, List<Appointments> appointments, String insuranceId, String emergencyContact, LocalDate registrationDate, List<String> allergies, String bloodGroup, LocalDate lastVisitDate, String preferredDoctorId, int visitCount) {
         super(id, firstName, lastName, dateOfBirth, gender, poneNumber, email, address, patientId, medicalRecords, appointments, insuranceId, emergencyContact, registrationDate, allergies, bloodGroup);
-        this.visitCount = visitCount;
         this.lastVisitDate = lastVisitDate;
         this.preferredDoctorId = preferredDoctorId;
+        this.visitCount = visitCount;
     }
 
     public OutPatient(String patientId, List<MedicalRecords> medicalRecords, List<Appointments> appointments, String insuranceId, String emergencyContact, LocalDate registrationDate, List<String> allergies, String bloodGroup, int visitCount, LocalDate lastVisitDate, String preferredDoctorId) {

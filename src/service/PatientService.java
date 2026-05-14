@@ -1,8 +1,6 @@
 package service;
 
-import Entites.Appointments;
-import Entites.MedicalRecords;
-import Entites.Patients;
+import Entites.*;
 import Interface.Manageable;
 import Interface.Searchable;
 import Utils.HelperUtils;
@@ -93,7 +91,175 @@ public class PatientService implements Manageable, Searchable {
         return patients1;
     }
 
-    public List<Patients> addPatients() {
+
+
+    public void addInPatient() {
+
+        String patientId = HelperUtils.generateId("PAT");
+
+        String civilId = InputHandler.getStringInput("Civil ID: ");
+        String firstName = InputHandler.getStringInput("First Name: ");
+        String lastName = InputHandler.getStringInput("Last Name: ");
+
+        LocalDate dob = InputHandler.getDateInput("Date of Birth: ");
+        String gender = InputHandler.getStringInput("Gender: ");
+        String phone = InputHandler.getStringInput("Phone: ");
+        String email = InputHandler.getStringInput("Email: ");
+        String address = InputHandler.getStringInput("Address: ");
+        String bloodGroup = InputHandler.getStringInput("Blood Group: ");
+        String insuranceId = InputHandler.getStringInput("Insurance ID: ");
+        String emergencyContact = InputHandler.getStringInput("Emergency Contact: ");
+        LocalDate regDate = InputHandler.getDateInput("Registration Date: ");
+
+        String inputAllergies = InputHandler.getStringInput("Allergies: ");
+
+        List<String> allergies = new ArrayList<>();
+        for (String allergy: inputAllergies.split(",")) {
+            allergies.add(allergy.trim());
+        }
+
+        LocalDate admissionDate = InputHandler.getDateInput("Admission Date: ");
+        LocalDate dischargeDate = InputHandler.getDateInput("Discharge Date: ");
+        String roomNumber = InputHandler.getStringInput("Room Number: ");
+        String bedNumber = InputHandler.getStringInput("Bed Number: ");
+        String doctorId = InputHandler.getStringInput("Admitting Doctor ID: ");
+        double dailyCharges = Double.parseDouble(InputHandler.getStringInput("Daily Charges: "));
+
+        InPatient patient = new InPatient(
+                civilId, firstName, lastName, dob, gender,
+                phone, email, address,
+                patientId,
+                new ArrayList<>(),
+                new ArrayList<>(),
+                insuranceId,
+                emergencyContact,
+                regDate,
+                allergies,
+                bloodGroup,
+                admissionDate,
+                dischargeDate,
+                roomNumber,
+                bedNumber,
+                doctorId,
+                dailyCharges
+        );
+
+        patientsList.add(patient);
+    }
+
+
+    public void addOutPatient() {
+        String patientId = HelperUtils.generateId("PAT");
+
+        String civilId = InputHandler.getStringInput("Civil ID: ");
+        String firstName = InputHandler.getStringInput("First Name: ");
+        String lastName = InputHandler.getStringInput("Last Name: ");
+
+        LocalDate dob = InputHandler.getDateInput("Date of Birth: ");
+        String gender = InputHandler.getStringInput("Gender: ");
+        String phone = InputHandler.getStringInput("Phone: ");
+        String email = InputHandler.getStringInput("Email: ");
+        String address = InputHandler.getStringInput("Address: ");
+        String bloodGroup = InputHandler.getStringInput("Blood Group: ");
+        String insuranceId = InputHandler.getStringInput("Insurance ID: ");
+        String emergencyContact = InputHandler.getStringInput("Emergency Contact: ");
+        LocalDate regDate = InputHandler.getDateInput("Registration Date: ");
+
+        String inputAllergies = InputHandler.getStringInput("Allergies: ");
+
+        List<String> allergies = new ArrayList<>();
+        for (String allergy: inputAllergies.split(",")) {
+            allergies.add(allergy.trim());
+        }
+
+        LocalDate lastVisitDate = InputHandler.getDateInput("Last Visit Date: ");
+        String preferredDoctorId = InputHandler.getStringInput("Preferred Doctor ID: ");
+        int visitCount = Integer.parseInt(InputHandler.getStringInput("Visit Count: "));
+
+        OutPatient patient = new OutPatient(
+                civilId, firstName, lastName, dob, gender,
+                phone, email, address,
+                patientId,
+                new ArrayList<>(),
+                new ArrayList<>(),
+                insuranceId,
+                emergencyContact,
+                regDate,
+                allergies,
+                bloodGroup,
+                lastVisitDate,
+                preferredDoctorId,
+                visitCount
+        );
+
+        patientsList.add(patient);
+    }
+
+
+    public void addEmergencyPatient() {
+        String patientId = HelperUtils.generateId("PAT");
+
+        String civilId = InputHandler.getStringInput("Civil ID: ");
+        String firstName = InputHandler.getStringInput("First Name: ");
+        String lastName = InputHandler.getStringInput("Last Name: ");
+
+        LocalDate dob = InputHandler.getDateInput("Date of Birth: ");
+        String gender = InputHandler.getStringInput("Gender: ");
+        String phone = InputHandler.getStringInput("Phone: ");
+        String email = InputHandler.getStringInput("Email: ");
+        String address = InputHandler.getStringInput("Address: ");
+        String bloodGroup = InputHandler.getStringInput("Blood Group: ");
+        String insuranceId = InputHandler.getStringInput("Insurance ID: ");
+        String emergencyContact = InputHandler.getStringInput("Emergency Contact: ");
+        LocalDate regDate = InputHandler.getDateInput("Registration Date: ");
+
+        String inputAllergies = InputHandler.getStringInput("Allergies: ");
+
+        List<String> allergies = new ArrayList<>();
+        for (String allergy: inputAllergies.split(",")) {
+            allergies.add(allergy.trim());
+        }
+
+        LocalDate admissionDate = InputHandler.getDateInput("Admission Date: ");
+        LocalDate dischargeDate = InputHandler.getDateInput("Discharge Date: ");
+        String roomNumber = InputHandler.getStringInput("Room Number: ");
+        String bedNumber = InputHandler.getStringInput("Bed Number: ");
+        String doctorId = InputHandler.getStringInput("Admitting Doctor ID: ");
+        double dailyCharges = Double.parseDouble(InputHandler.getStringInput("Daily Charges: "));
+
+        String emergencyType = InputHandler.getStringInput("Emergency Type: ");
+        String arrivalMode = InputHandler.getStringInput("Arrival Mode: ");
+        int triageLevel = Integer.parseInt(InputHandler.getStringInput("Triage Level: "));
+        boolean admittedViaER = Boolean.parseBoolean(InputHandler.getStringInput("Admitted via ER (true/false): "));
+
+        EmergencyPatient patient = new EmergencyPatient(
+                civilId, firstName, lastName, dob, gender,
+                phone, email, address,
+                patientId,
+                new ArrayList<>(),
+                new ArrayList<>(),
+                insuranceId,
+                emergencyContact,
+                regDate,
+                new ArrayList<>(),
+                bloodGroup,
+                admissionDate,
+                dischargeDate,
+                roomNumber,
+                bedNumber,
+                doctorId,
+                dailyCharges,
+                emergencyType,
+                arrivalMode,
+                triageLevel,
+                admittedViaER
+        );
+        patientsList.add(patient);
+    }
+
+
+
+        public List<Patients> addPatients() {
         Boolean continueFlag = true;
 
         while (continueFlag) {
@@ -350,6 +516,24 @@ public class PatientService implements Manageable, Searchable {
         }
     }
 
+    public void displayPatientHistory(String patientId) {
+        Patients p = getPatientById(patientId);
+
+        if (HelperUtils.isNull(p)){
+            System.out.println("Patient Not found");
+            return;
+        }
+
+        if (p.getMedicalRecords().isEmpty()) {
+            System.out.println("No medical record");
+        } else {
+            for (MedicalRecords m: p.getMedicalRecords()){
+                m.displayInfo();
+            }
+        }
+
+    }
+
     public void searchPatientsByName(String name) {
         for (Patients patient: patientsList) {
             String fullname = patient.getFirstName() + patient.getLastName();
@@ -368,37 +552,60 @@ public class PatientService implements Manageable, Searchable {
             case 1 -> {
                 addPatients();
             }
+
             case 2 -> {
-                String patientId = InputHandler.getStringInput("Enter Patient ID: ");
-                editPatient(patientId);
+                addInPatient();
             }
+
             case 3 -> {
-               String patientId = InputHandler.getStringInput("Enter patient ID: ");
-
-                removePatient(patientId);
+                addOutPatient();
             }
+
             case 4 -> {
-                String patientId = InputHandler.getStringInput("Enter patient ID: ");
-
-                getPatientById(patientId);
+                addEmergencyPatient();
             }
+
             case 5 -> {
                 displayAllPatients();
             }
+
             case 6 -> {
-                String name = InputHandler.getStringInput("Enter patient Name: ");
-                searchPatientsByName(name);
+                String keyword = InputHandler.getStringInput("Enter keyword");
+                searchPatients(keyword);
             }
+
             case 7 -> {
-                return false;
+                String patientId = InputHandler.getStringInput("Enter Patient ID: ");
+                editPatient(patientId);
             }
+
+            case 8 -> {
+                String patientId = InputHandler.getStringInput("Enter Patient ID: ");
+                removePatient(patientId);
+            }
+
+            case 9 -> {
+                String patienId = InputHandler.getStringInput("Enter patirnt ID: ");
+                displayPatientHistory(patienId);
+            }
+            default -> System.out.println("Invalid option");
         }
         return true;
     }
 
     @Override
     public void add(Object entity) {
+        Patients patient = (Patients) entity;
 
+        for (Patients p: patientsList){
+            if (p.getPatientId() != null
+                    && p.getPatientId().equals(patient.getPatientId())) {
+                System.out.println("Patient already exists!");
+                return;
+            }
+            patientsList.add(patient);
+            System.out.println("Patient added successfully.");
+        }
     }
 
     @Override
